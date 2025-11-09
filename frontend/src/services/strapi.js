@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const strapiApi = axios.create({
-  baseURL: 'http://localhost:1337/api', // Your Strapi backend URL
+  baseURL: import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337/api',
   headers: {
     'Content-Type': 'application/json',
   },
