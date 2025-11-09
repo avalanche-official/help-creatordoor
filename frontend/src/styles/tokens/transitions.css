@@ -1,0 +1,80 @@
+/**
+ * Avalanche Design System - Transitions
+ * Inspired by Wise Design System structure
+ *
+ * Transitions occur when users move between screens, starting new flows
+ * or navigating within a journey. They help create a sense of continuation.
+ *
+ * These transitions should always be unobtrusive and natural.
+ */
+
+@theme {
+  /* ============================================
+     TIMING & EASING
+     ============================================ */
+
+  --transition-duration-instant: 100ms;
+  --transition-duration-fast: 200ms;
+  --transition-duration-default: 300ms;
+  --transition-duration-slow: 400ms;
+  --transition-duration-slower: 500ms;
+
+  --transition-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --transition-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+  --transition-ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* ============================================
+     PAGE TRANSITIONS
+     ============================================ */
+
+  --transition-upwards-duration: var(--transition-duration-default);
+  --transition-upwards-easing: var(--transition-ease-out);
+
+  --transition-sideways-duration: var(--transition-duration-default);
+  --transition-sideways-easing: var(--transition-ease-in-out);
+
+  /* ============================================
+     MODAL & OVERLAY TRANSITIONS
+     ============================================ */
+
+  --transition-modal-duration: var(--transition-duration-default);
+  --transition-modal-easing: var(--transition-ease-out);
+
+  --transition-bottom-sheet-duration: var(--transition-duration-default);
+  --transition-bottom-sheet-easing: var(--transition-ease-out);
+
+  --transition-backdrop-duration: var(--transition-duration-fast);
+  --transition-backdrop-easing: var(--transition-ease-default);
+
+  /* ============================================
+     COMPONENT TRANSITIONS
+     ============================================ */
+
+  --transition-button: all var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-input: border-color var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-card:
+    transform var(--transition-duration-fast) var(--transition-ease-default),
+    box-shadow var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-dropdown:
+    opacity var(--transition-duration-fast) var(--transition-ease-default),
+    transform var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-tooltip: opacity var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-link: color var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-icon: transform var(--transition-duration-fast) var(--transition-ease-default);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

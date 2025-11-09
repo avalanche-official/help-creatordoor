@@ -1,0 +1,244 @@
+/**
+ * Avalanche Design System - Spacing Tokens
+ * Inspired by Wise Design System structure
+ *
+ * Spacing tokens separate elements inside components and layout blocks
+ * — both horizontally and vertically.
+ *
+ * Our spacing scale makes things consistent and content easier to scan.
+ */
+
+:root {
+  /* ============================================
+     FOUNDATIONAL TOKENS
+     Base tokens used to set up components and templates
+     Use semantic tokens instead of these in your work
+     ============================================ */
+
+  --size-4: 4px;
+  --size-8: 8px;
+  --size-12: 12px;
+  --size-16: 16px;
+  --size-24: 24px;
+  --size-32: 32px;
+  --size-40: 40px;
+  --size-48: 48px;
+  --size-56: 56px;
+  --size-64: 64px;
+  --size-72: 72px;
+  --size-80: 80px;
+  --size-88: 88px;
+  --size-96: 96px;
+  --size-104: 104px;
+  --size-112: 112px;
+  --size-120: 120px;
+  --size-128: 128px;
+
+  /* ============================================
+     SEMANTIC TOKENS - HORIZONTAL SPACING
+     Elements that go next to each other
+     ============================================ */
+
+  /* Between Cards - Self-contained content blocks placed side by side */
+  --spacing-between-cards: var(--size-12);
+
+  /* Between Chips - Filter elements typically placed next to one another */
+  --spacing-between-chips: var(--size-8);
+
+  /* Screen Mobile - Overarching spacing that contains mobile designs */
+  --spacing-screen-mobile: var(--size-24);
+
+  /* Component Default - Default spacing when no specific token exists */
+  --spacing-component-default: var(--size-16);
+
+  /* ============================================
+     SEMANTIC TOKENS - VERTICAL SPACING
+     How sections and components are separated
+     ============================================ */
+
+  /* Between Text - Copy that isn't using display style */
+  --spacing-between-text: var(--size-8);
+
+  /* Image Bottom - Extra breathing room for 3D assets and images */
+  --spacing-image-bottom: var(--size-8);
+
+  /* Display Text Bottom - Extra space after display text (tight line-height, uppercase, bold) */
+  --spacing-display-text-bottom: var(--size-16);
+
+  /* Text to Component - Any text style to any component */
+  --spacing-text-to-component: var(--size-16);
+
+  /* Content to Button - Button displayed directly below content/form (not in footer) */
+  --spacing-content-to-button: var(--size-24);
+
+  /* Between Sections - Groups of content that need stronger separation */
+  --spacing-between-sections: var(--size-32);
+
+  /* Between Options - Built into option components (large touch area) */
+  --spacing-between-options: 0px;
+
+  /* ============================================
+     ADDITIONAL SEMANTIC TOKENS
+     Common use cases
+     ============================================ */
+
+  /* Component spacing variations */
+  --spacing-component-tight: var(--size-8);
+  --spacing-component-comfortable: var(--size-24);
+  --spacing-component-spacious: var(--size-32);
+
+  /* Layout spacing */
+  --spacing-layout-small: var(--size-16);
+  --spacing-layout-medium: var(--size-24);
+  --spacing-layout-large: var(--size-48);
+  --spacing-layout-x-large: var(--size-64);
+}
+
+/* ============================================
+   USAGE GUIDELINES & EXAMPLES
+   ============================================ */
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HORIZONTAL SPACING EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BETWEEN CARDS (12px)
+Self-contained blocks of content placed side by side
+
+.card-container {
+  display: flex;
+  gap: var(--spacing-between-cards);
+}
+
+
+BETWEEN CHIPS (8px)
+Filter elements next to each other
+
+.chip-group {
+  display: flex;
+  gap: var(--spacing-between-chips);
+}
+
+
+SCREEN MOBILE (24px)
+Overarching container spacing for mobile designs
+
+.mobile-container {
+  padding-left: var(--spacing-screen-mobile);
+  padding-right: var(--spacing-screen-mobile);
+}
+
+
+COMPONENT DEFAULT (16px)
+When no specific spacing token exists
+
+.button-group {
+  gap: var(--spacing-component-default);
+}
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VERTICAL SPACING EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BETWEEN TEXT (8px)
+Paragraph spacing, screen title to body
+
+.text-block p + p {
+  margin-top: var(--spacing-between-text);
+}
+
+.screen-title {
+  margin-bottom: var(--spacing-between-text);
+}
+
+
+IMAGE BOTTOM (8px)
+Extra breathing room for images and 3D assets
+
+.image-wrapper {
+  margin-bottom: var(--spacing-image-bottom);
+}
+
+
+DISPLAY TEXT BOTTOM (16px)
+Extra space after display/heading text
+
+.display-heading {
+  margin-bottom: var(--spacing-display-text-bottom);
+}
+
+
+TEXT TO COMPONENT (16px)
+Title or body copy to any component
+
+.title {
+  margin-bottom: var(--spacing-text-to-component);
+}
+
+
+CONTENT TO BUTTON (24px)
+Button below content or form (not in footer)
+
+.form-field:last-child {
+  margin-bottom: var(--spacing-content-to-button);
+}
+
+
+BETWEEN SECTIONS (32px)
+Stronger separation between content groups
+
+.section + .section {
+  margin-top: var(--spacing-between-sections);
+}
+
+
+BETWEEN OPTIONS (0px)
+Built into option components due to large touch area
+
+.option-list {
+  gap: var(--spacing-between-options);
+}
+
+
+COMPONENT DEFAULT (16px)
+Below section headers, between form fields, between buttons
+
+.section-header {
+  margin-bottom: var(--spacing-component-default);
+}
+
+.form-field + .form-field {
+  margin-top: var(--spacing-component-default);
+}
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BEST PRACTICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ DO use semantic tokens (--spacing-between-cards)
+✓ DO use tokens from the design system
+✓ DO maintain consistent spacing throughout your layouts
+
+✗ DON'T use foundational tokens directly (--size-12)
+✗ DON'T use custom or hard-coded pixel values
+✗ DON'T mix spacing systems
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ACCESSIBILITY SCALING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Our spacing scale supports accessibility scaling so content
+dynamically grows when users increase screen size settings.
+
+Default (100%):  4px  8px  12px  16px  24px
+Reduced (85%):   3px  7px  10px  14px  20px
+Large (130%):    5px  10px  16px  21px  31px
+X-Large (155%):  6px  12px  19px  25px  37px
+
+This ensures customers get an incredible experience
+regardless of their accessibility settings.
+*/

@@ -1,0 +1,43 @@
+/**
+ * Avalanche Design System - Avatar Utility Classes
+ * Just like typography - simple classes you can use
+ */
+
+/* ============================================
+   AVATAR SIZE CLASSES
+   ============================================ */
+
+.avatar-x-small {
+  width: var(--size-avatar-x-small);
+  height: var(--size-avatar-x-small);
+  min-width: var(--size-avatar-x-small);
+  min-height: var(--size-avatar-x-small);
+}
+
+.avatar-small {
+  width: var(--size-avatar-small);
+  height: var(--size-avatar-small);
+  min-width: var(--size-avatar-small);
+  min-height: var(--size-avatar-small);
+}
+
+.avatar-medium {
+  width: var(--size-avatar-medium);
+  height: var(--size-avatar-medium);
+  min-width: var(--size-avatar-medium);
+  min-height: var(--size-avatar-medium);
+}
+
+.avatar-large {
+  width: var(--size-avatar-large);
+  height: var(--size-avatar-large);
+  min-width: var(--size-avatar-large);
+  min-height: var(--size-avatar-large);
+}
+
+.avatar-x-large {
+  width: var(--size-avatar-x-large);
+  height: var(--size-avatar-x-large);
+  min-width: var(--size-avatar-x-large);
+  min-height: var(--size-avatar-x-large);
+}

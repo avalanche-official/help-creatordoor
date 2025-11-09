@@ -1,0 +1,20 @@
+/**
+ * Avalanche Design System - Focus States
+ * Inspired by Wise Design System structure
+ *
+ * Focus states are essential for keyboard navigation and assistive technology.
+ * They show users exactly which interactive element they're on as they tab through.
+ */
+
+@theme {
+  /* ============================================
+     FOCUS STATE TOKENS
+     ============================================ */
+
+  --focus-border-width-default: 2px;
+  --focus-border-width-input: 3px;
+  --focus-border-radius-default: 4px;
+  --focus-border-radius-rounded: 50%;
+  --focus-offset: 2px;
+  --focus-padding-link: 2px;
+}

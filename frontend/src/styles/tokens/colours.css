@@ -1,0 +1,55 @@
+/**
+ * Avalanche Design System - Color Tokens
+ */
+
+@theme {
+  /* Core Colors */
+  --color-primary-purple: #7646ff;
+  --color-secondary-purple: #210f56;
+  --color-white: #ffffff;
+  --color-off-white: #f8f8ff;
+  --color-black: #0c0c0d;
+
+  /* Secondary Colors */
+  --color-soft-pink: #e8d1ff;
+  --color-neon-blue: #5ae0ff;
+  --color-coral-red: #ff6f61;
+  --color-gold: #f5c542;
+  --color-grey-neutral: #8b8b8d;
+
+  /* Content Colors */
+  --color-content-primary: #0e0e11;
+  --color-content-secondary: #4c4c56;
+  --color-content-tertiary: #7a7a85;
+  --color-content-link: #7646ff;
+
+  /* Interactive Colors */
+  --color-interactive-primary: #7646ff;
+  --color-interactive-hover: #5a2aff;
+  --color-interactive-active: #210f56;
+  --color-interactive-disabled: #cfc8ff;
+  --color-interactive-border: #d6d6e0;
+
+  /* Background Colors */
+  --color-background-screen: #ffffff;
+  --color-background-elevated: #fafaff;
+  --color-background-accent: #f0ebff;
+
+  /* Border Colors */
+  --color-border-focus: #7646ff;
+  --color-border-error: #ff6f61;
+
+  /* Sentiment Colors */
+  --color-sentiment-positive: #4caf50;
+  --color-sentiment-negative: #cb272f;
+  --color-sentiment-warning: #fdd835;
+
+  /* Base Colors */
+  --color-base-light: #ffffff;
+  --color-base-dark: #210f56;
+  --color-base-contrast: #000000;
+
+  /* App Colors*/
+  --color-appcolor-light: #edefeb;
+  --color-appcolor-dark: #dce0d9;
+}

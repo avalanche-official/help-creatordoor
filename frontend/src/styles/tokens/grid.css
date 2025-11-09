@@ -1,0 +1,58 @@
+/**
+ * Avalanche Design System - Grid System
+ * Inspired by Wise Design System structure
+ *
+ * Our grid system ensures that content is appropriately designed
+ * for all screen sizes.
+ *
+ * Grid consists of 5 sizes from XS on mobile to XL on desktop.
+ * Maximum grid width is 1440px. Content centers when viewport is larger.
+ */
+
+@theme {
+  /* ============================================
+     BREAKPOINTS
+     ============================================ */
+
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  /* ============================================
+     GRID CONTAINER WIDTHS
+     ============================================ */
+
+  --grid-width-xs: 100%;
+  --grid-width-sm: 100%;
+  --grid-width-md: 768px;
+  --grid-width-lg: 992px;
+  --grid-width-xl: 1440px;
+
+  /* ============================================
+     GRID MARGINS
+     ============================================ */
+
+  --grid-margin-xs: 20px;
+  --grid-margin-sm: 24px;
+  --grid-margin-md: 32px;
+  --grid-margin-lg: 40px;
+  --grid-margin-xl: 80px;
+
+  /* ============================================
+     GRID GUTTERS
+     ============================================ */
+
+  --grid-gutter-xs: 12px;
+  --grid-gutter-sm: 16px;
+  --grid-gutter-md: 20px;
+  --grid-gutter-lg: 24px;
+  --grid-gutter-xl: 32px;
+
+  /* ============================================
+     GRID COLUMNS
+     ============================================ */
+
+  --grid-columns: 12;
+}

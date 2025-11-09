@@ -1,0 +1,419 @@
+/**
+ * Avalanche Design System - Size Tokens
+ * Inspired by Wise Design System structure
+ *
+ * Size is the vertical height of components — whether variable or fixed.
+ * A scale for sizes helps make the experience more consistent with a
+ * uniform look and feel based on predefined values.
+ */
+
+:root {
+  /* ============================================
+     SIZE TOKENS (Fixed Heights)
+     Use semantic tokens instead of hard-coded values
+     ============================================ */
+
+  /* Size X-Small - 24px */
+  --size-x-small: 24px;
+
+  /* Size Small - 32px */
+  --size-small: 32px;
+
+  /* Size Medium - 40px */
+  --size-medium: 40px;
+
+  /* Size Large - 48px */
+  --size-large: 48px;
+
+  /* Size X-Large - 56px */
+  --size-x-large: 56px;
+
+  /* Size 2X-Large - 72px */
+  --size-2x-large: 72px;
+
+  /* ============================================
+     SEMANTIC SIZE TOKENS - ICONS
+     Default icon size is 24px (used in majority of cases)
+     ============================================ */
+
+  --size-icon-default: var(--size-x-small); /* 24px */
+  --size-icon-small: 16px;
+  --size-icon-large: 32px;
+
+  /* ============================================
+     SEMANTIC SIZE TOKENS - AVATARS
+     4 different sizes depending on context
+     ============================================ */
+
+  /* Inside inputs */
+  --size-avatar-x-small: var(--size-x-small); /* 24px */
+
+  /* As a secondary element */
+  --size-avatar-small: var(--size-medium); /* 40px */
+
+  /* In alerts */
+  --size-avatar-medium: var(--size-large); /* 48px */
+
+  /* In a list of items */
+  --size-avatar-large: var(--size-x-large); /* 56px */
+
+  /* As main element on screen */
+  --size-avatar-x-large: var(--size-2x-large); /* 72px */
+
+  /* ============================================
+     SEMANTIC SIZE TOKENS - BUTTONS
+     Different sizes for different interactions
+     ============================================ */
+
+  /* Secondary interactions (small buttons) */
+  --size-button-small: var(--size-small); /* 32px */
+
+  /* Main actions (default buttons) */
+  --size-button-default: var(--size-large); /* 48px */
+
+  /* Circular buttons */
+  --size-button-circular: var(--size-x-large); /* 56px */
+
+  /* ============================================
+     SEMANTIC SIZE TOKENS - CHIPS & TAGS
+     ============================================ */
+
+  --size-chip-small: var(--size-small); /* 32px */
+  --size-chip-default: var(--size-medium); /* 40px */
+
+  /* ============================================
+     SEMANTIC SIZE TOKENS - FORM INPUTS
+     ============================================ */
+
+  --size-input-small: var(--size-medium); /* 40px */
+  --size-input-default: var(--size-large); /* 48px */
+  --size-input-large: var(--size-x-large); /* 56px */
+}
+
+/* ============================================
+   COMPONENT SIZE CLASSES
+   ============================================ */
+
+/* Icons */
+.icon-small {
+  width: var(--size-icon-small);
+  height: var(--size-icon-small);
+}
+
+.icon,
+.icon-default {
+  width: var(--size-icon-default);
+  height: var(--size-icon-default);
+}
+
+.icon-large {
+  width: var(--size-icon-large);
+  height: var(--size-icon-large);
+}
+
+/* Avatars */
+.avatar-x-small {
+  width: var(--size-avatar-x-small);
+  height: var(--size-avatar-x-small);
+  min-width: var(--size-avatar-x-small);
+  min-height: var(--size-avatar-x-small);
+}
+
+.avatar-small {
+  width: var(--size-avatar-small);
+  height: var(--size-avatar-small);
+  min-width: var(--size-avatar-small);
+  min-height: var(--size-avatar-small);
+}
+
+.avatar-medium,
+.avatar {
+  width: var(--size-avatar-medium);
+  height: var(--size-avatar-medium);
+  min-width: var(--size-avatar-medium);
+  min-height: var(--size-avatar-medium);
+}
+
+.avatar-large {
+  width: var(--size-avatar-large);
+  height: var(--size-avatar-large);
+  min-width: var(--size-avatar-large);
+  min-height: var(--size-avatar-large);
+}
+
+.avatar-x-large {
+  width: var(--size-avatar-x-large);
+  height: var(--size-avatar-x-large);
+  min-width: var(--size-avatar-x-large);
+  min-height: var(--size-avatar-x-large);
+}
+
+/* Buttons */
+.button-small {
+  height: var(--size-button-small);
+  min-height: var(--size-button-small);
+}
+
+.button,
+.button-default {
+  height: var(--size-button-default);
+  min-height: var(--size-button-default);
+}
+
+.button-circular {
+  width: var(--size-button-circular);
+  height: var(--size-button-circular);
+  min-width: var(--size-button-circular);
+  min-height: var(--size-button-circular);
+  border-radius: var(--radius-circle);
+}
+
+/* Chips & Tags */
+.chip-small {
+  height: var(--size-chip-small);
+  min-height: var(--size-chip-small);
+}
+
+.chip,
+.chip-default {
+  height: var(--size-chip-default);
+  min-height: var(--size-chip-default);
+}
+
+/* Form Inputs */
+.input-small {
+  height: var(--size-input-small);
+  min-height: var(--size-input-small);
+}
+
+.input,
+.input-default {
+  height: var(--size-input-default);
+  min-height: var(--size-input-default);
+}
+
+.input-large {
+  height: var(--size-input-large);
+  min-height: var(--size-input-large);
+}
+
+/* ============================================
+   USAGE GUIDELINES & EXAMPLES
+   ============================================ */
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SIZE SCALE OVERVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Token           Value    Common Uses
+────────────────────────────────────────────────
+size-x-small    24px     Icons (default), Small avatars
+size-small      32px     Secondary buttons, Small chips
+size-medium     40px     Secondary avatars, Default chips
+size-large      48px     Main buttons, Alerts avatars
+size-x-large    56px     List avatars, Circular buttons
+size-2x-large   72px     Main screen avatars
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ICONS (Default: 24px)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The default size for icons is 24px.
+This is how they are used in the majority of cases.
+
+<svg class="icon" width="24" height="24">
+  <use href="#icon-name"></use>
+</svg>
+
+<button class="button">
+  <svg class="icon">...</svg>
+  Button Text
+</button>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AVATARS (4 Sizes)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Avatars contain images, flags, initials, or icons.
+
+Inside inputs (24px):
+<div class="avatar-x-small">
+  <img src="flag.png" alt="US">
+</div>
+
+As a secondary element (40px):
+<div class="avatar-small">
+  <span>JD</span>
+</div>
+
+In alerts (48px):
+<div class="avatar-medium">
+  <img src="user.jpg" alt="User">
+</div>
+
+In a list of items (56px):
+<div class="avatar-large">
+  <img src="profile.jpg" alt="Profile">
+</div>
+
+As main element on screen (72px):
+<div class="avatar-x-large">
+  <img src="avatar.jpg" alt="Avatar">
+</div>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BUTTONS (3 Sizes)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Secondary interactions (32px):
+<button class="button-small">Cancel</button>
+
+Main actions (48px):
+<button class="button">Continue</button>
+
+Circular buttons (56px):
+<button class="button-circular">
+  <svg class="icon">...</svg>
+</button>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VARIABLE HEIGHT COMPONENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Some components don't have fixed height and grow
+vertically to adapt to content. In these components,
+padding takes priority over height.
+
+Examples:
+- Alerts
+- Popovers
+- Option-based components
+- Cards with variable content
+
+These components use padding tokens instead:
+
+.alert {
+  padding: var(--padding-medium);
+  min-height: auto;
+}
+
+.popover {
+  padding: var(--padding-small);
+  min-height: auto;
+}
+
+.option {
+  padding: var(--padding-small) var(--padding-medium);
+  min-height: auto;
+}
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BEST PRACTICES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ DO use semantic size tokens (--size-button-default)
+✓ DO use tokens from the design system
+✓ DO maintain consistent component heights
+✓ DO let variable-height components grow with content
+✓ DO use min-height for flexible components
+
+✗ DON'T use custom or hard-coded pixel values
+✗ DON'T force fixed heights on variable components
+✗ DON'T mix size scales inconsistently
+✗ DON'T use foundational tokens directly in components
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPLEMENTATION EXAMPLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Button with icon:
+<button class="button">
+  <svg class="icon">...</svg>
+  <span>Send Money</span>
+</button>
+
+Avatar in list item:
+<div class="list-item">
+  <div class="avatar-large">
+    <img src="user.jpg" alt="User">
+  </div>
+  <div class="list-item-content">
+    <h3>John Doe</h3>
+    <p>john@example.com</p>
+  </div>
+</div>
+
+Circular action button:
+<button class="button-circular">
+  <svg class="icon">
+    <use href="#icon-plus"></use>
+  </svg>
+</button>
+
+Input with avatar:
+<div class="input">
+  <div class="avatar-x-small">
+    <img src="flag.png" alt="Currency">
+  </div>
+  <input type="text" placeholder="Amount">
+</div>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CUSTOM COMPONENT SIZING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Using size tokens for custom components:
+
+.custom-component {
+  height: var(--size-large);
+  padding: 0 var(--padding-medium);
+  display: flex;
+  align-items: center;
+}
+
+.custom-avatar {
+  width: var(--size-avatar-medium);
+  height: var(--size-avatar-medium);
+  border-radius: var(--radius-circle);
+  overflow: hidden;
+}
+
+.custom-icon-button {
+  width: var(--size-button-circular);
+  height: var(--size-button-circular);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUICK REFERENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Component              Token                    Size
+──────────────────────────────────────────────────────
+Icon (default)         --size-icon-default      24px
+Avatar (input)         --size-avatar-x-small    24px
+Avatar (secondary)     --size-avatar-small      40px
+Avatar (alert)         --size-avatar-medium     48px
+Avatar (list)          --size-avatar-large      56px
+Avatar (main)          --size-avatar-x-large    72px
+Button (secondary)     --size-button-small      32px
+Button (main)          --size-button-default    48px
+Button (circular)      --size-button-circular   56px
+Chip (small)           --size-chip-small        32px
+Chip (default)         --size-chip-default      40px
+Input (small)          --size-input-small       40px
+Input (default)        --size-input-default     48px
+Input (large)          --size-input-large       56px
+*/

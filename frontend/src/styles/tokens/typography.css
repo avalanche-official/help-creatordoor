@@ -1,0 +1,237 @@
+/**
+ * Avalanche Design System - Typography
+ * All typography utility classes
+ */
+
+/* ============================================
+   TYPOGRAPHY UTILITY CLASSES
+   ============================================ */
+
+/* Display Styles - Parafina Black */
+.display-large {
+  font-family: var(--font-family-display);
+  font-size: var(--font-display-large-size);
+  line-height: var(--font-display-large-line-height);
+  letter-spacing: var(--font-display-large-letter-spacing);
+  font-weight: var(--font-display-large-weight);
+  text-transform: uppercase;
+}
+
+.display-medium {
+  font-family: var(--font-family-display);
+  font-size: var(--font-display-medium-size);
+  line-height: var(--font-display-medium-line-height);
+  letter-spacing: var(--font-display-medium-letter-spacing);
+  font-weight: var(--font-display-medium-weight);
+  text-transform: uppercase;
+}
+
+.display-small {
+  font-family: var(--font-family-display);
+  font-size: var(--font-display-small-size);
+  line-height: var(--font-display-small-line-height);
+  letter-spacing: var(--font-display-small-letter-spacing);
+  font-weight: var(--font-display-small-weight);
+  text-transform: uppercase;
+}
+
+/* Title Styles - Inter */
+.title-screen {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-title-screen-size);
+  line-height: var(--font-title-screen-line-height);
+  letter-spacing: var(--font-title-screen-letter-spacing);
+  font-weight: var(--font-title-screen-weight);
+}
+
+.title-section {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-title-section-size);
+  line-height: var(--font-title-section-line-height);
+  letter-spacing: var(--font-title-section-letter-spacing);
+  font-weight: var(--font-title-section-weight);
+}
+
+.title-subsection {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-title-subsection-size);
+  line-height: var(--font-title-subsection-line-height);
+  letter-spacing: var(--font-title-subsection-letter-spacing);
+  font-weight: var(--font-title-subsection-weight);
+}
+
+.title-body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-title-body-size);
+  line-height: var(--font-title-body-line-height);
+  letter-spacing: var(--font-title-body-letter-spacing);
+  font-weight: var(--font-title-body-weight);
+}
+
+.title-group {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-title-group-size);
+  line-height: var(--font-title-group-line-height);
+  letter-spacing: var(--font-title-group-letter-spacing);
+  font-weight: var(--font-title-group-weight);
+}
+
+/* Body Styles - Inter */
+.body-large {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-body-large-size);
+  line-height: var(--font-body-large-line-height);
+  letter-spacing: var(--font-body-large-letter-spacing);
+  font-weight: var(--font-body-large-weight);
+}
+
+.body-large-bold {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-body-large-bold-size);
+  line-height: var(--font-body-large-bold-line-height);
+  letter-spacing: var(--font-body-large-bold-letter-spacing);
+  font-weight: var(--font-body-large-bold-weight);
+}
+
+.body-default {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-body-default-size);
+  line-height: var(--font-body-default-line-height);
+  letter-spacing: var(--font-body-default-letter-spacing);
+  font-weight: var(--font-body-default-weight);
+}
+
+.body-default-bold {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-body-default-bold-size);
+  line-height: var(--font-body-default-bold-line-height);
+  letter-spacing: var(--font-body-default-bold-letter-spacing);
+  font-weight: var(--font-body-default-bold-weight);
+}
+
+/* Link Styles - Inter */
+.link-large {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-link-large-size);
+  line-height: var(--font-link-large-line-height);
+  letter-spacing: var(--font-link-large-letter-spacing);
+  font-weight: var(--font-link-large-weight);
+  text-decoration: underline;
+  color: var(--color-content-link);
+}
+
+.link-default {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-link-default-size);
+  line-height: var(--font-link-default-line-height);
+  letter-spacing: var(--font-link-default-letter-spacing);
+  font-weight: var(--font-link-default-weight);
+  text-decoration: underline;
+  color: var(--color-content-link);
+}
+
+/* ============================================
+   TEXT COLOR UTILITY CLASSES
+   ============================================ */
+
+/* Content Colors */
+.text-color-content-primary {
+  color: var(--color-content-primary);
+}
+
+.text-color-content-secondary {
+  color: var(--color-content-secondary);
+}
+
+.text-color-content-tertiary {
+  color: var(--color-content-tertiary);
+}
+
+.text-color-content-link {
+  color: var(--color-content-link);
+}
+
+/* Base Colors */
+.text-color-base-light {
+  color: var(--color-base-light);
+}
+
+.text-color-base-dark {
+  color: var(--color-base-dark);
+}
+
+.text-color-base-contrast {
+  color: var(--color-base-contrast);
+}
+
+/* Interactive Colors */
+.text-color-interactive-primary {
+  color: var(--color-interactive-primary);
+}
+
+.text-color-interactive-hover {
+  color: var(--color-interactive-hover);
+}
+
+.text-color-interactive-active {
+  color: var(--color-interactive-active);
+}
+
+.text-color-interactive-disabled {
+  color: var(--color-interactive-disabled);
+}
+
+/* Sentiment Colors */
+.text-color-sentiment-positive {
+  color: var(--color-sentiment-positive);
+}
+
+.text-color-sentiment-negative {
+  color: var(--color-sentiment-negative);
+}
+
+.text-color-sentiment-warning {
+  color: var(--color-sentiment-warning);
+}
+
+/* Core Brand Colors */
+.text-color-primary-purple {
+  color: var(--color-primary-purple);
+}
+
+.text-color-deep-indigo {
+  color: var(--color-deep-indigo);
+}
+
+.text-color-white {
+  color: var(--color-white);
+}
+
+.text-color-off-white {
+  color: var(--color-off-white);
+}
+
+.text-color-black {
+  color: var(--color-black);
+}
+
+/* Secondary Colors */
+.text-color-soft-pink {
+  color: var(--color-soft-pink);
+}
+
+.text-color-neon-blue {
+  color: var(--color-neon-blue);
+}
+
+.text-color-coral-red {
+  color: var(--color-coral-red);
+}
+
+.text-color-gold {
+  color: var(--color-gold);
+}
+
+.text-color-grey-neutral {
+  color: var(--color-grey-neutral);
+}

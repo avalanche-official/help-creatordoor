@@ -1,0 +1,45 @@
+/**
+ * Avalanche Design System - Radius Tokens
+ * Inspired by Wise Design System structure
+ *
+ * Radius (or radii) are the rounded corners in components and content.
+ * They give the Avalanche experience a bolder and more expressive appearance.
+ *
+ * We use different scales for desktop and mobile to maintain
+ * proportional visual harmony across screen sizes.
+ */
+
+@theme {
+  /* ============================================
+     MOBILE SCALE (Default)
+     ============================================ */
+
+  --radius-small: 10px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
+  --radius-x-large: 32px;
+  --radius-2x-large: 48px;
+
+  /* ============================================
+     UTILITY RADII
+     ============================================ */
+
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+  --radius-none: 0px;
+}
+
+/* ============================================
+   DESKTOP SCALE
+   Larger radii for bigger screens (768px+)
+   ============================================ */
+
+@media (min-width: 768px) {
+  @theme {
+    --radius-small: 16px;
+    --radius-medium: 20px;
+    --radius-large: 30px;
+    --radius-x-large: 40px;
+    --radius-2x-large: 60px;
+  }
+}

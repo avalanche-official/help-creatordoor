@@ -1,0 +1,58 @@
+/**
+ * Avalanche Design System - Padding & Spacing Tokens
+ * Inspired by Wise Design System structure
+ *
+ * Padding is the internal spacing in components that separates
+ * content from external boundaries. It helps content breathe and
+ * makes information easier to consume.
+ */
+
+@theme {
+  /* ============================================
+     PADDING TOKENS
+     Use these semantic tokens instead of hard-coded values
+     ============================================ */
+
+  /* Padding X-Small - Compact data, tight spacing */
+  --padding-x-small: 8px;
+
+  /* Padding Small - Standard compact components */
+  --padding-small: 16px;
+
+  /* Padding Medium - Variable height content, cards */
+  --padding-medium: 24px;
+
+  /* Padding Large - Spacious content areas */
+  --padding-large: 32px;
+
+  /* ============================================
+     SPACING TOKENS (for margins, gaps, etc.)
+     ============================================ */
+
+  --spacing-x-small: 8px;
+  --spacing-small: 16px;
+  --spacing-medium: 24px;
+  --spacing-large: 32px;
+  --spacing-x-large: 48px;
+  --spacing-xx-large: 64px;
+
+  /* Semantic Spacing */
+  --spacing-between-cards: 12px;
+  --spacing-between-chips: 8px;
+  --spacing-screen-mobile: 24px;
+  --spacing-component-default: 16px;
+  --spacing-between-text: 8px;
+  --spacing-image-bottom: 8px;
+  --spacing-display-text-bottom: 16px;
+  --spacing-text-to-component: 16px;
+  --spacing-content-to-button: 24px;
+  --spacing-between-sections: 32px;
+  --spacing-between-options: 0px;
+  --spacing-component-tight: 8px;
+  --spacing-component-comfortable: 24px;
+  --spacing-component-spacious: 32px;
+  --spacing-layout-small: 16px;
+  --spacing-layout-medium: 24px;
+  --spacing-layout-large: 48px;
+  --spacing-layout-x-large: 64px;
+}

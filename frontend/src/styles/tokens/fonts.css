@@ -1,0 +1,126 @@
+/**
+ * Avalanche Design System - Fonts
+ */
+
+/* ============================================
+   FONT-FACE DECLARATIONS
+   ============================================ */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://rsms.me/inter/font-files/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Parafina Black';
+  src: url('/fonts/Parafina-Black-S.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   TYPOGRAPHY TOKENS
+   Register with Tailwind v4 using @theme
+   ============================================ */
+
+@theme {
+  /* Font Families */
+  --font-family-primary:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-family-display: 'Parafina Black', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  /* Display Large - 96px */
+  --font-display-large-size: 96px;
+  --font-display-large-line-height: 0.85;
+  --font-display-large-letter-spacing: 0.02em;
+  --font-display-large-weight: 700;
+
+  /* Display Medium - 64px */
+  --font-display-medium-size: 64px;
+  --font-display-medium-line-height: 0.85;
+  --font-display-medium-letter-spacing: 0.015em;
+  --font-display-medium-weight: 700;
+
+  /* Display Small - 40px */
+  --font-display-small-size: 40px;
+  --font-display-small-line-height: 0.85;
+  --font-display-small-letter-spacing: 0.015em;
+  --font-display-small-weight: 700;
+
+  /* Title Screen - 30px */
+  --font-title-screen-size: 30px;
+  --font-title-screen-line-height: 34px;
+  --font-title-screen-letter-spacing: -0.025em;
+  --font-title-screen-weight: 600;
+
+  /* Title Section - 26px */
+  --font-title-section-size: 26px;
+  --font-title-section-line-height: 32px;
+  --font-title-section-letter-spacing: -0.015em;
+  --font-title-section-weight: 600;
+
+  /* Title Subsection - 22px */
+  --font-title-subsection-size: 22px;
+  --font-title-subsection-line-height: 28px;
+  --font-title-subsection-letter-spacing: -0.015em;
+  --font-title-subsection-weight: 600;
+
+  /* Title Body - 18px */
+  --font-title-body-size: 18px;
+  --font-title-body-line-height: 24px;
+  --font-title-body-letter-spacing: -0.01em;
+  --font-title-body-weight: 600;
+
+  /* Title Group - 14px */
+  --font-title-group-size: 14px;
+  --font-title-group-line-height: 20px;
+  --font-title-group-letter-spacing: 0.015em;
+  --font-title-group-weight: 500;
+
+  /* Body Large - 16px */
+  --font-body-large-size: 16px;
+  --font-body-large-line-height: 24px;
+  --font-body-large-letter-spacing: -0.005em;
+  --font-body-large-weight: 400;
+
+  /* Body Large Bold - 16px */
+  --font-body-large-bold-size: 16px;
+  --font-body-large-bold-line-height: 24px;
+  --font-body-large-bold-letter-spacing: 0.005em;
+  --font-body-large-bold-weight: 600;
+
+  /* Body Default - 14px */
+  --font-body-default-size: 14px;
+  --font-body-default-line-height: 22px;
+  --font-body-default-letter-spacing: 0.01em;
+  --font-body-default-weight: 400;
+
+  /* Body Default Bold - 14px */
+  --font-body-default-bold-size: 14px;
+  --font-body-default-bold-line-height: 22px;
+  --font-body-default-bold-letter-spacing: 0.0125em;
+  --font-body-default-bold-weight: 600;
+
+  /* Link Large - 16px */
+  --font-link-large-size: 16px;
+  --font-link-large-line-height: 24px;
+  --font-link-large-letter-spacing: 0.01em;
+  --font-link-large-weight: 600;
+
+  /* Link Default - 14px */
+  --font-link-default-size: 14px;
+  --font-link-default-line-height: 22px;
+  --font-link-default-letter-spacing: 0.0125em;
+  --font-link-default-weight: 600;
+}

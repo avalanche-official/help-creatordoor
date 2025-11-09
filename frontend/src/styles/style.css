@@ -1,0 +1,31 @@
+/**
+ * Avalanche Design System - Main Stylesheet
+ *
+ * This file imports Tailwind CSS v4 and all design system modules
+ */
+
+@import 'tailwindcss';
+
+
+/* ============================================
+   IMPORT DESIGN TOKENS
+   Import order matters! Fonts & colors first,
+   then typography classes that use them
+   ============================================ */
+
+@import './tokens/fonts.css';
+@import './tokens/colours.css';
+@import './tokens/padding.css';
+@import './tokens/size.css';
+@import './tokens/radius.css';
+@import './tokens/transitions.css';
+@import './tokens/focus.css';
+@import './tokens/grid.css';
+@import './tokens/typography.css';
+
+/* ============================================
+   IMPORT UTILITY CLASSES
+   Must come after tokens are defined
+   ============================================ */
+
+@import './components/avatars.css';
