@@ -66,8 +66,8 @@ const categoriesForList = computed(() => {
     label: category.attributes.name,
     description: category.attributes.description,
     icon: getIconName(category.attributes.icon),
-    iconBgColor: '#F5F5F5', // You can customize this
-    iconColor: '#0e0e11',
+    iconBgColor: 'bg-stone-100', // You can customize this
+    iconColor: 'bg-stone-500',
   }))
 })
 </script>
