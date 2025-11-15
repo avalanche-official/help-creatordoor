@@ -77,7 +77,9 @@ const handleClearSearch = () => {
         v-model="searchQuery" 
         :placeholder="placeholder"
         prefix-icon="search"
-        size="large"
+                size="medium"
+      rounded="rounded-full"
+        
       />
 
       <!-- Search Results Dropdown -->
@@ -118,7 +120,8 @@ const handleClearSearch = () => {
         :model-value="searchQuery"
         :placeholder="placeholder"
         prefix-icon="search"
-        size="large"
+        size="medium"
+      rounded="rounded-full"
         readonly
         @click="openSheet"
       />
@@ -131,6 +134,8 @@ const handleClearSearch = () => {
               v-model="searchQuery" 
               placeholder="Tippe um zu suchen..." 
               prefix-icon="search"
+                      size="medium"
+      rounded="rounded-full"
             />
             <button
               v-if="searchQuery"

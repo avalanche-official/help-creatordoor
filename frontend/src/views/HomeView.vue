@@ -1,14 +1,16 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { categoriesService } from '@/services/categories'
 import { helpArticlesService } from '@/services/helpArticles'
 import { useRouter } from 'vue-router'
-import SearchSelector from '@/components/molecules/SearchSelector/SearchSelector.vue'
-import Card from '@/components/atoms/Card/Card.vue'
-import Icon from '@/components/atoms/Icon/Icon.vue'
-import CopyBlock from '@/components/molecules/CopyBlock/CopyBlock.vue'
-import Text from '@/components/atoms/Text/Text.vue'
-import Button from '@/components/atoms/Button/Button.vue'
+import SearchSelector from '../components/molecules/SearchSelector/SearchSelector.vue'
+import Card from '../components/atoms/Card/Card.vue'
+import Icon from '../components/atoms/Icon/Icon.vue'
+import CopyBlock from '../components/molecules/CopyBlock/CopyBlock.vue'
+import Text from '../components/atoms/Text/Text.vue'
+import Button from '../components/atoms/Button/Button.vue'
+import List from '../components/organisms/List/List.vue'
+
 
 const router = useRouter()
 const categories = ref([])
@@ -39,7 +41,15 @@ const handleArticleSelect = (article) => {
 
 const goToCategory = (category) => {
   const slug = category.attributes.slug || category.id
-  router.push(`/${slug}`)  // Just /slug, no /category/
+  router.push(`/${slug}`)
+}
+
+// For List component (mobile)
+const handleCategorySelect = (categoryId) => {
+  const category = categories.value.find(c => c.id === categoryId)
+  if (category) {
+    goToCategory(category)
+  }
 }
 
 const getIconName = (iconFromStrapi) => {
@@ -48,6 +58,18 @@ const getIconName = (iconFromStrapi) => {
   }
   return iconFromStrapi.trim()
 }
+
+// Transform categories for List component
+const categoriesForList = computed(() => {
+  return categories.value.slice(0, 6).map(category => ({
+    value: category.id,
+    label: category.attributes.name,
+    description: category.attributes.description,
+    icon: getIconName(category.attributes.icon),
+    iconBgColor: '#F5F5F5', // You can customize this
+    iconColor: '#0e0e11',
+  }))
+})
 </script>
 
 <template>
@@ -62,7 +84,6 @@ const getIconName = (iconFromStrapi) => {
       <div class="max-w-2xl mx-auto mt-8">
         <SearchSelector
           :articles="allArticles"
-        
           @select="handleArticleSelect"
         />
       </div>
@@ -73,7 +94,7 @@ const getIconName = (iconFromStrapi) => {
           Log in für personalisiertem Support
         </Text>
         <div class="flex flex-col w-fill mx-auto gap-2">
-          <Button variant="primary" fontSize="body-default-bold" href="https://www.creatordoor.com/login" >Log in</Button>
+          <Button variant="primary" fontSize="body-default-bold" href="https://www.creatordoor.com/login">Log in</Button>
           <Button variant="link" href="creatordoor.com/forgot-password" fontSize="body-default-bold">Probleme beim Einloggen?</Button>
         </div>
       </div>
@@ -85,45 +106,65 @@ const getIconName = (iconFromStrapi) => {
       <p class="text-neutral-600 mt-4">Hilfeartikel laden...</p>
     </div>
 
-    <!-- Categories Grid -->
+    <!-- Categories Section -->
     <div v-else class="max-w-6xl mx-auto">
       <Text variant="title-subsection" as="h2" class="mb-6 text-left">
         Themen entdecken
       </Text>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <Card
-          v-for="category in categories.slice(0, 6)"
-          :key="category.id"
-          variant="card"
-          clickable
-          rounded="rounded-2xl"
-          class="p-4 flex flex-col items-center text-center space-y-4 transition-shadow duration-300"
-          @click="goToCategory(category)"
-        >
-          <!-- ✅ FIXED: Pass category object, not category.id -->
-          
-          <!-- Icon at top -->
-          <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-            <Icon 
-              :name="getIconName(category.attributes.icon)" 
-              :size="24" 
-              color="white"
-            />
-          </div>
+      <!-- Empty State -->
+      <div v-if="categories.length === 0" class="text-center py-12 flex flex-col">
+        <Icon name="folder-open" :size="64" color="text-neutral-300" class="mx-auto mb-4" />
+        <Text variant="title-subsection" color="content-secondary" class="mb-2">
+          Keine Kategorien gefunden
+        </Text>
 
-          <!-- CopyBlock at bottom -->
-          <CopyBlock
-            :title="category.attributes.name"
-            :description="category.attributes.description"
-            title-variant="title-body"
-            description-variant="body-default"
-            align="center"
-            spacing="2"
-            description-clamp="2"
-          />
-        </Card>
       </div>
+
+      <!-- Categories Display -->
+      <template v-else>
+        <!-- Mobile: List View -->
+        <div class="md:hidden">
+          <List
+            :items="categoriesForList"
+            spacing="3"
+            @select="handleCategorySelect"
+          />
+        </div>
+
+        <!-- Desktop: Grid View -->
+        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <Card
+            v-for="category in categories.slice(0, 6)"
+            :key="category.id"
+            variant="card"
+            clickable
+            rounded="rounded-2xl"
+            class="p-4 flex flex-col items-center text-center space-y-4 transition-shadow duration-300"
+            @click="goToCategory(category)"
+          >
+            <!-- Icon at top -->
+            <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center">
+              <Icon 
+                :name="getIconName(category.attributes.icon)" 
+                :size="24" 
+                color="white"
+              />
+            </div>
+
+            <!-- CopyBlock at bottom -->
+            <CopyBlock
+              :title="category.attributes.name"
+              :description="category.attributes.description"
+              title-variant="title-body"
+              description-variant="body-default"
+              align="center"
+              spacing="2"
+              description-clamp="2"
+            />
+          </Card>
+        </div>
+      </template>
 
       <!-- Still Need Help Section -->
       <div class="text-center mt-16 flex mx-auto items-center justify-center space-x-4">
@@ -132,32 +173,21 @@ const getIconName = (iconFromStrapi) => {
             Noch mehr hilfe?
           </Text>
         </div>
-<div>
-  <Button 
-    variant="outline" 
-    fontSize="body-default-bold"
-    href="mailto:support@creatordoor.com"
-  >
-    Kontaktiere uns
-  </Button>
-</div>
+        <div>
+          <Button 
+            variant="outline" 
+            fontSize="body-default-bold"
+            href="mailto:support@creatordoor.com"
+          >
+            Kontaktiere uns
+          </Button>
+        </div>
       </div>
 
       <!-- Show message if more than 6 categories -->
       <div v-if="categories.length > 6" class="text-center mt-8">
         <Text variant="body-small" color="content-secondary">
           Showing {{ Math.min(6, categories.length) }} of {{ categories.length }} categories
-        </Text>
-      </div>
-
-      <!-- Empty State -->
-      <div v-if="categories.length === 0" class="text-center py-12">
-        <Icon name="folder-open" :size="64" color="text-neutral-300" class="mx-auto mb-4" />
-        <Text variant="title-card" color="content-secondary" class="mb-2">
-          No categories found
-        </Text>
-        <Text variant="body-small" color="content-secondary">
-          Categories will appear here once they're created in Strapi
         </Text>
       </div>
     </div>

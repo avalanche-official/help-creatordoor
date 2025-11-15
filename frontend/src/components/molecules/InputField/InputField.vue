@@ -198,6 +198,7 @@ const inputClasses = computed(() => {
     'focus:ring-0',
     'bg-transparent',
     textColorClasses.value,
+    props.rounded, 
   ]
 })
 
