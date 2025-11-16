@@ -148,7 +148,7 @@ const getMediaUrl = (file) => {
               <img 
                 :src="getMediaUrl(block.image)"
                 :alt="block.image?.alternativeText || block.image?.name || 'Article image'"
-                class="w-full rounded-lg  border border-1 border-secondary-purple"
+                class="w-full rounded-lg border border-1 border-stone-200"
               />
               <figcaption 
                 v-if="block.image?.caption" 
@@ -163,7 +163,7 @@ const getMediaUrl = (file) => {
               <video 
                 v-if="block.file?.mime?.startsWith('video')"
                 controls 
-                class="w-full rounded-lg  border border-1 border-secondary-purple"
+                class="w-full rounded-lg border border-1 border-stone-200"
                 :src="getMediaUrl(block.file)"
               >
                 Your browser does not support the video tag.
@@ -172,7 +172,7 @@ const getMediaUrl = (file) => {
                 v-else
                 :src="getMediaUrl(block.file)"
                 :alt="block.file?.alternativeText || 'Media'"
-                class="w-full rounded-lg  border border-1 border-secondary-purple"
+                class="w-full rounded-lg border border-1 border-stone-200"
               />
             </div>
 
