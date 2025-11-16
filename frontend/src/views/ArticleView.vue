@@ -14,12 +14,17 @@ const relatedArticles = ref([])
 const loading = ref(true)
 const feedbackGiven = ref(false)
 
+// ✅ Strapi Base URL (ohne /api für Medien)
+const STRAPI_BASE_URL = import.meta.env.VITE_STRAPI_URL.replace('/api', '')
+
 onMounted(async () => {
   try {
-    const articleSlug = route.params.articleSlug  // Changed
+    const articleSlug = route.params.articleSlug
     
     const response = await helpArticlesService.getBySlug(articleSlug)
     article.value = response.data
+    
+    console.log('📄 Article content blocks:', article.value.attributes.content) // Debug
     
     if (!article.value) {
       console.error('Article not found')
@@ -71,6 +76,12 @@ const goToCategory = () => {
     router.push(`/${article.value.attributes.category.slug}`)
   }
 }
+
+// ✅ Helper function to get media URL
+const getMediaUrl = (file) => {
+  if (!file?.url) return ''
+  return file.url.startsWith('http') ? file.url : `${STRAPI_BASE_URL}${file.url}`
+}
 </script>
 
 <template>
@@ -81,41 +92,41 @@ const goToCategory = () => {
     </div>
 
     <article v-else-if="article">
-<!-- Breadcrumb -->
-<nav class="mb-12">
-  <ol class="flex items-center gap-2 text-sm overflow-hidden">
-    <li class="flex-shrink-0">
-      <Button variant="link" fontSize="body-default-bold text-secondary-purple" @click="router.push('/')">
-        Home
-      </Button>
-    </li>
-    <li class="flex-shrink-0">
-      <Text variant="body-default" color="content-secondary">/</Text>
-    </li>
-    <li v-if="article.attributes.category" class="min-w-0 flex-shrink">
-      <Button 
-        variant="link" 
-        fontSize="body-default-bold text-secondary-purple" 
-        @click="goToCategory"
-        class="truncate block w-full"
-      >
-        {{ article.attributes.category.name }}
-      </Button>
-    </li>
-    <li class="flex-shrink-0">
-      <Text variant="body-default-bold" color="content-secondary">/</Text>
-    </li>
-    <li class="min-w-0 flex-1">
-      <Text 
-        variant="body-default-bold" 
-        color="content-primary"
-        class="truncate block"
-      >
-        {{ article.attributes.title }}
-      </Text>
-    </li>
-  </ol>
-</nav>
+      <!-- Breadcrumb -->
+      <nav class="mb-12">
+        <ol class="flex items-center gap-2 text-sm overflow-hidden">
+          <li class="flex-shrink-0">
+            <Button variant="link" fontSize="body-default-bold text-secondary-purple" @click="router.push('/')">
+              Home
+            </Button>
+          </li>
+          <li class="flex-shrink-0">
+            <Text variant="body-default" color="content-secondary">/</Text>
+          </li>
+          <li v-if="article.attributes.category" class="min-w-0 flex-shrink">
+            <Button 
+              variant="link" 
+              fontSize="body-default-bold text-secondary-purple" 
+              @click="goToCategory"
+              class="truncate block w-full"
+            >
+              {{ article.attributes.category.name }}
+            </Button>
+          </li>
+          <li class="flex-shrink-0">
+            <Text variant="body-default-bold" color="content-secondary">/</Text>
+          </li>
+          <li class="min-w-0 flex-1">
+            <Text 
+              variant="body-default-bold" 
+              color="content-primary"
+              class="truncate block"
+            >
+              {{ article.attributes.title }}
+            </Text>
+          </li>
+        </ol>
+      </nav>
 
       <div class="max-w-xl mx-auto">
         <!-- Article Header -->
@@ -131,8 +142,42 @@ const goToCategory = () => {
         <!-- Article Content -->
         <div class="prose prose-lg max-w-none mb-12">
           <div v-for="(block, index) in article.attributes.content" :key="index">
+            
+            <!-- ✅ IMAGE BLOCK -->
+            <figure v-if="block.type === 'image'" class="my-8">
+              <img 
+                :src="getMediaUrl(block.image)"
+                :alt="block.image?.alternativeText || block.image?.name || 'Article image'"
+                class="w-full rounded-lg shadow-md"
+              />
+              <figcaption 
+                v-if="block.image?.caption" 
+                class="text-sm text-stone-500 mt-2 text-center italic"
+              >
+                {{ block.image.caption }}
+              </figcaption>
+            </figure>
+
+            <!-- ✅ VIDEO/MEDIA BLOCK -->
+            <div v-else-if="block.type === 'media'" class="my-8">
+              <video 
+                v-if="block.file?.mime?.startsWith('video')"
+                controls 
+                class="w-full rounded-lg shadow-md"
+                :src="getMediaUrl(block.file)"
+              >
+                Your browser does not support the video tag.
+              </video>
+              <img 
+                v-else
+                :src="getMediaUrl(block.file)"
+                :alt="block.file?.alternativeText || 'Media'"
+                class="w-full rounded-lg shadow-md"
+              />
+            </div>
+
             <!-- Paragraph -->
-            <p v-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
+            <p v-else-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
               <template v-for="(child, childIndex) in block.children" :key="childIndex">
                 <strong v-if="child.bold">{{ child.text }}</strong>
                 <em v-else-if="child.italic">{{ child.text }}</em>
@@ -180,6 +225,16 @@ const goToCategory = () => {
                 {{ item.children?.[0]?.text }}
               </li>
             </ol>
+
+            <!-- ✅ CODE BLOCK (optional) -->
+            <pre v-else-if="block.type === 'code'" class="bg-stone-100 rounded-lg p-4 overflow-x-auto my-4">
+              <code class="text-sm">{{ block.children?.[0]?.text }}</code>
+            </pre>
+
+            <!-- ✅ QUOTE BLOCK (optional) -->
+            <blockquote v-else-if="block.type === 'quote'" class="border-l-4 border-orange-500 pl-4 italic my-6 text-stone-600">
+              {{ block.children?.[0]?.text }}
+            </blockquote>
           </div>
         </div>
 
@@ -197,7 +252,7 @@ const goToCategory = () => {
                 @click="handleFeedback(true)"
               >
                 <Icon name="thumbs-up" :size="20" class="mr-2" />
-                Yes
+                Ja
               </Button>
               <Button 
                 variant="outline" 
@@ -205,39 +260,37 @@ const goToCategory = () => {
                 @click="handleFeedback(false)"
               >
                 <Icon name="thumbs-down" :size="20" class="mr-2" />
-                No
+                Nein
               </Button>
             </div>
 
             <div v-else>
               <Text variant="body-large" color="content-secondary">
-                Thanks for your feedback!
+                Vielen Dank für dein Feedback!
               </Text>
             </div>
           </div>
         </div>
 
-<!-- Related Articles -->
-<div v-if="relatedArticles.length > 0" class="mb-12">
-  <Text variant="title-subsection" class="mb-6">
-    Ähnliche Artikel
-  </Text>
-  
-  <!-- ✅ Simple button links instead of cards -->
-  <div class="space-y-2">
-    <Button
-      v-for="relatedArticle in relatedArticles"
-      :key="relatedArticle.id"
-      variant="link"
-      
-      fontSize="body-default"
-      class="w-full justify-start text-left text-secondary-purple"
-      @click="goToArticle(relatedArticle)"
-    >
-      {{ relatedArticle.attributes.title }}
-    </Button>
-  </div>
-</div>
+        <!-- Related Articles -->
+        <div v-if="relatedArticles.length > 0" class="mb-12">
+          <Text variant="title-subsection" class="mb-6">
+            Ähnliche Artikel
+          </Text>
+          
+          <div class="space-y-2">
+            <Button
+              v-for="relatedArticle in relatedArticles"
+              :key="relatedArticle.id"
+              variant="link"
+              fontSize="body-default"
+              class="w-full justify-start text-left text-secondary-purple"
+              @click="goToArticle(relatedArticle)"
+            >
+              {{ relatedArticle.attributes.title }}
+            </Button>
+          </div>
+        </div>
 
       </div>
     </article>
