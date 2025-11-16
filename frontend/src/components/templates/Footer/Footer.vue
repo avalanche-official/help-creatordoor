@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { newsletterService } from '@/services/newsletterService'
 import Logo from '../../atoms/Logo/Logo.vue'
 import Icon from '../../atoms/Icon/Icon.vue'
 import InputField from '../../molecules/InputField/InputField.vue'
@@ -7,6 +8,9 @@ import Button from '../../atoms/Button/Button.vue'
 
 const currentYear = new Date().getFullYear()
 const newsletterEmail = ref('')
+const isLoading = ref(false)
+const successMessage = ref('')
+const errorMessage = ref('')
 
 const legalLinks = [
   { name: 'Impressum', href: '/impressum' },
@@ -21,10 +25,47 @@ const socialLinks = [
   { name: 'TikTok', icon: 'smartphone', href: 'https://tiktok.com/@creatordoor_de' },
 ]
 
-const handleNewsletterSubmit = () => {
-  // Handle newsletter subscription
-  console.log('Newsletter email:', newsletterEmail.value)
-  // Add your subscription logic here
+const handleNewsletterSubmit = async () => {
+  // Clear previous messages
+  errorMessage.value = ''
+  successMessage.value = ''
+
+  // Validate email
+  if (!newsletterEmail.value || !newsletterEmail.value.trim()) {
+    errorMessage.value = 'Bitte gib eine E-Mail-Adresse ein'
+    return
+  }
+
+  if (!newsletterEmail.value.includes('@')) {
+    errorMessage.value = 'Bitte gib eine gültige E-Mail-Adresse ein'
+    return
+  }
+
+  isLoading.value = true
+
+  try {
+    const result = await newsletterService.subscribe({
+      email: newsletterEmail.value.trim(),
+      source: 'help_center_footer',
+    })
+
+    if (result.success) {
+      successMessage.value = '🎉 Erfolgreich angemeldet!'
+      newsletterEmail.value = '' // Clear input
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        successMessage.value = ''
+      }, 5000)
+    } else {
+      errorMessage.value = result.message || 'Anmeldung fehlgeschlagen. Bitte versuche es erneut.'
+    }
+  } catch (error) {
+    console.error('❌ Newsletter subscription error:', error)
+    errorMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.'
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -61,21 +102,41 @@ const handleNewsletterSubmit = () => {
             <label for="newsletter-email" class="block text-sm font-medium text-neutral-300 mb-2">
               Unser Newsletter
             </label>
-            <div class="flex gap-2">
-              <div class="flex-1">
-                <InputField
-                  id="newsletter-email"
-                  background="light"
-                  v-model="newsletterEmail"
-                  type="email"
-                  class="bg-white"                  placeholder="Email eingeben"
-                  size="default"
-                  rounded="rounded-lg"
-                />
+            <form @submit.prevent="handleNewsletterSubmit" class="space-y-2">
+              <div class="flex gap-2">
+                <div class="flex-1">
+                  <InputField
+                    id="newsletter-email"
+                    background="light"
+                    v-model="newsletterEmail"
+                    type="email"
+                    class="bg-white"
+                    placeholder="Email eingeben"
+                    size="default"
+                    rounded="rounded-lg"
+                    :disabled="isLoading"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  class="rounded-lg"
+                  :disabled="isLoading"
+                >
+                  {{ isLoading ? 'Lädt...' : 'Anmelden' }}
+                </Button>
               </div>
-              <Button  type="button"    @click="handleNewsletterSubmit" variant="secondary" class="rounded-lg">Anmelden</Button>
-   
-            </div>
+
+              <!-- Success Message -->
+              <p v-if="successMessage" class="text-green-400 text-sm">
+                {{ successMessage }}
+              </p>
+
+              <!-- Error Message -->
+              <p v-if="errorMessage" class="text-red-400 text-sm">
+                {{ errorMessage }}
+              </p>
+            </form>
           </div>
         </div>
 
@@ -114,7 +175,6 @@ const handleNewsletterSubmit = () => {
 </template>
 
 <style scoped>
-/* Optional: Add smooth transitions */
 a {
   transition: all 0.2s ease;
 }
