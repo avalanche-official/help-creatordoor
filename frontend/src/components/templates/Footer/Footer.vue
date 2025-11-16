@@ -1,42 +1,33 @@
+<!-- src/components/Footer.vue -->
 <script setup>
 import { ref } from 'vue'
-import { newsletterService } from '@/services/newsletterService'
-import Logo from '../../atoms/Logo/Logo.vue'
-import Icon from '../../atoms/Icon/Icon.vue'
-import InputField from '../../molecules/InputField/InputField.vue'
+import { useRouter } from 'vue-router'
+import newsletterService from '../../../services/newsletterService'
+import Text from '../../atoms/Text/Text.vue'
 import Button from '../../atoms/Button/Button.vue'
+import Icon from '../../atoms/Icon/Icon.vue'
+import Logo from '../../atoms/Logo/Logo.vue'
+const router = useRouter()
 
-const currentYear = new Date().getFullYear()
-const newsletterEmail = ref('')
+// Newsletter state
+const email = ref('')
 const isLoading = ref(false)
 const successMessage = ref('')
 const errorMessage = ref('')
 
-const legalLinks = [
-  { name: 'Impressum', href: '/impressum' },
-  { name: 'Datenschutz', href: '/datenschutz' },
-  { name: 'AGB', href: '/agb' },
-  { name: 'Cookies', href: '/cookie-policy' },
-]
-
-const socialLinks = [
-  { name: 'Instagram', icon: 'instagram', href: 'https://instagram.com/creatordoor_de' },
-  { name: 'Twitter', icon: 'twitter', href: 'https://x.com/creatordoor_de' },
-  { name: 'TikTok', icon: 'smartphone', href: 'https://tiktok.com/@creatordoor_de' },
-]
-
-const handleNewsletterSubmit = async () => {
+// Newsletter subscription handler
+const handleSubscribe = async () => {
   // Clear previous messages
   errorMessage.value = ''
   successMessage.value = ''
 
   // Validate email
-  if (!newsletterEmail.value || !newsletterEmail.value.trim()) {
+  if (!email.value || !email.value.trim()) {
     errorMessage.value = 'Bitte gib eine E-Mail-Adresse ein'
     return
   }
 
-  if (!newsletterEmail.value.includes('@')) {
+  if (!email.value.includes('@')) {
     errorMessage.value = 'Bitte gib eine gültige E-Mail-Adresse ein'
     return
   }
@@ -44,14 +35,16 @@ const handleNewsletterSubmit = async () => {
   isLoading.value = true
 
   try {
+    console.log('📧 Subscribing to newsletter:', email.value)
+
     const result = await newsletterService.subscribe({
-      email: newsletterEmail.value.trim(),
-      source: 'help_center_footer',
+      email: email.value.trim(),
+      source: 'footer_newsletter',
     })
 
     if (result.success) {
       successMessage.value = '🎉 Erfolgreich angemeldet!'
-      newsletterEmail.value = '' // Clear input
+      email.value = '' // Clear input
 
       // Clear success message after 5 seconds
       setTimeout(() => {
@@ -67,107 +60,217 @@ const handleNewsletterSubmit = async () => {
     isLoading.value = false
   }
 }
+
+// Navigation handlers
+const navigateTo = (path) => {
+  router.push(path)
+}
+
+const openExternal = (url) => {
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
+const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="bg-neutral-900 border-t border-neutral-800 mt-auto">
-    <div class="mx-auto px-4 py-10 md:py-14 max-w-6xl">
-      <!-- Mobile-First Layout -->
-      <div class="space-y-8">
-        <!-- Logo & Description Section -->
+  <footer class="bg-stone-900 text-stone-100 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <!-- Column 1: About -->
         <div class="space-y-4">
-          <Logo variant="white" />
-
-          <p class="text-neutral-300 text-sm leading-relaxed max-w-sm">
-            Create. Connect. Earn.
-          </p>
-
-          <!-- Social Media Icons -->
-          <div class="flex items-center gap-4 pt-2">
-            <a
-              v-for="social in socialLinks"
-              :key="social.name"
-              :href="social.href"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-neutral-400 hover:text-white transition-colors"
-              :aria-label="social.name"
-            >
-              <Icon :name="social.icon" :size="20" />
-            </a>
+          <div class="flex items-center space-x-2">
+            <Logo variant="white" />
           </div>
-
-          <!-- Newsletter Subscription -->
-          <div class="pt-4 max-w-md">
-            <label for="newsletter-email" class="block text-sm font-medium text-neutral-300 mb-2">
-              Unser Newsletter
-            </label>
-            <form @submit.prevent="handleNewsletterSubmit" class="space-y-2">
-              <div class="flex gap-2">
-                <div class="flex-1">
-                  <InputField
-                    id="newsletter-email"
-                    background="light"
-                    v-model="newsletterEmail"
-                    type="email"
-                    class="bg-white"
-                    placeholder="Email eingeben"
-                    size="default"
-                    rounded="rounded-lg"
-                    :disabled="isLoading"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  variant="secondary"
-                  class="rounded-lg"
-                  :disabled="isLoading"
-                >
-                  {{ isLoading ? 'Lädt...' : 'Anmelden' }}
-                </Button>
-              </div>
-
-              <!-- Success Message -->
-              <p v-if="successMessage" class="text-green-400 text-sm">
-                {{ successMessage }}
-              </p>
-
-              <!-- Error Message -->
-              <p v-if="errorMessage" class="text-red-400 text-sm">
-                {{ errorMessage }}
-              </p>
-            </form>
+          <Text variant="body-default" color="content-inverse" class="opacity-80">
+            Create. Connect. Earn
+          </Text>
+          <!-- Social Media Links -->
+          <div class="flex space-x-4 pt-2">
+            <button
+              @click="openExternal('https://twitter.com/creatordoor_de')"
+              class="text-stone-400 hover:text-primary-purple transition-colors cursor-pointer"
+              aria-label="Twitter"
+            >
+              <Icon name="twitter" :size="20" />
+            </button>
+            <button
+              @click="openExternal('https://instagram.com/creatordoor_de')"
+              class="text-stone-400 hover:text-primary-purple transition-colors cursor-pointer"
+              aria-label="Instagram"
+            >
+              <Icon name="instagram" :size="20" />
+            </button>
+            <button
+              @click="openExternal('https://tiktok.com/creatordoor_de')"
+              class="text-stone-400 hover:text-primary-purple transition-colors cursor-pointer"
+              aria-label="phone"
+            >
+              <Icon name="smartphone" :size="20" />
+            </button>
           </div>
         </div>
 
-        <!-- Divider -->
-        <div class="border-t border-neutral-800"></div>
+        <!-- Column 2: Product -->
+        <div class="space-y-4">
+          <Text variant="body-default-bold" color="content-inverse">Schnellzugriff</Text>
+          <nav class="space-y-1 mt-2">
+            <button
+              @click="openExternal('https://creatordoor.com')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Startseite</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/dashboard')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Dashboard</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/register')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Registrieren</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/login')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Login</Text>
+            </button>
+          </nav>
+        </div>
+        <!-- Column 3: Support -->
+        <div class="space-y-4">
+          <Text variant="body-default-bold" color="content-inverse">Support</Text>
+          <nav class="space-y-1 mt-2">
+            <button
+              @click="navigateTo('/')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Hilfe-Center</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoorstatus.statuspage.io/')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Statusseite</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/contact')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Kontakt</Text>
+            </button>
+          </nav>
+        </div>
 
-        <!-- Bottom Section: Copyright & Legal -->
-        <div class="space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
-          <!-- Copyright & Support -->
-          <div class="space-y-1 order-2 md:order-1">
-            <p class="text-neutral-400 text-xs">
-              © {{ currentYear }} CreatorDoor. Alle Rechte vorbehalten.
-            </p>
-            <p class="text-neutral-400 text-xs">
-              Support Email: support@creatordoor.com
-            </p>
+        <!-- Column 3: Support -->
+        <div class="space-y-4">
+          <Text variant="body-default-bold" color="content-inverse">Legal</Text>
+          <nav class="space-y-1 mt-2">
+            <button
+              @click="openExternal('https://creatordoor.com/agb')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">AGB</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/datenschutz')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Datenschutz</Text>
+            </button>
+            <button
+              @click="openExternal('https://creatordoor.com/impressum')"
+              class="cursor-pointer block text-stone-400 hover:text-primary-purple transition-colors text-left"
+            >
+              <Text variant="body-default">Impressum</Text>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div class="space-y-4">
+          <Text variant="body-default-bold" color="content-inverse">Newsletter</Text>
+
+          <form @submit.prevent="handleSubscribe" class="space-y-3">
+            <!-- Email Input -->
+            <div>
+              <input
+                v-model="email"
+                type="email"
+                placeholder=""
+                :disabled="isLoading"
+                class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-lg text-stone-100 placeholder-stone-500 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+            </div>
+
+            <!-- Submit Button -->
+            <Button
+              type="submit"
+              variant="primary"
+              size="medium"
+              :loading="isLoading"
+              :disabled="isLoading"
+              class="w-full"
+            >
+              {{ isLoading ? 'Wird gesendet...' : 'Abonnieren' }}
+            </Button>
+          </form>
+
+          <!-- Success Message -->
+          <div v-if="successMessage" class="p-3 bg-green-900/30 border border-green-700 rounded-lg">
+            <Text variant="body-default" color="sentiment-positive">
+              {{ successMessage }}
+            </Text>
           </div>
 
-          <!-- Legal Links -->
-          <nav class="order-1 md:order-2">
-            <ul class="flex flex-wrap gap-x-6 gap-y-2">
-              <li v-for="link in legalLinks" :key="link.name">
-                <a
-                  :href="link.href"
-                  class="text-neutral-400 hover:text-white transition-colors text-xs"
-                >
-                  {{ link.name }}
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <!-- Error Message -->
+          <div v-if="errorMessage" class="p-3 bg-red-900/30 border border-red-700 rounded-lg">
+            <Text variant="body-default" color="sentiment-negative">
+              {{ errorMessage }}
+            </Text>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="pt-8 border-t border-stone-800 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0"
+      >
+        <Text variant="body-default" color="content-inverse" class="opacity-60">
+          © {{ currentYear }} CreatorDoor. Alle Rechte vorbehalten.
+        </Text>
+
+        <!-- Payment Methods -->
+        <div class="flex items-center space-x-4">
+          <Text variant="body-default" color="content-inverse" class="opacity-60">
+            Sichere Zahlung mit
+          </Text>
+          <div class="flex items-center space-x-2">
+            <div class="px-2 py-1 bg-stone-800 rounded">
+              <Text variant="body-default" color="content-inverse" class="text-xs font-medium">
+                VISA
+              </Text>
+            </div>
+            <div class="px-2 py-1 bg-stone-800 rounded">
+              <Text variant="body-default" color="content-inverse" class="text-xs font-medium">
+                Paypal
+              </Text>
+            </div>
+            <div class="px-2 py-1 bg-stone-800 rounded">
+              <Text variant="body-default" color="content-inverse" class="text-xs font-medium">
+                Klarna
+              </Text>
+            </div>
+            <div class="px-2 py-1 bg-stone-800 rounded">
+              <Text variant="body-default" color="content-inverse" class="text-xs font-medium">
+                +20
+              </Text>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -175,7 +278,21 @@ const handleNewsletterSubmit = async () => {
 </template>
 
 <style scoped>
-a {
-  transition: all 0.2s ease;
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(28, 25, 23);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(87, 83, 78);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(120, 113, 108);
 }
 </style>
