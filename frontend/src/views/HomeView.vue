@@ -95,7 +95,7 @@ const categoriesForList = computed(() => {
         </Text>
         <div class="flex flex-col w-fill mx-auto gap-2">
           <Button variant="primary" fontSize="body-default-bold" href="https://www.creatordoor.com/login">Log in</Button>
-          <Button variant="link" href="creatordoor.com/forgot-password" fontSize="body-default-bold">Probleme beim Einloggen?</Button>
+          <Button variant="link" href="https://www.creatordoor.com/forgot-password" fontSize="body-default-bold">Probleme beim Einloggen?</Button>
         </div>
       </div>
     </div>
