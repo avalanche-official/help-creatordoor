@@ -48,6 +48,17 @@ onMounted(async () => {
   }
 })
 
+// ✅ Helper function for text formatting classes
+const getTextClasses = (child) => {
+  const classes = []
+  if (child.bold) classes.push('font-bold')
+  if (child.italic) classes.push('italic')
+  if (child.underline) classes.push('underline')
+  if (child.strikethrough) classes.push('line-through')
+  if (child.code) classes.push('bg-stone-100 px-1.5 py-0.5 rounded text-sm font-mono text-orange-600')
+  return classes.join(' ')
+}
+
 const handleFeedback = async (isHelpful) => {
   try {
     const field = isHelpful ? 'helpful_yes' : 'helpful_no'
@@ -139,104 +150,151 @@ const getMediaUrl = (file) => {
           </Text>
         </div>
 
-        <!-- Article Content -->
-        <div class="prose prose-lg max-w-none mb-12">
-          <div v-for="(block, index) in article.attributes.content" :key="index">
-            
-            <!-- ✅ IMAGE BLOCK -->
-            <figure v-if="block.type === 'image'" class="my-8">
-              <img 
-                :src="getMediaUrl(block.image)"
-                :alt="block.image?.alternativeText || block.image?.name || 'Article image'"
-                class="w-full rounded-lg border border-1 border-stone-200"
-              />
-              <figcaption 
-                v-if="block.image?.caption" 
-                class="text-sm text-stone-500 mt-2 text-center italic"
-              >
-                {{ block.image.caption }}
-              </figcaption>
-            </figure>
+<!-- Article Content -->
+<div class="prose prose-lg max-w-none mb-12">
+  <div v-for="(block, index) in article.attributes.content" :key="index">
+    
+    <!-- ✅ IMAGE BLOCK - besseres Spacing -->
+    <figure v-if="block.type === 'image'" class="pt-2 pb-8">
+      <img 
+        :src="getMediaUrl(block.image)"
+        :alt="block.image?.alternativeText || block.image?.name || 'Article image'"
+        class="w-full rounded-lg border border-1 border-stone-200"
+      />
+      <figcaption 
+        v-if="block.image?.caption" 
+        class="text-sm text-stone-500 mt-2 text-center italic"
+      >
+        {{ block.image.caption }}
+      </figcaption>
+    </figure>
 
-            <!-- ✅ VIDEO/MEDIA BLOCK -->
-            <div v-else-if="block.type === 'media'" class="my-8">
-              <video 
-                v-if="block.file?.mime?.startsWith('video')"
-                controls 
-                class="w-full rounded-lg border border-1 border-stone-200"
-                :src="getMediaUrl(block.file)"
-              >
-                Your browser does not support the video tag.
-              </video>
-              <img 
-                v-else
-                :src="getMediaUrl(block.file)"
-                :alt="block.file?.alternativeText || 'Media'"
-                class="w-full rounded-lg border border-1 border-stone-200"
-              />
-            </div>
+    <!-- ✅ VIDEO/MEDIA BLOCK -->
+    <div v-else-if="block.type === 'media'" class="pt-2 pb-8">
+      <video 
+        v-if="block.file?.mime?.startsWith('video')"
+        controls 
+        class="w-full rounded-lg border border-1 border-stone-200"
+        :src="getMediaUrl(block.file)"
+      >
+        Your browser does not support the video tag.
+      </video>
+      <img 
+        v-else
+        :src="getMediaUrl(block.file)"
+        :alt="block.file?.alternativeText || 'Media'"
+        class="w-full rounded-lg border border-1 border-stone-200"
+      />
+    </div>
 
-            <!-- Paragraph -->
-            <p v-else-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
-              <template v-for="(child, childIndex) in block.children" :key="childIndex">
-                <strong v-if="child.bold">{{ child.text }}</strong>
-                <em v-else-if="child.italic">{{ child.text }}</em>
-                <span v-else>{{ child.text }}</span>
-              </template>
-            </p>
+    <!-- ✅ PARAGRAPH mit allen Text-Formaten -->
+    <p v-else-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
+      <template v-for="(child, childIndex) in block.children" :key="childIndex">
+        <!-- Link -->
+        <a 
+          v-if="child.type === 'link'" 
+          :href="child.url" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-secondary-purple underline hover:text-primary-purple"
+        >
+          <template v-for="(linkChild, linkIndex) in child.children" :key="linkIndex">
+            <span :class="getTextClasses(linkChild)">{{ linkChild.text }}</span>
+          </template>
+        </a>
+        <!-- Regular text with formatting -->
+        <span v-else :class="getTextClasses(child)">{{ child.text }}</span>
+      </template>
+    </p>
 
-            <!-- Headings -->
-            <Text 
-              v-else-if="block.type === 'heading' && block.level === 1" 
-              variant="title-screen" 
-              as="h1" 
-              class="mt-10 mb-6"
-            >
-              {{ block.children?.[0]?.text }}
-            </Text>
+    <!-- ✅ ALL HEADINGS h1-h6 -->
+    <Text 
+      v-else-if="block.type === 'heading' && block.level === 1" 
+      variant="title-screen" 
+      as="h1" 
+      class="mt-10 mb-6"
+    >
+      {{ block.children?.[0]?.text }}
+    </Text>
 
-            <Text 
-              v-else-if="block.type === 'heading' && block.level === 2" 
-              variant="title-subsection" 
-              as="h2" 
-              class="mt-8 mb-4"
-            >
-              {{ block.children?.[0]?.text }}
-            </Text>
+    <Text 
+      v-else-if="block.type === 'heading' && block.level === 2" 
+      variant="title-subsection" 
+      as="h2" 
+      class="mt-8 mb-4"
+    >
+      {{ block.children?.[0]?.text }}
+    </Text>
 
-            <Text 
-              v-else-if="block.type === 'heading' && block.level === 3" 
-              variant="title-body" 
-              as="h3" 
-              class="mt-6 mb-3"
-            >
-              {{ block.children?.[0]?.text }}
-            </Text>
+    <Text 
+      v-else-if="block.type === 'heading' && block.level === 3" 
+      variant="title-body" 
+      as="h3" 
+      class="mt-6 mb-3"
+    >
+      {{ block.children?.[0]?.text }}
+    </Text>
 
-            <!-- Lists -->
-            <ul v-else-if="block.type === 'list' && block.format === 'unordered'" class="list-disc pl-6 mb-4 space-y-2">
-              <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
-                {{ item.children?.[0]?.text }}
-              </li>
-            </ul>
+    <h4 
+      v-else-if="block.type === 'heading' && block.level === 4" 
+      class="mt-5 mb-2 text-lg font-semibold text-stone-800"
+    >
+      {{ block.children?.[0]?.text }}
+    </h4>
 
-            <ol v-else-if="block.type === 'list' && block.format === 'ordered'" class="list-decimal pl-6 mb-4 space-y-2">
-              <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
-                {{ item.children?.[0]?.text }}
-              </li>
-            </ol>
+    <h5 
+      v-else-if="block.type === 'heading' && block.level === 5" 
+      class="mt-4 mb-2 text-base font-semibold text-stone-800"
+    >
+      {{ block.children?.[0]?.text }}
+    </h5>
 
-            <!-- ✅ CODE BLOCK (optional) -->
-            <pre v-else-if="block.type === 'code'" class="bg-stone-100 rounded-lg p-4 overflow-x-auto my-4">
-              <code class="text-sm">{{ block.children?.[0]?.text }}</code>
-            </pre>
+    <h6 
+      v-else-if="block.type === 'heading' && block.level === 6" 
+      class="mt-4 mb-2 text-sm font-semibold text-stone-700 uppercase tracking-wide"
+    >
+      {{ block.children?.[0]?.text }}
+    </h6>
 
-            <!-- ✅ QUOTE BLOCK (optional) -->
-            <blockquote v-else-if="block.type === 'quote'" class="border-l-4 border-orange-500 pl-4 italic my-6 text-stone-600">
-              {{ block.children?.[0]?.text }}
-            </blockquote>
-          </div>
-        </div>
+    <!-- ✅ HORIZONTAL RULE / DIVIDER -->
+    <hr v-else-if="block.type === 'horizontalRule' || block.type === 'thematicBreak'" class="my-8 border-t border-stone-300" />
+
+    <!-- ✅ Lists mit Text-Formatting Support -->
+    <ul v-else-if="block.type === 'list' && block.format === 'unordered'" class="list-disc pl-6 mb-4 space-y-2">
+      <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
+        <template v-for="(child, childIndex) in item.children" :key="childIndex">
+          <span :class="getTextClasses(child)">{{ child.text }}</span>
+        </template>
+      </li>
+    </ul>
+
+    <ol v-else-if="block.type === 'list' && block.format === 'ordered'" class="list-decimal pl-6 mb-4 space-y-2">
+      <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
+        <template v-for="(child, childIndex) in item.children" :key="childIndex">
+          <span :class="getTextClasses(child)">{{ child.text }}</span>
+        </template>
+      </li>
+    </ol>
+
+    <!-- ✅ CODE BLOCK -->
+    <pre v-else-if="block.type === 'code'" class="bg-stone-100 rounded-lg p-4 overflow-x-auto my-6">
+      <code class="text-sm font-mono text-stone-800">{{ block.children?.[0]?.text }}</code>
+    </pre>
+
+    <!-- ✅ QUOTE BLOCK -->
+    <blockquote v-else-if="block.type === 'quote'" class="border-l-4 border-orange-500 pl-4 italic my-6 text-stone-600">
+      <template v-for="(child, childIndex) in block.children" :key="childIndex">
+        <p v-if="child.type === 'paragraph'" class="mb-2 last:mb-0">
+          <template v-for="(textChild, textIndex) in child.children" :key="textIndex">
+            <span :class="getTextClasses(textChild)">{{ textChild.text }}</span>
+          </template>
+        </p>
+        <span v-else>{{ child.text }}</span>
+      </template>
+    </blockquote>
+
+  </div>
+</div>
 
         <!-- Helpful Feedback Section -->
         <div class="border-t border-b border-stone-200 py-8 mb-12">

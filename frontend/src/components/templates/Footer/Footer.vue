@@ -265,7 +265,7 @@ const currentYear = new Date().getFullYear()
                 Klarna
               </Text>
             </div>
-            <div class="px-2 py-1 bg-stone-800 rounded">
+            <div class="px-2 py-1 bg-stone-800 rounded ">
               <Text variant="body-default" color="content-inverse" class="text-xs font-medium">
                 +20
               </Text>
