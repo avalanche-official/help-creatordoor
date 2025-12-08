@@ -3,16 +3,16 @@ export default ({ env }) => ({
     config: {
       provider: '@strapi/provider-upload-aws-s3',
       providerOptions: {
-        baseUrl: `https://${env('AWS_S3_BUCKET_NAME')}.storage.railway.app`,
+        baseUrl: `https://${env('AWS_BUCKET')}.storage.railway.app`,
         s3Options: {
           credentials: {
             accessKeyId: env('AWS_ACCESS_KEY_ID'),
             secretAccessKey: env('AWS_SECRET_ACCESS_KEY'),
           },
-          endpoint: `https://${env('AWS_S3_BUCKET_NAME')}.storage.railway.app`,
-          region: 'auto',
+          endpoint: env('AWS_ENDPOINT'),
+          region: env('AWS_REGION', 'auto'),
           params: {
-            Bucket: env('AWS_S3_BUCKET_NAME'),
+            Bucket: env('AWS_BUCKET'),
           },
           forcePathStyle: false,
         },
