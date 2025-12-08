@@ -1,17 +1,42 @@
-module.exports = [
+export default [
   'strapi::logger',
   'strapi::errors',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https:'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'storage.railway.app',
+            '*.storage.railway.app',
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'storage.railway.app',
+            '*.storage.railway.app',
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
   {
     name: 'strapi::cors',
     config: {
       origin: [
         'http://localhost:5179',
-        'http://localhost:5176', 
-        'http://localhost:5173', 
+        'http://localhost:5176',
+        'http://localhost:5173',
         'http://localhost:3000',
-        'https://help.creatordoor.com', // ✅ ADD YOUR PRODUCTION URL
-        'https://*.netlify.app', // ✅ ADD Netlify preview URLs (optional)
+        'https://help.creatordoor.com',
+        'https://*.netlify.app',
       ],
       credentials: true,
     },
