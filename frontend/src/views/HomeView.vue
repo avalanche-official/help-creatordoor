@@ -8,7 +8,6 @@ import Card from '../components/atoms/Card/Card.vue'
 import Icon from '../components/atoms/Icon/Icon.vue'
 import CopyBlock from '../components/molecules/CopyBlock/CopyBlock.vue'
 import Text from '../components/atoms/Text/Text.vue'
-import Button from '../components/atoms/Button/Button.vue'
 import List from '../components/organisms/List/List.vue'
 
 
@@ -73,32 +72,30 @@ const categoriesForList = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto px-4 py-12">
-    <!-- Hero Section -->
-    <div class="text-center mb-12">
-      <Text variant="title-section" as="h1" class="mb-8">
-        Wie können wir behilflich sein?
-      </Text>
-      
-      <!-- Search Selector -->
-      <div class="max-w-2xl mx-auto mt-8">
-        <SearchSelector
-          :articles="allArticles"
-          @select="handleArticleSelect"
-        />
-      </div>
+  <div>
+    <!-- ── Hero: dark with centered light beam + search (matches the main site) ── -->
+    <div class="relative w-full bg-[#141414] overflow-hidden">
+      <div class="hero-beam" aria-hidden="true" />
+      <div class="hero-beam-glow" aria-hidden="true" />
 
-      <!-- Login Section -->
-      <div class="mt-12 max-w-sm mx-auto">
-        <Text variant="title-subsection" as="h2" class="mb-4 text-center">
-          Log in für personalisiertem Support
+      <div
+        class="relative max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-28 flex flex-col items-center text-center"
+      >
+        <Text variant="title-section" as="h1" custom-color="#ffffff" class="mb-8">
+          Wie können wir behilflich sein?
         </Text>
-        <div class="flex flex-col w-fill mx-auto gap-2">
-          <Button variant="primary" fontSize="body-default-bold" href="https://www.creatordoor.com/login">Log in</Button>
-          <Button variant="link" href="https://www.creatordoor.com/forgot-password" fontSize="body-default-bold">Probleme beim Einloggen?</Button>
+
+        <!-- Search Selector -->
+        <div class="w-full max-w-2xl mx-auto text-left">
+          <SearchSelector
+            :articles="allArticles"
+            @select="handleArticleSelect"
+          />
         </div>
       </div>
     </div>
+
+    <div class="max-w-3xl mx-auto px-4 py-12">
 
     <!-- Loading State -->
     <div v-if="loading" class="text-center py-12">
@@ -166,22 +163,17 @@ const categoriesForList = computed(() => {
         </div>
       </template>
 
-      <!-- Still Need Help Section -->
-      <div class="text-center mt-16 flex mx-auto items-center justify-center space-x-4">
-        <div>
-          <Text variant="title-subsection" as="h2">
-            Noch mehr hilfe?
-          </Text>
-        </div>
-        <div>
-          <Button 
-            variant="outline" 
-            fontSize="body-default-bold"
-            href="mailto:support@creatordoor.com"
-          >
-            Kontaktiere uns
-          </Button>
-        </div>
+      <!-- Still Need Help Section: light, with a dark pill button -->
+      <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center">
+        <Text variant="title-subsection" as="h2">
+          Noch mehr Hilfe?
+        </Text>
+        <a
+          href="mailto:support@creatordoor.com"
+          class="inline-flex items-center px-5 py-2.5 rounded-full bg-[#141414] text-white text-sm font-semibold hover:opacity-90 active:opacity-80 transition-opacity"
+        >
+          Kontaktiere uns
+        </a>
       </div>
 
       <!-- Show message if more than 6 categories -->
@@ -191,5 +183,61 @@ const categoriesForList = computed(() => {
         </Text>
       </div>
     </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+/* ── Hero light beam shining down from the top, centered (same look as the
+   creatordoor.com dark heroes) ── */
+.hero-beam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560px;
+  max-width: 90vw;
+  height: 100%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 180deg at 50% -10%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.14) 47%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.14) 53%,
+    transparent 60%
+  );
+  filter: blur(24px);
+  animation: beam-fade-in 1.8s ease-out both;
+}
+
+.hero-beam-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 560px;
+  max-width: 90vw;
+  height: 340px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.16), transparent 70%);
+  filter: blur(40px);
+  animation: beam-fade-in 1.8s ease-out both;
+}
+
+@keyframes beam-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-beam,
+  .hero-beam-glow {
+    animation: none;
+  }
+}
+</style>
