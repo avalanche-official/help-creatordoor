@@ -12,10 +12,6 @@ const router = useRouter()
 const article = ref(null)
 const relatedArticles = ref([])
 const loading = ref(true)
-const feedbackGiven = ref(false)
-
-// ✅ Strapi Base URL (ohne /api für Medien)
-const STRAPI_BASE_URL = import.meta.env.VITE_STRAPI_URL.replace('/api', '')
 
 onMounted(async () => {
   try {
@@ -59,21 +55,6 @@ const getTextClasses = (child) => {
   return classes.join(' ')
 }
 
-const handleFeedback = async (isHelpful) => {
-  try {
-    const field = isHelpful ? 'helpful_yes' : 'helpful_no'
-    const currentCount = article.value.attributes[field] || 0
-    
-    await helpArticlesService.update(article.value.id, {
-      [field]: currentCount + 1
-    })
-    
-    feedbackGiven.value = true
-  } catch (error) {
-    console.error('Error submitting feedback:', error)
-  }
-}
-
 const goToArticle = (relatedArticle) => {
   const articleSlug = relatedArticle.attributes.slug || relatedArticle.id
   const categorySlug = relatedArticle.attributes.category?.slug || article.value.attributes.category?.slug
@@ -88,10 +69,11 @@ const goToCategory = () => {
   }
 }
 
-// ✅ Helper function to get media URL
+// Media is copied into the frontend's public/uploads by the export script,
+// so Strapi's relative URLs resolve as-is.
 const getMediaUrl = (file) => {
   if (!file?.url) return ''
-  return file.url.startsWith('http') ? file.url : `${STRAPI_BASE_URL}${file.url}`
+  return file.url
 }
 </script>
 
@@ -295,40 +277,6 @@ const getMediaUrl = (file) => {
 
   </div>
 </div>
-
-        <!-- Helpful Feedback Section -->
-        <div class="border-t border-b border-stone-200 py-8 mb-12">
-          <div class="text-center">
-            <Text variant="title-body" class="mb-4">
-              War dieser Artikel hilfreich?
-            </Text>
-            
-            <div v-if="!feedbackGiven" class="flex items-center justify-center gap-4 mt-2">
-              <Button 
-                variant="outline" 
-                fontSize="body-default-bold text-secondary-purple"
-                @click="handleFeedback(true)"
-              >
-                <Icon name="thumbs-up" :size="20" class="mr-2" />
-                Ja
-              </Button>
-              <Button 
-                variant="outline" 
-                fontSize="body-default-bold text-secondary-purple"
-                @click="handleFeedback(false)"
-              >
-                <Icon name="thumbs-down" :size="20" class="mr-2" />
-                Nein
-              </Button>
-            </div>
-
-            <div v-else>
-              <Text variant="body-large" color="content-secondary">
-                Vielen Dank für dein Feedback!
-              </Text>
-            </div>
-          </div>
-        </div>
 
         <!-- Related Articles -->
         <div v-if="relatedArticles.length > 0" class="mb-12">

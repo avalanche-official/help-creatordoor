@@ -1,0 +1,44 @@
+[
+  {
+    "id": 5,
+    "documentId": "dycal3lfh6dbju9beh6puf5g",
+    "title": "How do I reset my password?",
+    "slug": "how-do-i-reset-my-password",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Write a couple of paragraphs in the │"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "│             │  rich editor"
+          }
+        ]
+      }
+    ],
+    "excerpt": "Reset it from the login screen.",
+    "featured": null,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": null,
+    "category": {
+      "id": 4,
+      "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+      "name": "Getting Started",
+      "description": "First steps with CreatorDoor",
+      "icon": "rocket",
+      "slug": "getting-started",
+      "order": 1
+    },
+    "subcategory": null
+  }
+]
