@@ -1,6 +1,6 @@
 [
   {
-    "id": 14,
+    "id": 20,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
     "slug": "mit-klarna-bezahlen",
@@ -87,7 +87,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Mit Klarna kannst du deinen Einkauf auf CreatorDoor sofort bezahlen, später bezahlen oder in Raten aufteilen. Die Zahlung wird über unseren Zahlungsanbieter Stripe abgewickelt – Klarna übernimmt dabei die Abrechnung mit dir."
+            "text": "Mit Klarna kannst du deinen Einkauf auf Creatordoor sofort bezahlen, später bezahlen oder in Raten aufteilen. Die Zahlung wird über unseren Zahlungsanbieter Stripe abgewickelt – Klarna übernimmt dabei die Abrechnung mit dir."
           }
         ]
       },
@@ -146,7 +146,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Du wirst zurück zu CreatorDoor geleitet und deine Bestellung ist abgeschlossen."
+                "text": "Du wirst zurück zu Creatordoor geleitet und deine Bestellung ist abgeschlossen."
               }
             ]
           }
@@ -504,7 +504,7 @@
     "helpful_no": null,
     "order": 1,
     "category": {
-      "id": 11,
+      "id": 14,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
@@ -1011,7 +1011,7 @@
     "subcategory": null
   },
   {
-    "id": 15,
+    "id": 21,
     "documentId": "zr41pvbewdv4r7gsp1jyttbk",
     "title": "Mit PayPal bezahlen",
     "slug": "mit-paypal-bezahlen",
@@ -1098,7 +1098,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Mit PayPal bezahlst du deinen Einkauf auf CreatorDoor bequem über dein PayPal-Konto – ohne deine Karten- oder Bankdaten bei uns einzugeben. Die Zahlung wird über unseren Zahlungsanbieter Stripe abgewickelt."
+            "text": "Mit PayPal bezahlst du deinen Einkauf auf Creatordoor bequem über dein PayPal-Konto – ohne deine Karten- oder Bankdaten bei uns einzugeben. Die Zahlung wird über unseren Zahlungsanbieter Stripe abgewickelt."
           }
         ]
       },
@@ -1157,7 +1157,7 @@
             "children": [
               {
                 "type": "text",
-                "text": "Du wirst zurück zu CreatorDoor geleitet und erhältst eine Bestätigung, dass deine Zahlung abgeschlossen ist."
+                "text": "Du wirst zurück zu Creatordoor geleitet und erhältst eine Bestätigung, dass deine Zahlung abgeschlossen ist."
               }
             ]
           }
@@ -1454,7 +1454,7 @@
     "helpful_no": null,
     "order": 2,
     "category": {
-      "id": 11,
+      "id": 14,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
@@ -2060,7 +2060,7 @@
     "helpful_no": null,
     "order": 3,
     "category": {
-      "id": 11,
+      "id": 14,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",

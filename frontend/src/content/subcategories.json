@@ -6,7 +6,7 @@
     "slug": "zahlungsmethoden",
     "order": 1,
     "category": {
-      "id": 11,
+      "id": 14,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
@@ -22,7 +22,7 @@
     "slug": "rueckerstattungen-anfechtungen",
     "order": 2,
     "category": {
-      "id": 11,
+      "id": 14,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
