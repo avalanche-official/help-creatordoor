@@ -1,6 +1,6 @@
 [
   {
-    "id": 7,
+    "id": 9,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
     "slug": "mit-klarna-bezahlen",
@@ -176,218 +176,11 @@
         ]
       },
       {
-        "type": "heading",
-        "level": 3,
+        "type": "code",
         "children": [
           {
             "type": "text",
-            "text": "Schweiz (CHF)"
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "format": "unordered",
-        "children": [
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Jetzt bezahlen: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "1 – 1.585 CHF"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Später bezahlen (30 Tage): ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "1 – 1.000 CHF"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "In 3 Raten: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "1 – 5.000 CHF"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Finanzierung: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "in der Schweiz nicht verfügbar"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "heading",
-        "level": 3,
-        "children": [
-          {
-            "type": "text",
-            "text": "Deutschland (EUR)"
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "format": "unordered",
-        "children": [
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Jetzt bezahlen: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "0 – 10.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Später bezahlen (30 Tage): ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "0,10 – 10.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "In 3 Raten: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "1 – 5.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Finanzierung (bis 36 Monate): ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "25 – 10.000 EUR"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "heading",
-        "level": 3,
-        "children": [
-          {
-            "type": "text",
-            "text": "Österreich (EUR)"
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "format": "unordered",
-        "children": [
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Jetzt bezahlen: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "0 – 10.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Später bezahlen (30 Tage): ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "0,10 – 5.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "In 3 Raten: ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "1 – 5.000 EUR"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Finanzierung (bis 36 Monate): ",
-                "bold": true
-              },
-              {
-                "type": "text",
-                "text": "25 – 5.000 EUR"
-              }
-            ]
+            "text": "| Zahlungsoption | Schweiz (CHF) | Deutschland (EUR) | Österreich (EUR) |\n|---|---|---|---|\n| Jetzt bezahlen | 1 – 1.585 | 0 – 10.000 | 0 – 10.000 |\n| Später bezahlen (30 Tage) | 1 – 1.000 | 0,10 – 10.000 | 0,10 – 5.000 |\n| In 3 Raten | 1 – 5.000 | 1 – 5.000 | 1 – 5.000 |\n| Finanzierung (bis 36 Monate) | – | 25 – 10.000 | 25 – 5.000 |"
           }
         ]
       },
@@ -396,7 +189,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Der Höchstbetrag ist eine Obergrenze – nicht allen Kundinnen und Kunden wird er gewährt. Klarna legt die Grenzen selbst fest und kann sie jederzeit ändern."
+            "text": "Finanzierung ist in der Schweiz nicht verfügbar. Der Höchstbetrag ist eine Obergrenze – nicht allen Kundinnen und Kunden wird er gewährt. Klarna legt die Grenzen selbst fest und kann sie jederzeit ändern."
           }
         ]
       },
@@ -658,7 +451,7 @@
     "helpful_no": null,
     "order": 1,
     "category": {
-      "id": 7,
+      "id": 9,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",

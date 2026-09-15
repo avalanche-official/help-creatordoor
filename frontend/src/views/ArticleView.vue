@@ -69,6 +69,22 @@ const goToCategory = () => {
   }
 }
 
+// Strapi's blocks editor has no table block, so a code block containing a
+// Markdown pipe table is rendered as a real table:
+//   | Option | Schweiz |
+//   |---|---|
+//   | Später bezahlen | 1 – 1.000 CHF |
+const splitRow = (line) =>
+  line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim())
+
+const parseTable = (block) => {
+  const text = (block.children || []).map((child) => child.text || '').join('')
+  const lines = text.split('\n').map((line) => line.trim()).filter(Boolean)
+  if (lines.length < 2 || !lines.every((line) => line.startsWith('|'))) return null
+  if (!/^\|?(\s*:?-+:?\s*\|)+\s*:?-*:?\s*\|?$/.test(lines[1])) return null
+  return { head: splitRow(lines[0]), rows: lines.slice(2).map(splitRow) }
+}
+
 // Media is copied into the frontend's public/uploads by the export script,
 // so Strapi's relative URLs resolve as-is.
 const getMediaUrl = (file) => {
@@ -257,6 +273,41 @@ const getMediaUrl = (file) => {
         </template>
       </li>
     </ol>
+
+    <!-- ✅ TABLE (code block containing a Markdown pipe table) -->
+    <div
+      v-else-if="block.type === 'code' && parseTable(block)"
+      class="my-6 overflow-x-auto rounded-lg border border-stone-200"
+    >
+      <table class="w-full text-sm text-left border-collapse">
+        <thead class="bg-stone-50">
+          <tr>
+            <th
+              v-for="(cell, cellIndex) in parseTable(block).head"
+              :key="cellIndex"
+              class="px-3 py-3 font-semibold text-stone-800 border-b border-stone-200 align-bottom"
+            >
+              {{ cell }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(row, rowIndex) in parseTable(block).rows"
+            :key="rowIndex"
+            class="border-b border-stone-100 last:border-b-0"
+          >
+            <td
+              v-for="(cell, cellIndex) in row"
+              :key="cellIndex"
+              :class="['px-3 py-3 align-top', cellIndex === 0 ? 'font-medium text-stone-800' : 'text-stone-700 whitespace-nowrap']"
+            >
+              {{ cell }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- ✅ CODE BLOCK -->
     <pre v-else-if="block.type === 'code'" class="bg-stone-100 rounded-lg p-4 overflow-x-auto my-6">
