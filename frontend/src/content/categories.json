@@ -7,5 +7,14 @@
     "icon": "rocket",
     "slug": "getting-started",
     "order": 1
+  },
+  {
+    "id": 7,
+    "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+    "name": "Zahlungen",
+    "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+    "icon": "credit-card",
+    "slug": "zahlungen",
+    "order": 2
   }
 ]
