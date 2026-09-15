@@ -137,7 +137,7 @@ const getArticlesForSubcategory = (subcategoryId) => {
 
       <!-- No Subcategories - Show Articles Directly -->
       <div v-else-if="articles.length > 0" class="space-y-2">
-        <Text variant="title-subsection" class="mb-4">All articles</Text>
+        <Text variant="title-subsection" class="mb-4">Alle Artikel</Text>
         <Button
           v-for="article in articles"
           :key="article.id"

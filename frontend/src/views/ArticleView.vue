@@ -94,7 +94,7 @@ const getMediaUrl = (file) => {
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto  px-4">
+  <div class="max-w-4xl mx-auto px-4 py-4 sm:py-12">
     <!-- Loading State -->
     <div v-if="loading" class="text-center py-12">
       <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
