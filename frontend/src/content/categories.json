@@ -9,12 +9,21 @@
     "order": 1
   },
   {
-    "id": 10,
+    "id": 11,
     "documentId": "urpg0exkot6mi8xg9zq9l8tg",
     "name": "Zahlungen",
     "description": "Zahlungsmethoden, Raten und Rückerstattungen",
     "icon": "credit-card",
     "slug": "zahlungen",
     "order": 2
+  },
+  {
+    "id": 13,
+    "documentId": "jcl2bmalwb5eg0747ix6fzh2",
+    "name": "Verkaufen",
+    "description": "Verkaufsmodelle, Gebühren und Auszahlungen",
+    "icon": "store",
+    "slug": "verkaufen",
+    "order": 3
   }
 ]

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { helpArticlesService } from '../services/helpArticles'
 import Text from '@/components/atoms/Text/Text.vue'
@@ -13,10 +13,13 @@ const article = ref(null)
 const relatedArticles = ref([])
 const loading = ref(true)
 
-onMounted(async () => {
+// Reloads on slug change too: moving between articles reuses this component,
+// so onMounted alone would leave the previous article on screen.
+const loadArticle = async (articleSlug) => {
+  loading.value = true
+  article.value = null
+  relatedArticles.value = []
   try {
-    const articleSlug = route.params.articleSlug
-    
     const response = await helpArticlesService.getBySlug(articleSlug)
     article.value = response.data
     
@@ -42,7 +45,15 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
-})
+}
+
+onMounted(() => loadArticle(route.params.articleSlug))
+watch(
+  () => route.params.articleSlug,
+  (slug, previous) => {
+    if (slug && slug !== previous) loadArticle(slug)
+  },
+)
 
 // ✅ Helper function for text formatting classes
 const getTextClasses = (child) => {
@@ -67,6 +78,16 @@ const goToCategory = () => {
   if (article.value?.attributes?.category?.slug) {
     router.push(`/${article.value.attributes.category.slug}`)
   }
+}
+
+const isInternalLink = (url) => typeof url === 'string' && url.startsWith('/') && !url.startsWith('//')
+
+// Article links like "/verkaufen/normal-seller-vs-re-seller" go through the
+// router, so they don't reload the page (or 404 on hosts without SPA fallback).
+const openInternalLink = (event, url) => {
+  if (!isInternalLink(url) || event.metaKey || event.ctrlKey || event.shiftKey) return
+  event.preventDefault()
+  router.push(url)
 }
 
 // Strapi's blocks editor has no table block, so a code block containing a
@@ -189,12 +210,14 @@ const getMediaUrl = (file) => {
     <p v-else-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
       <template v-for="(child, childIndex) in block.children" :key="childIndex">
         <!-- Link -->
-        <a 
-          v-if="child.type === 'link'" 
-          :href="child.url" 
-          target="_blank"
-          rel="noopener noreferrer"
+        <!-- Internal links (starting with "/") navigate in-app; external ones open a new tab -->
+        <a
+          v-if="child.type === 'link'"
+          :href="child.url"
+          :target="isInternalLink(child.url) ? undefined : '_blank'"
+          :rel="isInternalLink(child.url) ? undefined : 'noopener noreferrer'"
           class="text-secondary-purple underline hover:text-primary-purple"
+          @click="openInternalLink($event, child.url)"
         >
           <template v-for="(linkChild, linkIndex) in child.children" :key="linkIndex">
             <span :class="getTextClasses(linkChild)">{{ linkChild.text }}</span>

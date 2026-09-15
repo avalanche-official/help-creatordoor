@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "id": 4,
+    "documentId": "k686y79t7zptkzduahje3s9w",
+    "name": "Zahlungsmethoden",
+    "slug": "zahlungsmethoden",
+    "order": 1,
+    "category": {
+      "id": 11,
+      "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+      "name": "Zahlungen",
+      "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+      "icon": "credit-card",
+      "slug": "zahlungen",
+      "order": 2
+    }
+  },
+  {
+    "id": 6,
+    "documentId": "p5b9z7r3c4jot9xx9udgfrec",
+    "name": "Rückerstattungen & Anfechtungen",
+    "slug": "rueckerstattungen-anfechtungen",
+    "order": 2,
+    "category": {
+      "id": 11,
+      "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+      "name": "Zahlungen",
+      "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+      "icon": "credit-card",
+      "slug": "zahlungen",
+      "order": 2
+    }
+  }
+]

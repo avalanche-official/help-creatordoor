@@ -1,6 +1,6 @@
 [
   {
-    "id": 13,
+    "id": 14,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
     "slug": "mit-klarna-bezahlen",
@@ -512,10 +512,506 @@
       "slug": "zahlungen",
       "order": 2
     },
+    "subcategory": {
+      "id": 4,
+      "documentId": "k686y79t7zptkzduahje3s9w",
+      "name": "Zahlungsmethoden",
+      "slug": "zahlungsmethoden",
+      "order": 1
+    }
+  },
+  {
+    "id": 19,
+    "documentId": "z1inl98pp0ey0qcog2882eg8",
+    "title": "Normal Seller vs. Re-Seller",
+    "slug": "normal-seller-vs-re-seller",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Auf Creatordoor kannst du auf zwei Arten verkaufen: Im "
+          },
+          {
+            "type": "text",
+            "text": "Re-Seller-Modell",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " übernimmt Creatordoor die komplette Abwicklung für dich. Als "
+          },
+          {
+            "type": "text",
+            "text": "Normal Seller",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " (im Dashboard „Seller Mode“) verkaufst du im eigenen Namen und hast die volle Kontrolle. Beide Modelle nutzen dieselbe Infrastruktur – Checkout, Verkaufsseiten, Auslieferung und Tools."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Die beiden Modelle im Vergleich"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Thema | Re-Seller-Modell | Normal Seller |\n|---|---|---|\n| Vertragspartner deiner Kunden | Creatordoor | Du |\n| Zahlungskonto | Über Creatordoor | Dein eigenes Stripe-Konto |\n| Geld aus Verkäufen | Automatische Auszahlung auf dein Bankkonto, alle 15 Tage | Direkt auf dein eigenes Konto |\n| Rechtstexte | AGB von Creatordoor | Deine eigenen AGB, Datenschutz, Widerrufsbelehrung und Impressum |\n| Rechnungen & Mehrwertsteuer | Übernimmt Creatordoor | Übernimmst du |\n| Rückerstattungen | Übernimmt Creatordoor | Nach deinen eigenen Regeln |\n| Chargebacks | Abwicklung über Creatordoor, Abzug von der Auszahlung | Über dein eigenes Stripe-Konto |\n| Zahlungsmethoden | Stellt Creatordoor bereit | Wählst und aktivierst du selbst |\n| Plattformgebühr | 4,9 % + 0,50 € (Basic) oder 3,9 % + 0,50 € (Pro & Expert) | 1,9 % + 0,25 € |\n| Verfügbar | In allen Plänen | In Pro & Expert, nach kurzer Prüfung |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Das Re-Seller-Modell"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Im Re-Seller-Modell stellst du Creatordoor deine Inhalte und Produkte zur Verfügung. Creatordoor verkauft sie "
+          },
+          {
+            "type": "text",
+            "text": "im eigenen Namen und auf eigene Rechnung",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " an deine Kunden weiter. Der Kaufvertrag kommt also zwischen dem Käufer und Creatordoor zustande."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kein Setup: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du bist sofort startklar – ohne eigenes Zahlungskonto und ohne eigene Rechtstexte."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Steuern: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Creatordoor berechnet, erhebt und führt die Mehrwertsteuer ab. Die angezeigten Preise enthalten die gesetzlichen Steuern."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Belege & Rückerstattungen: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Rechnungen, Rückerstattungen und Chargebacks wickelt Creatordoor für dich ab."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Auszahlung: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du erhältst regelmässig den Netto-Betrag auf dein Bankkonto – also nach Abzug von Steuern, Plattform- und Zahlungsgebühren, Rückerstattungen und Chargebacks."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "children": [
+          {
+            "type": "text",
+            "text": "Wichtig: Um deine eigenen Steuerpflichten kümmerst du dich weiterhin selbst – zum Beispiel darum, die erhaltenen Auszahlungen korrekt in deiner Buchhaltung zu erfassen und zu versteuern."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Das Normal-Seller-Modell (Seller Mode)"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Als Normal Seller verkaufst du "
+          },
+          {
+            "type": "text",
+            "text": "in deinem eigenen Namen",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": ". Du bist Vertragspartner deiner Kunden, und Creatordoor liefert „nur“ die Infrastruktur."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Eigenes Stripe-Konto: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Zahlungen gehen direkt auf dein Konto – ohne Umweg und ohne Warten auf eine Plattform-Auszahlung."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Eigene Rechtstexte: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du hinterlegst deine AGB, Datenschutzerklärung, Widerrufsbelehrung und dein Impressum. Deine Kunden kaufen zu deinen Bedingungen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Steuerangaben: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du gibst an, ob du Kleinunternehmer bist oder mehrwertsteuerpflichtig – dann werden deine MWST-Nummer und der Steuersatz im Checkout angezeigt."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Eigene Zahlungsmethoden: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du entscheidest, welche Zahlungsmethoden deine Kunden im Checkout sehen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Volle Verantwortung: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Rechnungen, Steuern, Buchhaltung, Rückerstattungen und Chargebacks liegen bei dir."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Jede Änderung an deinen Rechtstexten wird als neue Version gespeichert. So ist immer nachvollziehbar, welcher Fassung ein Kunde beim Kauf zugestimmt hat."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Gebühren nach Plan"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Plan | Re-Seller-Modell | Normal Seller |\n|---|---|---|\n| Basic | 4,9 % + 0,50 € | nicht verfügbar |\n| Pro | 3,9 % + 0,50 € | 1,9 % + 0,25 € |\n| Expert | 3,9 % + 0,50 € | 1,9 % + 0,25 € |"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Die Plattformgebühr fällt nur bei erfolgreichen Transaktionen an."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ab 100.000 € Verkaufsvolumen in 12 Monaten sinkt deine Gebühr automatisch um 1 Prozentpunkt."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ab 500.000 € erhältst du individuelle Konditionen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Es gibt keine Einrichtungs- oder Grundgebühren."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Welches Modell passt zu mir?"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "Das Re-Seller-Modell ist ideal, wenn du …"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "sofort und ohne Aufwand loslegen willst,"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "dich nicht um Rechnungen, Mehrwertsteuer und Rückerstattungen kümmern möchtest,"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "noch kein eigenes Unternehmen oder Stripe-Konto hast."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "Normal Seller ist ideal, wenn du …"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "bereits ein eigenes Business mit eigenen Rechtstexten hast,"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "dein Geld direkt und ohne Umweg erhalten willst,"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Rechnungen und Steuern ohnehin selbst machst,"
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "von der tieferen Plattformgebühr profitieren möchtest."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Seller Mode aktivieren"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Der Seller Mode ist in den Plänen Pro und Expert verfügbar. Du verbindest dein Stripe-Konto, hinterlegst deine Rechtstexte und Steuerangaben – danach wird der Seller Mode nach einer kurzen Prüfung deines Accounts freigeschaltet."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Wie Rückerstattungen und Chargebacks in beiden Modellen ablaufen, erfährst du in "
+          },
+          {
+            "type": "link",
+            "url": "/zahlungen/rueckerstattungen-chargebacks-anfechtungen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Rückerstattungen, Chargebacks und Anfechtungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Die beiden Verkaufsmodelle im Vergleich – Vertragspartner, Steuern, Rückerstattungen und Gebühren.",
+    "featured": true,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 1,
+    "category": {
+      "id": 13,
+      "documentId": "jcl2bmalwb5eg0747ix6fzh2",
+      "name": "Verkaufen",
+      "description": "Verkaufsmodelle, Gebühren und Auszahlungen",
+      "icon": "store",
+      "slug": "verkaufen",
+      "order": 3
+    },
     "subcategory": null
   },
   {
-    "id": 12,
+    "id": 15,
     "documentId": "zr41pvbewdv4r7gsp1jyttbk",
     "title": "Mit PayPal bezahlen",
     "slug": "mit-paypal-bezahlen",
@@ -966,7 +1462,619 @@
       "slug": "zahlungen",
       "order": 2
     },
-    "subcategory": null
+    "subcategory": {
+      "id": 4,
+      "documentId": "k686y79t7zptkzduahje3s9w",
+      "name": "Zahlungsmethoden",
+      "slug": "zahlungsmethoden",
+      "order": 1
+    }
+  },
+  {
+    "id": 17,
+    "documentId": "pvdnvkm3430cq1ht83nk6y3g",
+    "title": "Rückerstattungen, Chargebacks und Anfechtungen",
+    "slug": "rueckerstattungen-chargebacks-anfechtungen",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Manchmal soll Geld wieder zurück – weil ein Produkt nicht passt oder etwas schiefgelaufen ist. Dafür gibt es zwei Wege: die "
+          },
+          {
+            "type": "text",
+            "text": "Rückerstattung",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " über den Verkäufer und den "
+          },
+          {
+            "type": "text",
+            "text": "Chargeback",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " (Rückbuchung) über die Bank. Hier erfährst du, wie beides funktioniert und was es für Käufer und Verkäufer bedeutet."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Rückerstattung oder Chargeback – der Unterschied"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Thema | Rückerstattung | Chargeback |\n|---|---|---|\n| Wer startet sie? | Der Verkäufer bzw. Creatordoor | Der Käufer über seine Bank oder sein Kreditkartenunternehmen |\n| Wann möglich? | Nach den Bedingungen des Verkäufers | Bei Kreditkarten und Lastschriften, meist bis 120 Tage nach der Zahlung |\n| Dauer | In der Regel innerhalb von 14 Tagen | Bis zur Entscheidung meist 2 bis 3 Monate |\n| Gebühren | Keine zusätzlichen Gebühren für den Käufer | Gebühr des Zahlungsanbieters für den Verkäufer |\n| Wer entscheidet? | Der Verkäufer bzw. Creatordoor | Die Bank des Käufers |"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "children": [
+          {
+            "type": "text",
+            "text": "Tipp: Melde dich bei einem Problem immer zuerst beim Verkäufer oder beim Support. Eine Rückerstattung ist für alle Seiten schneller und einfacher als ein Chargeback."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Rückerstattungen"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "So läuft eine Rückerstattung ab"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ist eine Rückerstattung berechtigt, wird die Transaktion rückgängig gemacht."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du erhältst dein Geld auf das Zahlungsmittel zurück, mit dem du bezahlt hast – in der Regel innerhalb von 14 Tagen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Für die Rückzahlung werden dir keine zusätzlichen Gebühren berechnet."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Mit der Rückerstattung verlierst du automatisch den Zugang zum Produkt, zum Beispiel zum Download oder Kurs."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Bei manchen Zahlungsmethoden gelten eigene Fristen. Bei Klarna und PayPal sind Rückerstattungen zum Beispiel bis zu 180 Tage nach der Zahlung möglich. Mehr dazu in den Artikeln "
+          },
+          {
+            "type": "link",
+            "url": "/zahlungen/mit-klarna-bezahlen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Mit Klarna bezahlen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " und "
+          },
+          {
+            "type": "link",
+            "url": "/zahlungen/mit-paypal-bezahlen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Mit PayPal bezahlen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "Wer entscheidet über meine Rückerstattung?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Das hängt davon ab, bei wem du gekauft hast:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Re-Seller-Modell: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Creatordoor ist dein Vertragspartner und wickelt die Rückerstattung ab. Wende dich an den Creatordoor-Support."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Normal Seller: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du hast direkt beim Creator gekauft. Es gelten seine eigenen AGB und Rückerstattungsregeln – wende dich direkt an ihn."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Ob ein Widerrufsrecht besteht, hängt vom Produkt und vom Verkäufer ab. Die geltenden Bedingungen siehst du beim Kauf. Den Unterschied zwischen den beiden Modellen erklären wir in "
+          },
+          {
+            "type": "link",
+            "url": "/verkaufen/normal-seller-vs-re-seller",
+            "children": [
+              {
+                "type": "text",
+                "text": "Normal Seller vs. Re-Seller"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Chargebacks (Rückbuchungen)"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Ein Chargeback entsteht, wenn ein Käufer seine Bank oder sein Kreditkartenunternehmen anweist, eine Zahlung rückgängig zu machen. Das ist bei Kreditkartenzahlungen und Lastschriften möglich. Man spricht auch von einer "
+          },
+          {
+            "type": "text",
+            "text": "Anfechtung",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " oder einem "
+          },
+          {
+            "type": "text",
+            "text": "Streitfall",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "So läuft ein Chargeback ab"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Der Käufer kontaktiert seine Bank und beantragt eine Rückbuchung."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Die Bank prüft den Fall."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Der Zahlungsanbieter (z. B. Stripe oder PayPal) informiert den Verkäufer."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Der Verkäufer kann den Chargeback anfechten und Nachweise einreichen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Die Bank entscheidet endgültig."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "Fristen im Überblick"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Schritt | Übliche Frist |\n|---|---|\n| Chargeback einleiten (Käufer) | bis 120 Tage nach der Zahlung |\n| Antwort mit Nachweisen (Verkäufer) | 7 bis 21 Tage |\n| Entscheidung der Bank | 60 bis 75 Tage |\n| Gesamter Ablauf | 2 bis 3 Monate |"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die genauen Fristen hängen vom Kartennetzwerk ab."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "Was passiert mit dem Geld?"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sobald ein Chargeback eröffnet wird, wird der angefochtene Betrag plus eine Anfechtungsgebühr vom Konto des Verkäufers abgebucht."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Solange der Streitfall offen ist, kann keine normale Rückerstattung mehr ausgelöst werden."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Streitfall gewonnen: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Der Betrag wird dem Verkäufer wieder gutgeschrieben."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Streitfall verloren: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Der Betrag geht endgültig an den Käufer zurück."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Für Verkäufer: Chargebacks auf Creatordoor"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Wer einen Chargeback abwickelt und trägt, hängt von deinem Verkaufsmodell ab:"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Thema | Re-Seller-Modell | Normal Seller |\n|---|---|---|\n| Abwicklung | Über das Zahlungskonto von Creatordoor | Über dein eigenes Stripe-Konto |\n| Kosten | Betrag und Gebühren werden von deiner Auszahlung abgezogen | Betrag und Gebühren werden direkt deinem Stripe-Konto belastet |\n| Nachweise einreichen | Mit Unterstützung von Creatordoor | Selbst, über dein Stripe-Konto |"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Den Status siehst du in deinem Dashboard in den Zahlungsdetails: "
+          },
+          {
+            "type": "text",
+            "text": "Streitfall eröffnet",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": ", "
+          },
+          {
+            "type": "text",
+            "text": "Streitfall gewonnen",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " oder "
+          },
+          {
+            "type": "text",
+            "text": "Streitfall verloren",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": ". In den Plänen Pro und Expert unterstützen wir dich aktiv bei Zahlungsstreitigkeiten und Rückbuchungen."
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "children": [
+          {
+            "type": "text",
+            "text": "Chargebacks verursachen Kosten für Verkäufer – unabhängig davon, ob der Chargeback erfolgreich ist oder nicht. Diese Gebühren erhebt der jeweilige Zahlungsanbieter."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "children": [
+          {
+            "type": "text",
+            "text": "So vermeidest du Chargebacks"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kommuniziere klar, was Käufer erhalten."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Antworte schnell auf Kundenanfragen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Biete bei Problemen proaktiv Lösungen an – oft ist eine Rückerstattung günstiger als ein Chargeback."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Dokumentiere Lieferungen und Kundenkommunikation, damit du im Streitfall Nachweise hast."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Mehr erfahren"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Weitere Details zum Ablauf von Anfechtungen findest du in der "
+          },
+          {
+            "type": "link",
+            "url": "https://docs.stripe.com/disputes/how-disputes-work?locale=de-DE",
+            "children": [
+              {
+                "type": "text",
+                "text": "Stripe-Dokumentation zu Zahlungsanfechtungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Wie Rückerstattungen funktionieren, was bei einem Chargeback passiert und wer die Kosten trägt.",
+    "featured": true,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 3,
+    "category": {
+      "id": 11,
+      "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+      "name": "Zahlungen",
+      "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+      "icon": "credit-card",
+      "slug": "zahlungen",
+      "order": 2
+    },
+    "subcategory": {
+      "id": 6,
+      "documentId": "p5b9z7r3c4jot9xx9udgfrec",
+      "name": "Rückerstattungen & Anfechtungen",
+      "slug": "rueckerstattungen-anfechtungen",
+      "order": 2
+    }
   },
   {
     "id": 5,
