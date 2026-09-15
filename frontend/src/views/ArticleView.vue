@@ -137,7 +137,7 @@ const getMediaUrl = (file) => {
         </ol>
       </nav>
 
-      <div class="max-w-xl mx-auto">
+      <div class="max-w-3xl mx-auto">
         <!-- Article Header -->
         <div class="mb-8 text-center">
           <Text variant="title-screen" as="h1" class="mb-4">
