@@ -539,6 +539,460 @@
     "subcategory": null
   },
   {
+    "id": 12,
+    "documentId": "zr41pvbewdv4r7gsp1jyttbk",
+    "title": "Mit PayPal bezahlen",
+    "slug": "mit-paypal-bezahlen",
+    "content": [
+      {
+        "type": "image",
+        "image": {
+          "id": 2,
+          "documentId": "pqh3z9tsofedsmfwhwiyi4ev",
+          "name": "paypal-banner.png",
+          "alternativeText": "PayPal Logo",
+          "caption": null,
+          "width": 1600,
+          "height": 640,
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_paypal-banner.png",
+              "hash": "thumbnail_paypal_banner_e4822c73f4",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 245,
+              "height": 98,
+              "size": 4.75,
+              "sizeInBytes": 4747,
+              "url": "/uploads/thumbnail_paypal_banner_e4822c73f4.png"
+            },
+            "large": {
+              "name": "large_paypal-banner.png",
+              "hash": "large_paypal_banner_e4822c73f4",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 1000,
+              "height": 400,
+              "size": 19.65,
+              "sizeInBytes": 19650,
+              "url": "/uploads/large_paypal_banner_e4822c73f4.png"
+            },
+            "medium": {
+              "name": "medium_paypal-banner.png",
+              "hash": "medium_paypal_banner_e4822c73f4",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 750,
+              "height": 300,
+              "size": 14.84,
+              "sizeInBytes": 14840,
+              "url": "/uploads/medium_paypal_banner_e4822c73f4.png"
+            },
+            "small": {
+              "name": "small_paypal-banner.png",
+              "hash": "small_paypal_banner_e4822c73f4",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 500,
+              "height": 200,
+              "size": 9.68,
+              "sizeInBytes": 9684,
+              "url": "/uploads/small_paypal_banner_e4822c73f4.png"
+            }
+          },
+          "hash": "paypal_banner_e4822c73f4",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 5.93,
+          "url": "/uploads/paypal_banner_e4822c73f4.png",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "folderPath": "/"
+        },
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Mit PayPal bezahlst du deinen Einkauf auf CreatorDoor bequem über dein PayPal-Konto – ohne deine Karten- oder Bankdaten bei uns einzugeben. Die Zahlung wird über unseren Zahlungsanbieter Stripe abgewickelt."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "So funktioniert die Zahlung mit PayPal"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Wähle beim Bezahlen einfach PayPal als Zahlungsmethode aus. Danach läuft es so ab:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du wirst zu PayPal weitergeleitet und meldest dich mit deinem PayPal-Konto an."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du wählst aus, womit du bezahlen möchtest."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du bestätigst die Zahlung bei PayPal."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du wirst zurück zu CreatorDoor geleitet und erhältst eine Bestätigung, dass deine Zahlung abgeschlossen ist."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Womit kann ich bei PayPal bezahlen?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Innerhalb von PayPal kannst du eine dieser Zahlungsquellen wählen:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "PayPal-Guthaben: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du bezahlst direkt mit dem Guthaben auf deinem PayPal-Konto."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Verknüpfte Karte: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Du bezahlst mit einer Kredit- oder Debitkarte, die du in PayPal hinterlegt hast."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Verknüpftes Bankkonto: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Der Betrag wird von deinem mit PayPal verbundenen Bankkonto abgebucht."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Später bezahlen: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Wo PayPal es anbietet, kannst du deinen Einkauf auch später oder in Raten bezahlen."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Mindest- und Höchstbeträge"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "PayPal selbst hat keinen Mindestbetrag. Über Stripe gelten aber dieselben Mindest- und Höchstbeträge wie bei anderen Zahlungsmethoden:"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Währung | Mindestbetrag | Höchstbetrag |\n|---|---|---|\n| Schweizer Franken (CHF) | 0,50 | 999.999,99 |\n| Euro (EUR) | 0,50 | 999.999,99 |\n| US-Dollar (USD) | 0,50 | 999.999,99 |\n| Britisches Pfund (GBP) | 0,30 | 999.999,99 |"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "children": [
+          {
+            "type": "text",
+            "text": "Bezahlst du in einer anderen Währung, wird dein Betrag umgerechnet und muss danach den Mindestbetrag erreichen. Je nach deinem PayPal-Konto können zusätzlich eigene Limits gelten."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Aus welchen Ländern und in welchen Währungen?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du kannst PayPal "
+          },
+          {
+            "type": "text",
+            "text": "aus der ganzen Welt",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " nutzen. Dein Betrag wird in einer dieser Währungen angezeigt:"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Region | Währungen |\n|---|---|\n| Europa | CHF, EUR, GBP, CZK, DKK, NOK, PLN, SEK |\n| Amerika | USD, CAD |\n| Asien-Pazifik | AUD, HKD, NZD, SGD |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Abos und wiederkehrende Zahlungen"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "PayPal unterstützt auch wiederkehrende Zahlungen, zum Beispiel für Abos. Ob PayPal bei einem bestimmten Abo als Zahlungsmethode angeboten wird, hängt vom jeweiligen Angebot ab."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Rückerstattungen"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Rückerstattungen sind bis zu 180 Tage nach der ursprünglichen Zahlung möglich."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Es sind vollständige und teilweise Rückerstattungen möglich."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Das Geld wird dir über PayPal zurückerstattet."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Probleme mit einer Zahlung"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Nach einer Zahlung kannst du die Transaktion bei PayPal anfechten, zum Beispiel wenn ein Produkt nicht der Beschreibung entspricht oder du es nicht erhalten hast. Melde dich bei Problemen aber am besten zuerst beim Support – oft lässt sich die Sache so am schnellsten klären."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Mehr erfahren"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Alle Details findest du in der "
+          },
+          {
+            "type": "link",
+            "url": "https://docs.stripe.com/payments/paypal?locale=de-DE",
+            "children": [
+              {
+                "type": "text",
+                "text": "Stripe-Dokumentation zu PayPal"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": ". Fragen zu deinem PayPal-Konto beantwortet dir "
+          },
+          {
+            "type": "link",
+            "url": "https://www.paypal.com/ch/home",
+            "children": [
+              {
+                "type": "text",
+                "text": "PayPal direkt"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Über dein PayPal-Konto bezahlen – Zahlungsquellen, Beträge, Währungen und Rückerstattungen im Überblick.",
+    "featured": true,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 2,
+    "category": {
+      "id": 10,
+      "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+      "name": "Zahlungen",
+      "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+      "icon": "credit-card",
+      "slug": "zahlungen",
+      "order": 2
+    },
+    "subcategory": null
+  },
+  {
     "id": 5,
     "documentId": "dycal3lfh6dbju9beh6puf5g",
     "title": "How do I reset my password?",
