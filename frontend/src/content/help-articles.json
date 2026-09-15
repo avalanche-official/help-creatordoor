@@ -1,10 +1,87 @@
 [
   {
-    "id": 9,
+    "id": 10,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
     "slug": "mit-klarna-bezahlen",
     "content": [
+      {
+        "type": "image",
+        "image": {
+          "id": 1,
+          "documentId": "yb2kp9spr6c2pozd81h5cc3z",
+          "name": "klarna-banner.png",
+          "alternativeText": "Klarna Logo",
+          "caption": null,
+          "width": 1600,
+          "height": 640,
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_klarna-banner.png",
+              "hash": "thumbnail_klarna_banner_cd9eee0576",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 245,
+              "height": 98,
+              "size": 3.66,
+              "sizeInBytes": 3661,
+              "url": "/uploads/thumbnail_klarna_banner_cd9eee0576.png"
+            },
+            "large": {
+              "name": "large_klarna-banner.png",
+              "hash": "large_klarna_banner_cd9eee0576",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 1000,
+              "height": 400,
+              "size": 14.62,
+              "sizeInBytes": 14618,
+              "url": "/uploads/large_klarna_banner_cd9eee0576.png"
+            },
+            "medium": {
+              "name": "medium_klarna-banner.png",
+              "hash": "medium_klarna_banner_cd9eee0576",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 750,
+              "height": 300,
+              "size": 10.85,
+              "sizeInBytes": 10854,
+              "url": "/uploads/medium_klarna_banner_cd9eee0576.png"
+            },
+            "small": {
+              "name": "small_klarna-banner.png",
+              "hash": "small_klarna_banner_cd9eee0576",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 500,
+              "height": 200,
+              "size": 7.02,
+              "sizeInBytes": 7016,
+              "url": "/uploads/small_klarna_banner_cd9eee0576.png"
+            }
+          },
+          "hash": "klarna_banner_cd9eee0576",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 4.09,
+          "url": "/uploads/klarna_banner_cd9eee0576.png",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "folderPath": "/"
+        },
+        "children": [
+          {
+            "type": "text",
+            "text": ""
+          }
+        ]
+      },
       {
         "type": "paragraph",
         "children": [
@@ -451,7 +528,7 @@
     "helpful_no": null,
     "order": 1,
     "category": {
-      "id": 9,
+      "id": 10,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
