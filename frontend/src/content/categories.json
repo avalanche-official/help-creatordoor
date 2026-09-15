@@ -1,11 +1,11 @@
 [
   {
-    "id": 4,
+    "id": 15,
     "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
-    "name": "Getting Started",
-    "description": "First steps with CreatorDoor",
+    "name": "Erste Schritte",
+    "description": "Registrierung, Login und dein Konto",
     "icon": "rocket",
-    "slug": "getting-started",
+    "slug": "erste-schritte",
     "order": 1
   },
   {

@@ -1,5 +1,452 @@
 [
   {
+    "id": 23,
+    "documentId": "nvk03yvshdwcz5khn5qiqq9j",
+    "title": "Konto erstellen",
+    "slug": "konto-erstellen",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dein Creatordoor-Konto ist in wenigen Minuten eingerichtet. Du brauchst dafür nur deine E-Mail-Adresse – alles Weitere fragen wir dich Schritt für Schritt."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "So registrierst du dich"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Öffne "
+              },
+              {
+                "type": "link",
+                "url": "https://creatordoor.com/register",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "creatordoor.com/register"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib deine "
+              },
+              {
+                "type": "text",
+                "text": "E-Mail-Adresse",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " ein und klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Weiter",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": ". Alternativ kannst du dich direkt mit Google oder Apple registrieren."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wähle deine Kontoart."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib deinen vollständigen Namen und deinen "
+              },
+              {
+                "type": "link",
+                "url": "/erste-schritte/benutzername",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Benutzernamen"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " ein."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wähle dein Wohnsitzland."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sag uns, wie du von Creatordoor erfahren hast – diesen Schritt kannst du überspringen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nur als Verkäufer: Wähle deinen Plan und starte deine "
+              },
+              {
+                "type": "text",
+                "text": "14-tägige kostenlose Testphase",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Erstelle ein Passwort mit mindestens 8 Zeichen und klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Konto erstellen",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Mit dem Fortfahren akzeptierst du unsere "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/agb",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nutzungsbedingungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " und "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/datenschutz",
+            "children": [
+              {
+                "type": "text",
+                "text": "Datenschutzbestimmungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Schritte im Überblick"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Schritt | Was du angibst | Pflicht? |\n|---|---|---|\n| E-Mail | Deine E-Mail-Adresse | Ja |\n| Kontoart | Verkäufer, Affiliate oder Käufer | Ja |\n| Profil | Vollständiger Name und Benutzername | Ja |\n| Land | Dein hauptsächliches Wohnsitzland | Ja |\n| Herkunft | Wie du von uns erfahren hast | Nein |\n| Plan & Zahlungsmethode | Basic, Pro oder Expert | Nur für Verkäufer |\n| Passwort | Mindestens 8 Zeichen | Ja |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Welche Kontoart passt zu mir?"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Kontoart | Das machst du damit |\n|---|---|\n| Verkäufer | Du verkaufst eigene Produkte und verdienst Geld. |\n| Affiliate | Du empfiehlst Produkte und erhältst Provision. |\n| Käufer | Du kaufst Produkte und verwaltest deine Einkäufe. |"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Keine Sorge: Deine Kontoart kannst du auch später noch ändern."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Die kostenlose Testphase für Verkäufer"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Jeder Plan startet mit einer 14-tägigen kostenlosen Testphase."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du hinterlegst dafür eine Zahlungsmethode – heute wird aber nichts abgebucht."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kündigst du vor Ablauf der Testphase, zahlst du nichts."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Danach gilt der Preis des Plans, den du gewählt hast."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Als Käufer oder Affiliate überspringst du Plan und Zahlung – dein Konto ist kostenlos."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Wichtig: Dein Land kann später nicht geändert werden"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dein Konto, deine Verifizierung und deine Auszahlungen sind an dein Wohnsitzland gebunden. Wähle es deshalb sorgfältig aus. Aus rechtlichen Gründen können wir später einen Adressnachweis von dir benötigen."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Einrichtung unterbrechen und später weitermachen"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du kannst die Einrichtung jederzeit über das X oben verlassen. Dein Fortschritt ist gespeichert: Wenn du dich das nächste Mal anmeldest, klickst du auf "
+          },
+          {
+            "type": "text",
+            "text": "Einrichtung fortsetzen",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " und machst genau dort weiter, wo du aufgehört hast."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Die E-Mail-Adresse ist schon registriert?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dann schicken wir dir einen "
+          },
+          {
+            "type": "text",
+            "text": "6-stelligen Code",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " an diese Adresse. Gib ihn ein und klicke auf "
+          },
+          {
+            "type": "text",
+            "text": "Code bestätigen",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " – schon bist du wieder in deinem Konto. Ist kein Code angekommen, kannst du ihn nach 30 Sekunden erneut senden."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Wie geht es weiter?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Als Verkäufer oder Affiliate landest du nach der Registrierung in deinem Onboarding, als Käufer direkt im Dashboard. Wie du dich später wieder anmeldest, erfährst du in "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/einloggen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Einloggen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "In wenigen Minuten registriert – alle Schritte, Kontoarten und die kostenlose Testphase.",
+    "featured": true,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 1,
+    "category": {
+      "id": 15,
+      "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+      "name": "Erste Schritte",
+      "description": "Registrierung, Login und dein Konto",
+      "icon": "rocket",
+      "slug": "erste-schritte",
+      "order": 1
+    },
+    "subcategory": null
+  },
+  {
     "id": 20,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
@@ -1011,6 +1458,237 @@
     "subcategory": null
   },
   {
+    "id": 25,
+    "documentId": "s378dt7jn43h8oc83rf5jhte",
+    "title": "Benutzername wählen",
+    "slug": "benutzername",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Deinen Benutzernamen wählst du bei der Registrierung. Er wird in deinen Affiliate- und Share-Links verwendet und in deinem Konto als @benutzername angezeigt."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Regeln für deinen Benutzernamen"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Regel | Details |\n|---|---|\n| Erlaubte Zeichen | Buchstaben, Zahlen, Bindestrich (-) und Unterstrich (_) |\n| Länge | 3 bis 30 Zeichen |\n| Gross-/Kleinschreibung | Wird automatisch in Kleinbuchstaben gespeichert |\n| Eindeutig | Jeder Benutzername kann nur einmal vergeben werden |"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Leerzeichen, Umlaute und Sonderzeichen wie ä, é, @ oder . werden beim Tippen automatisch entfernt."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Ist mein Wunschname noch frei?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Während du tippst, prüfen wir sofort, ob der Name verfügbar ist:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "„Benutzername ist verfügbar“",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " – du kannst ihn verwenden."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "„Dieser Benutzername ist bereits vergeben“",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " – probiere eine Variante, z. B. mit Bindestrich oder Zahl."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "„Benutzername muss mindestens 3 Zeichen lang sein“",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " – dein Name ist noch zu kurz."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Beispiele"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Eingabe | Ergebnis |\n|---|---|\n| MaxMuster | maxmuster |\n| max_muster-99 | max_muster-99 |\n| max muster | maxmuster (Leerzeichen entfernt) |\n| mü | zu kurz (ü wird entfernt) |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Registriert mit Google oder Apple?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Fehlt in deinem Konto noch ein Name oder Benutzername, erscheint im Dashboard das Fenster "
+          },
+          {
+            "type": "text",
+            "text": "Konto einrichten",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": ". Dort legst du beides fest, bevor du weitermachst."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Kann ich meinen Benutzernamen ändern?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "In den Einstellungen kannst du deinen Benutzernamen aktuell nicht selbst ändern. Wähle ihn deshalb bei der Registrierung mit Bedacht."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Musst du ihn trotzdem ändern, melde dich beim Support unter "
+          },
+          {
+            "type": "link",
+            "url": "mailto:support@creatordoor.com",
+            "children": [
+              {
+                "type": "text",
+                "text": "support@creatordoor.com"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " oder über das "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/contact",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kontaktformular"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Welche Zeichen erlaubt sind, wie du prüfst, ob dein Name frei ist, und wofür er verwendet wird.",
+    "featured": false,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 2,
+    "category": {
+      "id": 15,
+      "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+      "name": "Erste Schritte",
+      "description": "Registrierung, Login und dein Konto",
+      "icon": "rocket",
+      "slug": "erste-schritte",
+      "order": 1
+    },
+    "subcategory": null
+  },
+  {
     "id": 21,
     "documentId": "zr41pvbewdv4r7gsp1jyttbk",
     "title": "Mit PayPal bezahlen",
@@ -1469,6 +2147,245 @@
       "slug": "zahlungsmethoden",
       "order": 1
     }
+  },
+  {
+    "id": 27,
+    "documentId": "s9szdtdei4jcbucukoehqhsr",
+    "title": "Einloggen",
+    "slug": "einloggen",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du meldest dich unter "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/login",
+            "children": [
+              {
+                "type": "text",
+                "text": "creatordoor.com/login"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " an. Dafür gibt es drei Wege – wähle einfach den, der für dich am bequemsten ist."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Anmeldemöglichkeiten"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Methode | So funktioniert es |\n|---|---|\n| E-Mail & Passwort | Gib deine E-Mail-Adresse und dein Passwort ein und klicke auf „Anmelden“. |\n| Magic Link | Du bekommst einen Anmeldelink per E-Mail – ganz ohne Passwort. |\n| Google oder Apple | Klicke auf das Google- oder Apple-Symbol und bestätige die Anmeldung. |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Mit Magic Link anmelden"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Klicke auf der Login-Seite auf "
+              },
+              {
+                "type": "text",
+                "text": "Stattdessen Magic Link nutzen",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib deine E-Mail-Adresse ein und klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Magic Link senden",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Öffne die E-Mail und klicke auf den Link – du bist direkt angemeldet."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Jeder Magic Link funktioniert nur einmal. Siehst du „Dieser Link ist abgelaufen oder wurde bereits verwendet“, fordere einfach einen neuen an."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Probleme beim Einloggen"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Meldung | Was du tun kannst |\n|---|---|\n| Ungültige E-Mail oder Passwort | Prüfe deine Eingaben. Hast du dein Passwort vergessen, setze es zurück. |\n| Zu viele Versuche. Bitte warte einige Minuten. | Warte ein paar Minuten und versuche es dann erneut. |\n| Bitte gib eine gültige E-Mail-Adresse ein | Prüfe die Schreibweise deiner E-Mail-Adresse. |"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Passwort vergessen? So setzt du es zurück: "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/passwort-vergessen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Passwort vergessen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Einrichtung noch nicht abgeschlossen?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Hast du deine Registrierung unterbrochen, führen wir dich nach dem Login zurück in die Einrichtung. Dort machst du genau da weiter, wo du aufgehört hast."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Abmelden"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du findest "
+          },
+          {
+            "type": "text",
+            "text": "Abmelden",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " unten in der Seitenleiste deiner Einstellungen. Wie du dich von anderen Geräten abmeldest, erfährst du in "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/konto-einstellungen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Konto-Einstellungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Mit Passwort, Magic Link, Google oder Apple anmelden – und was bei Problemen hilft.",
+    "featured": false,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 3,
+    "category": {
+      "id": 15,
+      "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+      "name": "Erste Schritte",
+      "description": "Registrierung, Login und dein Konto",
+      "icon": "rocket",
+      "slug": "erste-schritte",
+      "order": 1
+    },
+    "subcategory": null
   },
   {
     "id": 17,
@@ -2077,17 +2994,201 @@
     }
   },
   {
-    "id": 5,
+    "id": 28,
     "documentId": "dycal3lfh6dbju9beh6puf5g",
-    "title": "How do I reset my password?",
-    "slug": "how-do-i-reset-my-password",
+    "title": "Passwort vergessen",
+    "slug": "passwort-vergessen",
     "content": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "Write a couple of paragraphs in the │"
+            "text": "Kein Problem – dein Passwort setzt du in wenigen Schritten per E-Mail zurück."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "So setzt du dein Passwort zurück"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Klicke auf der "
+              },
+              {
+                "type": "link",
+                "url": "https://creatordoor.com/login",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Login-Seite"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " auf "
+              },
+              {
+                "type": "text",
+                "text": "Passwort vergessen?",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib deine E-Mail-Adresse ein und klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Link senden",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Öffne die E-Mail und klicke auf den Link zum Zurücksetzen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib dein neues Passwort zweimal ein und klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Passwort zurücksetzen",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Fertig! Du wirst automatisch zum Login weitergeleitet und kannst dich mit dem neuen Passwort anmelden."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Anforderungen an dein Passwort"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Pflicht: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "mindestens 8 Zeichen."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Empfohlen: ",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "Gross- und Kleinbuchstaben sowie mindestens eine Zahl."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Verwende ein Passwort, das du nirgendwo sonst nutzt."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Probleme beim Zurücksetzen"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Problem | Lösung |\n|---|---|\n| Die E-Mail kommt nicht an | Warte bis zu 1 Minute und schau auch im Spam-Ordner nach. Prüfe, ob du die richtige E-Mail-Adresse eingegeben hast. |\n| „Ungültiger Link“ oder Link abgelaufen | Fordere über „Passwort vergessen?“ einfach einen neuen Link an und nutze immer den neuesten. |\n| „Passwörter stimmen nicht überein“ | Gib in beiden Feldern genau dasselbe Passwort ein. |\n| „Zu viele Versuche“ | Warte einige Minuten und versuche es dann erneut. |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Lieber ganz ohne Passwort?"
           }
         ]
       },
@@ -2096,24 +3197,546 @@
         "children": [
           {
             "type": "text",
-            "text": "│             │  rich editor"
+            "text": "Du kannst dich jederzeit auch per Magic Link oder mit Google bzw. Apple anmelden. Mehr dazu in "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/einloggen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Einloggen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Du kennst dein Passwort und willst es ändern?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Das geht direkt in deinen Einstellungen – siehe "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/konto-einstellungen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Konto-Einstellungen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Klappt es trotzdem nicht? Melde dich beim Support unter "
+          },
+          {
+            "type": "link",
+            "url": "mailto:support@creatordoor.com",
+            "children": [
+              {
+                "type": "text",
+                "text": "support@creatordoor.com"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " oder über das "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/contact",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kontaktformular"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
           }
         ]
       }
     ],
-    "excerpt": "Reset it from the login screen.",
-    "featured": null,
+    "excerpt": "So setzt du dein Passwort per E-Mail zurück.",
+    "featured": false,
     "views": null,
     "helpful_yes": null,
     "helpful_no": null,
-    "order": null,
+    "order": 4,
     "category": {
-      "id": 4,
+      "id": 15,
       "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
-      "name": "Getting Started",
-      "description": "First steps with CreatorDoor",
+      "name": "Erste Schritte",
+      "description": "Registrierung, Login und dein Konto",
       "icon": "rocket",
-      "slug": "getting-started",
+      "slug": "erste-schritte",
+      "order": 1
+    },
+    "subcategory": null
+  },
+  {
+    "id": 30,
+    "documentId": "vmwn26h2v0drgdhuw7cj8aea",
+    "title": "Konto-Einstellungen",
+    "slug": "konto-einstellungen",
+    "content": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Deine persönlichen Daten verwaltest du unter "
+          },
+          {
+            "type": "text",
+            "text": "Einstellungen → Konto → Allgemein",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": ". Hier siehst du, was du dort ändern kannst."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Was du ändern kannst"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "children": [
+          {
+            "type": "text",
+            "text": "| Einstellung | Änderbar? | Hinweis |\n|---|---|---|\n| Profilbild | Ja | PNG, JPEG oder WebP bis 2 MB |\n| Name, Geburtsdatum, Adresse | Ja | Über „Speichern“ |\n| E-Mail-Adresse | Ja | Du wirst danach abgemeldet |\n| Passwort | Ja | Du wirst danach abgemeldet |\n| Land | Nein | An Konto, Verifizierung und Auszahlungen gebunden |\n| Benutzername | Nein | Nur über den Support |"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Profilbild ändern"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Bild hochladen",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wähle ein Bild im Format PNG, JPEG oder WebP mit maximal 2 MB."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Du siehst die Bestätigung "
+              },
+              {
+                "type": "text",
+                "text": "Profilbild aktualisiert",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": ". Mit "
+              },
+              {
+                "type": "text",
+                "text": "Entfernen",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " löschst du dein Bild wieder."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "E-Mail-Adresse ändern"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib unter "
+              },
+              {
+                "type": "text",
+                "text": "Neue E-Mail-Adresse",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " deine neue Adresse ein."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Bestätige die Änderung mit deinem aktuellen Passwort."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "E-Mail-Adresse ändern",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " und prüfe im Fenster noch einmal die alte und neue Adresse."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nach der Änderung wirst du abgemeldet. Melde dich anschliessend mit deiner neuen E-Mail-Adresse an."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die neue Adresse muss sich von der aktuellen unterscheiden und darf noch nicht von einem anderen Konto verwendet werden."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Passwort ändern"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "ordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib dein "
+              },
+              {
+                "type": "text",
+                "text": "aktuelles Passwort",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " ein."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gib dein neues Passwort (mindestens 8 Zeichen) zweimal ein."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Klicke auf "
+              },
+              {
+                "type": "text",
+                "text": "Speichern",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": ". Danach wirst du abgemeldet und meldest dich mit dem neuen Passwort an."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Aktuelles Passwort vergessen? Dann setze es über die Login-Seite zurück: "
+          },
+          {
+            "type": "link",
+            "url": "/erste-schritte/passwort-vergessen",
+            "children": [
+              {
+                "type": "text",
+                "text": "Passwort vergessen"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Von Geräten abmelden"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Unter "
+          },
+          {
+            "type": "text",
+            "text": "Sessions",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " siehst du alle Geräte, auf denen du angemeldet bist – mit Standort. Dein aktuelles Gerät ist mit "
+          },
+          {
+            "type": "text",
+            "text": "Aktuell",
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": " markiert."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "format": "unordered",
+        "children": [
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Mit "
+              },
+              {
+                "type": "text",
+                "text": "Abmelden",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " beendest du die Sitzung auf einem einzelnen Gerät."
+              }
+            ]
+          },
+          {
+            "type": "list-item",
+            "children": [
+              {
+                "type": "text",
+                "text": "Mit "
+              },
+              {
+                "type": "text",
+                "text": "Von allen Geräten abmelden",
+                "bold": true
+              },
+              {
+                "type": "text",
+                "text": " meldest du dich überall ab – auch auf dem Gerät, das du gerade nutzt."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "children": [
+          {
+            "type": "text",
+            "text": "Tipp: Siehst du ein Gerät oder einen Standort, den du nicht kennst? Melde dich von allen Geräten ab und ändere sofort dein Passwort."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "children": [
+          {
+            "type": "text",
+            "text": "Umgezogen?"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dein Land kannst du nicht selbst ändern, weil dein Konto, deine Verifizierung und deine Auszahlungen daran gebunden sind."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Bist du umgezogen, melde dich beim Support unter "
+          },
+          {
+            "type": "link",
+            "url": "mailto:support@creatordoor.com",
+            "children": [
+              {
+                "type": "text",
+                "text": "support@creatordoor.com"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": " oder über das "
+          },
+          {
+            "type": "link",
+            "url": "https://creatordoor.com/contact",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kontaktformular"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ]
+      }
+    ],
+    "excerpt": "Profilbild, E-Mail-Adresse und Passwort ändern und dich von Geräten abmelden.",
+    "featured": false,
+    "views": null,
+    "helpful_yes": null,
+    "helpful_no": null,
+    "order": 5,
+    "category": {
+      "id": 15,
+      "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+      "name": "Erste Schritte",
+      "description": "Registrierung, Login und dein Konto",
+      "icon": "rocket",
+      "slug": "erste-schritte",
       "order": 1
     },
     "subcategory": null

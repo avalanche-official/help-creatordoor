@@ -280,22 +280,32 @@ const getMediaUrl = (file) => {
     <!-- ✅ HORIZONTAL RULE / DIVIDER -->
     <hr v-else-if="block.type === 'horizontalRule' || block.type === 'thematicBreak'" class="my-8 border-t border-stone-300" />
 
-    <!-- ✅ Lists mit Text-Formatting Support -->
-    <ul v-else-if="block.type === 'list' && block.format === 'unordered'" class="list-disc pl-6 mb-4 space-y-2">
+    <!-- ✅ Lists mit Text-Formatting und Links -->
+    <component
+      :is="block.format === 'ordered' ? 'ol' : 'ul'"
+      v-else-if="block.type === 'list'"
+      :class="[block.format === 'ordered' ? 'list-decimal' : 'list-disc', 'pl-6 mb-4 space-y-2']"
+    >
       <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
         <template v-for="(child, childIndex) in item.children" :key="childIndex">
-          <span :class="getTextClasses(child)">{{ child.text }}</span>
+          <a
+            v-if="child.type === 'link'"
+            :href="child.url"
+            :target="isInternalLink(child.url) ? undefined : '_blank'"
+            :rel="isInternalLink(child.url) ? undefined : 'noopener noreferrer'"
+            class="text-secondary-purple underline hover:text-primary-purple"
+            @click="openInternalLink($event, child.url)"
+          >
+            <span
+              v-for="(linkChild, linkIndex) in child.children"
+              :key="linkIndex"
+              :class="getTextClasses(linkChild)"
+            >{{ linkChild.text }}</span>
+          </a>
+          <span v-else :class="getTextClasses(child)">{{ child.text }}</span>
         </template>
       </li>
-    </ul>
-
-    <ol v-else-if="block.type === 'list' && block.format === 'ordered'" class="list-decimal pl-6 mb-4 space-y-2">
-      <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
-        <template v-for="(child, childIndex) in item.children" :key="childIndex">
-          <span :class="getTextClasses(child)">{{ child.text }}</span>
-        </template>
-      </li>
-    </ol>
+    </component>
 
     <!-- ✅ TABLE (code block containing a Markdown pipe table) — mirrors the
          dashboard's Table variant="data": tinted header band, dividers, no frame.
