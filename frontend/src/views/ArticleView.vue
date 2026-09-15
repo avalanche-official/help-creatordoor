@@ -274,18 +274,20 @@ const getMediaUrl = (file) => {
       </li>
     </ol>
 
-    <!-- ✅ TABLE (code block containing a Markdown pipe table) -->
+    <!-- ✅ TABLE (code block containing a Markdown pipe table) — mirrors the
+         dashboard's Table variant="data": tinted header band, dividers, no frame.
+         settings-card / settings-divider aren't tokens here, hence the hex values. -->
     <div
       v-else-if="block.type === 'code' && parseTable(block)"
-      class="my-6 overflow-x-auto rounded-lg border border-stone-200"
+      class="my-6 overflow-x-auto"
     >
-      <table class="w-full text-sm text-left border-collapse">
-        <thead class="bg-stone-50">
-          <tr>
+      <table class="w-full border-collapse text-left">
+        <thead>
+          <tr class="bg-[#f9f9f9]">
             <th
               v-for="(cell, cellIndex) in parseTable(block).head"
               :key="cellIndex"
-              class="px-3 py-3 font-semibold text-stone-800 border-b border-stone-200 align-bottom"
+              class="px-4 py-3.5 text-xs font-medium text-content-tertiary align-bottom first:rounded-l-lg last:rounded-r-lg"
             >
               {{ cell }}
             </th>
@@ -295,12 +297,15 @@ const getMediaUrl = (file) => {
           <tr
             v-for="(row, rowIndex) in parseTable(block).rows"
             :key="rowIndex"
-            class="border-b border-stone-100 last:border-b-0"
+            class="border-b border-[#dedad6]"
           >
             <td
               v-for="(cell, cellIndex) in row"
               :key="cellIndex"
-              :class="['px-3 py-3 align-top', cellIndex === 0 ? 'font-medium text-stone-800' : 'text-stone-700 whitespace-nowrap']"
+              :class="[
+                'px-4 py-3 body-default align-top',
+                cellIndex === 0 ? 'text-content-primary' : 'text-content-secondary whitespace-nowrap',
+              ]"
             >
               {{ cell }}
             </td>
