@@ -304,7 +304,9 @@ const getMediaUrl = (file) => {
               :key="cellIndex"
               :class="[
                 'px-4 py-3 body-default align-top',
-                cellIndex === 0 ? 'text-content-primary' : 'text-content-secondary whitespace-nowrap',
+                cellIndex === 0 ? 'text-content-primary' : 'text-content-secondary',
+                // amounts and codes stay on one line; long lists (e.g. countries) wrap
+                cellIndex > 0 && cell.length <= 24 && 'whitespace-nowrap',
               ]"
             >
               {{ cell }}

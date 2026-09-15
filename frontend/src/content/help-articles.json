@@ -1,6 +1,6 @@
 [
   {
-    "id": 10,
+    "id": 13,
     "documentId": "kd5kas3i2gwsd09756a2iha4",
     "title": "Mit Klarna bezahlen",
     "slug": "mit-klarna-bezahlen",
@@ -366,40 +366,16 @@
         "children": [
           {
             "type": "text",
-            "text": "Klarna ist unter anderem in folgenden Ländern verfügbar. Bezahlt wird immer in der Währung deines Landes:"
+            "text": "Klarna ist in folgenden Ländern verfügbar. Bezahlt wird immer in der Währung deines Landes:"
           }
         ]
       },
       {
-        "type": "list",
-        "format": "unordered",
+        "type": "code",
         "children": [
           {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Schweiz, Deutschland, Österreich"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Belgien, Dänemark, Finnland, Frankreich, Griechenland, Irland, Italien, Niederlande, Norwegen, Polen, Portugal, Rumänien, Schweden, Spanien, Tschechische Republik"
-              }
-            ]
-          },
-          {
-            "type": "list-item",
-            "children": [
-              {
-                "type": "text",
-                "text": "Vereinigtes Königreich"
-              }
-            ]
+            "type": "text",
+            "text": "| Region | Länder | Währung |\n|---|---|---|\n| Schweiz | Schweiz | CHF |\n| Eurozone | Belgien, Deutschland, Finnland, Frankreich, Griechenland, Irland, Italien, Niederlande, Österreich, Portugal, Spanien | EUR |\n| Skandinavien | Dänemark, Norwegen, Schweden | DKK, NOK, SEK |\n| Osteuropa | Polen, Rumänien, Tschechische Republik | PLN, RON, CZK |\n| Grossbritannien | Vereinigtes Königreich | GBP |"
           }
         ]
       },
@@ -528,7 +504,7 @@
     "helpful_no": null,
     "order": 1,
     "category": {
-      "id": 10,
+      "id": 11,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
@@ -982,7 +958,7 @@
     "helpful_no": null,
     "order": 2,
     "category": {
-      "id": 10,
+      "id": 11,
       "documentId": "urpg0exkot6mi8xg9zq9l8tg",
       "name": "Zahlungen",
       "description": "Zahlungsmethoden, Raten und Rückerstattungen",
