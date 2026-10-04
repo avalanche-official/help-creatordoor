@@ -29,3 +29,10 @@
    ============================================ */
 
 @import './components/avatars.css';
+
+/* ============================================
+   EDITORIAL DESIGN (the main site's marketing system)
+   --ed-* tokens, type classes, motion
+   ============================================ */
+
+@import '../editorial/tokens/editorial.css';

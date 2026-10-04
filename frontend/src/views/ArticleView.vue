@@ -1,356 +1,217 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     ArticleView — one help article, laid out like the main site's blog
+     post: the violet hero with the breadcrumb, the title and the excerpt
+     as the lead; a cream sheet with the article in a white card at a
+     720px reading measure (the "War dieser Artikel hilfreich?" vote at its
+     foot) and, beside it from 1024px, the related articles and the night
+     contact card. Loading, load-failed (retry) and not-found states sit in
+     the hero.
+     ═══════════════════════════════════════════════════════════════════ -->
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { helpArticlesService } from '../services/helpArticles'
-import Text from '@/components/atoms/Text/Text.vue'
-import Button from '@/components/atoms/Button/Button.vue'
-import Card from '@/components/atoms/Card/Card.vue'
-import Icon from '@/components/atoms/Icon/Icon.vue'
+import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { ThumbsDown, ThumbsUp } from 'lucide-vue-next'
+import { helpArticlesService } from '@/services/helpArticles'
+import { articlePath, byOrder } from '@/editorial/helpContent'
+import EdSection from '@/editorial/templates/EdSection.vue'
+import EdButton from '@/editorial/atoms/EdButton.vue'
+import HelpBlocks from '@/editorial/organisms/HelpBlocks.vue'
+
+const SUPPORT = 'support@creatordoor.com'
 
 const route = useRoute()
-const router = useRouter()
 const article = ref(null)
 const relatedArticles = ref([])
 const loading = ref(true)
+const notFound = ref(false)
+const loadError = ref(false)
 const feedbackGiven = ref(false)
+const feedbackBusy = ref(false)
 
-// ✅ Strapi Base URL (ohne /api für Medien)
-const STRAPI_BASE_URL = import.meta.env.VITE_STRAPI_URL.replace('/api', '')
-
-onMounted(async () => {
+const load = async () => {
+  loading.value = true
+  notFound.value = false
+  loadError.value = false
   try {
-    const articleSlug = route.params.articleSlug
-    
-    const response = await helpArticlesService.getBySlug(articleSlug)
+    const response = await helpArticlesService.getBySlug(route.params.articleSlug)
     article.value = response.data
-    
-    console.log('📄 Article content blocks:', article.value.attributes.content) // Debug
-    
-    if (!article.value) {
-      console.error('Article not found')
-      return
-    }
-    
-    // Fetch related articles
-    if (article.value?.attributes?.category?.documentId) {
-      const allArticles = await helpArticlesService.getAll()
-      relatedArticles.value = allArticles.data
-        .filter(a => 
-          a.documentId !== article.value.documentId && 
-          a.attributes.category?.documentId === article.value.attributes.category?.documentId
-        )
-        .slice(0, 3)
-    }
+    document.title = `${article.value.attributes.title} - Creatordoor Help`
   } catch (error) {
     console.error('Error loading article:', error)
-  } finally {
+    if (error?.message === 'Article not found') notFound.value = true
+    else loadError.value = true
     loading.value = false
+    return
   }
-})
+  loading.value = false
 
-// ✅ Helper function for text formatting classes
-const getTextClasses = (child) => {
-  const classes = []
-  if (child.bold) classes.push('font-bold')
-  if (child.italic) classes.push('italic')
-  if (child.underline) classes.push('underline')
-  if (child.strikethrough) classes.push('line-through')
-  if (child.code) classes.push('bg-stone-100 px-1.5 py-0.5 rounded text-sm font-mono text-orange-600')
-  return classes.join(' ')
+  // Related articles: the others of the same category
+  if (article.value.attributes.category?.documentId) {
+    try {
+      const allArticles = await helpArticlesService.getAll()
+      relatedArticles.value = byOrder(allArticles.data)
+        .filter((a) =>
+          a.attributes.documentId !== article.value.documentId &&
+          a.attributes.category?.documentId === article.value.attributes.category.documentId,
+        )
+        .slice(0, 3)
+    } catch (error) {
+      console.error('Error loading related articles:', error)
+    }
+  }
 }
+onMounted(load)
+
+const category = computed(() => article.value?.attributes.category || null)
+const related = computed(() => relatedArticles.value.map((a) => ({ id: a.id, title: a.attributes.title, to: articlePath(a, category.value?.slug) })))
 
 const handleFeedback = async (isHelpful) => {
+  if (feedbackBusy.value) return
+  feedbackBusy.value = true
   try {
     const field = isHelpful ? 'helpful_yes' : 'helpful_no'
     const currentCount = article.value.attributes[field] || 0
-    
-    await helpArticlesService.update(article.value.id, {
-      [field]: currentCount + 1
-    })
-    
+    await helpArticlesService.update(article.value.id, { [field]: currentCount + 1 })
     feedbackGiven.value = true
   } catch (error) {
     console.error('Error submitting feedback:', error)
+  } finally {
+    feedbackBusy.value = false
   }
-}
-
-const goToArticle = (relatedArticle) => {
-  const articleSlug = relatedArticle.attributes.slug || relatedArticle.id
-  const categorySlug = relatedArticle.attributes.category?.slug || article.value.attributes.category?.slug
-  
-  router.push(`/${categorySlug}/${articleSlug}`)
-  window.scrollTo(0, 0)
-}
-
-const goToCategory = () => {
-  if (article.value?.attributes?.category?.slug) {
-    router.push(`/${article.value.attributes.category.slug}`)
-  }
-}
-
-// ✅ Helper function to get media URL
-const getMediaUrl = (file) => {
-  if (!file?.url) return ''
-  return file.url.startsWith('http') ? file.url : `${STRAPI_BASE_URL}${file.url}`
 }
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto  px-4">
-    <!-- Loading State -->
-    <div v-if="loading" class="text-center py-12">
-      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-    </div>
-
-    <article v-else-if="article">
-      <!-- Breadcrumb -->
-      <nav class="mb-12">
-        <ol class="flex items-center gap-2 text-sm overflow-hidden">
-          <li class="flex-shrink-0">
-            <Button variant="link" fontSize="body-default-bold text-secondary-purple" @click="router.push('/')">
-              Home
-            </Button>
-          </li>
-          <li class="flex-shrink-0">
-            <Text variant="body-default" color="content-secondary">/</Text>
-          </li>
-          <li v-if="article.attributes.category" class="min-w-0 flex-shrink">
-            <Button 
-              variant="link" 
-              fontSize="body-default-bold text-secondary-purple" 
-              @click="goToCategory"
-              class="truncate block w-full"
-            >
-              {{ article.attributes.category.name }}
-            </Button>
-          </li>
-          <li class="flex-shrink-0">
-            <Text variant="body-default-bold" color="content-secondary">/</Text>
-          </li>
-          <li class="min-w-0 flex-1">
-            <Text 
-              variant="body-default-bold" 
-              color="content-primary"
-              class="truncate block"
-            >
-              {{ article.attributes.title }}
-            </Text>
-          </li>
-        </ol>
-      </nav>
-
-      <div class="max-w-xl mx-auto">
-        <!-- Article Header -->
-        <div class="mb-8 text-center">
-          <Text variant="title-screen" as="h1" class="mb-4">
-            {{ article.attributes.title }}
-          </Text>
-          <Text v-if="article.attributes.excerpt" variant="body-large" color="content-secondary">
-            {{ article.attributes.excerpt }}
-          </Text>
-        </div>
-
-<!-- Article Content -->
-<div class="prose prose-lg max-w-none mb-12">
-  <div v-for="(block, index) in article.attributes.content" :key="index">
-    
-    <!-- ✅ IMAGE BLOCK - besseres Spacing -->
-    <figure v-if="block.type === 'image'" class="pt-2 pb-8">
-      <img 
-        :src="getMediaUrl(block.image)"
-        :alt="block.image?.alternativeText || block.image?.name || 'Article image'"
-        class="w-full rounded-lg border border-1 border-stone-200"
-      />
-      <figcaption 
-        v-if="block.image?.caption" 
-        class="text-sm text-stone-500 mt-2 text-center italic"
-      >
-        {{ block.image.caption }}
-      </figcaption>
-    </figure>
-
-    <!-- ✅ VIDEO/MEDIA BLOCK -->
-    <div v-else-if="block.type === 'media'" class="pt-2 pb-8">
-      <video 
-        v-if="block.file?.mime?.startsWith('video')"
-        controls 
-        class="w-full rounded-lg border border-1 border-stone-200"
-        :src="getMediaUrl(block.file)"
-      >
-        Your browser does not support the video tag.
-      </video>
-      <img 
-        v-else
-        :src="getMediaUrl(block.file)"
-        :alt="block.file?.alternativeText || 'Media'"
-        class="w-full rounded-lg border border-1 border-stone-200"
-      />
-    </div>
-
-    <!-- ✅ PARAGRAPH mit allen Text-Formaten -->
-    <p v-else-if="block.type === 'paragraph'" class="mb-4 body-default text-stone-700 leading-relaxed">
-      <template v-for="(child, childIndex) in block.children" :key="childIndex">
-        <!-- Link -->
-        <a 
-          v-if="child.type === 'link'" 
-          :href="child.url" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-secondary-purple underline hover:text-primary-purple"
-        >
-          <template v-for="(linkChild, linkIndex) in child.children" :key="linkIndex">
-            <span :class="getTextClasses(linkChild)">{{ linkChild.text }}</span>
+  <div class="help-view">
+    <!-- hero -->
+    <EdSection id="top" tone="violet" :overlap="false" pad="none" as="header">
+      <div class="help-ahero">
+        <nav class="help-crumbs" aria-label="Brotkrumen">
+          <RouterLink to="/" class="help-crumbs__link ed-focusable">Hilfe-Center</RouterLink>
+          <template v-if="category">
+            <span class="help-crumbs__sep" aria-hidden="true">/</span>
+            <RouterLink :to="`/${category.slug}`" class="help-crumbs__link ed-focusable">{{ category.name }}</RouterLink>
           </template>
-        </a>
-        <!-- Regular text with formatting -->
-        <span v-else :class="getTextClasses(child)">{{ child.text }}</span>
-      </template>
-    </p>
-
-    <!-- ✅ ALL HEADINGS h1-h6 -->
-    <Text 
-      v-else-if="block.type === 'heading' && block.level === 1" 
-      variant="title-screen" 
-      as="h1" 
-      class="mt-10 mb-6"
-    >
-      {{ block.children?.[0]?.text }}
-    </Text>
-
-    <Text 
-      v-else-if="block.type === 'heading' && block.level === 2" 
-      variant="title-subsection" 
-      as="h2" 
-      class="mt-8 mb-4"
-    >
-      {{ block.children?.[0]?.text }}
-    </Text>
-
-    <Text 
-      v-else-if="block.type === 'heading' && block.level === 3" 
-      variant="title-body" 
-      as="h3" 
-      class="mt-6 mb-3"
-    >
-      {{ block.children?.[0]?.text }}
-    </Text>
-
-    <h4 
-      v-else-if="block.type === 'heading' && block.level === 4" 
-      class="mt-5 mb-2 text-lg font-semibold text-stone-800"
-    >
-      {{ block.children?.[0]?.text }}
-    </h4>
-
-    <h5 
-      v-else-if="block.type === 'heading' && block.level === 5" 
-      class="mt-4 mb-2 text-base font-semibold text-stone-800"
-    >
-      {{ block.children?.[0]?.text }}
-    </h5>
-
-    <h6 
-      v-else-if="block.type === 'heading' && block.level === 6" 
-      class="mt-4 mb-2 text-sm font-semibold text-stone-700 uppercase tracking-wide"
-    >
-      {{ block.children?.[0]?.text }}
-    </h6>
-
-    <!-- ✅ HORIZONTAL RULE / DIVIDER -->
-    <hr v-else-if="block.type === 'horizontalRule' || block.type === 'thematicBreak'" class="my-8 border-t border-stone-300" />
-
-    <!-- ✅ Lists mit Text-Formatting Support -->
-    <ul v-else-if="block.type === 'list' && block.format === 'unordered'" class="list-disc pl-6 mb-4 space-y-2">
-      <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
-        <template v-for="(child, childIndex) in item.children" :key="childIndex">
-          <span :class="getTextClasses(child)">{{ child.text }}</span>
+        </nav>
+        <template v-if="article">
+          <h1 class="ed-display-2 help-ahero__title">{{ article.attributes.title }}</h1>
+          <p v-if="article.attributes.excerpt" class="ed-lead help-ahero__lead">{{ article.attributes.excerpt }}</p>
         </template>
-      </li>
-    </ul>
-
-    <ol v-else-if="block.type === 'list' && block.format === 'ordered'" class="list-decimal pl-6 mb-4 space-y-2">
-      <li v-for="(item, itemIndex) in block.children" :key="itemIndex" class="text-stone-700">
-        <template v-for="(child, childIndex) in item.children" :key="childIndex">
-          <span :class="getTextClasses(child)">{{ child.text }}</span>
+        <template v-else-if="loading">
+          <div class="help-skel is-title" /><div class="help-skel is-lead" />
         </template>
-      </li>
-    </ol>
-
-    <!-- ✅ CODE BLOCK -->
-    <pre v-else-if="block.type === 'code'" class="bg-stone-100 rounded-lg p-4 overflow-x-auto my-6">
-      <code class="text-sm font-mono text-stone-800">{{ block.children?.[0]?.text }}</code>
-    </pre>
-
-    <!-- ✅ QUOTE BLOCK -->
-    <blockquote v-else-if="block.type === 'quote'" class="border-l-4 border-orange-500 pl-4 italic my-6 text-stone-600">
-      <template v-for="(child, childIndex) in block.children" :key="childIndex">
-        <p v-if="child.type === 'paragraph'" class="mb-2 last:mb-0">
-          <template v-for="(textChild, textIndex) in child.children" :key="textIndex">
-            <span :class="getTextClasses(textChild)">{{ textChild.text }}</span>
-          </template>
-        </p>
-        <span v-else>{{ child.text }}</span>
-      </template>
-    </blockquote>
-
-  </div>
-</div>
-
-        <!-- Helpful Feedback Section -->
-        <div class="border-t border-b border-stone-200 py-8 mb-12">
-          <div class="text-center">
-            <Text variant="title-body" class="mb-4">
-              War dieser Artikel hilfreich?
-            </Text>
-            
-            <div v-if="!feedbackGiven" class="flex items-center justify-center gap-4 mt-2">
-              <Button 
-                variant="outline" 
-                fontSize="body-default-bold text-secondary-purple"
-                @click="handleFeedback(true)"
-              >
-                <Icon name="thumbs-up" :size="20" class="mr-2" />
-                Ja
-              </Button>
-              <Button 
-                variant="outline" 
-                fontSize="body-default-bold text-secondary-purple"
-                @click="handleFeedback(false)"
-              >
-                <Icon name="thumbs-down" :size="20" class="mr-2" />
-                Nein
-              </Button>
-            </div>
-
-            <div v-else>
-              <Text variant="body-large" color="content-secondary">
-                Vielen Dank für dein Feedback!
-              </Text>
-            </div>
+        <template v-else>
+          <h1 class="ed-display-2 help-ahero__title">{{ loadError ? 'Das hat nicht geklappt.' : 'Artikel nicht gefunden.' }}</h1>
+          <p class="ed-lead help-ahero__lead">{{ loadError ? 'Der Artikel konnte nicht geladen werden. Prüfe deine Verbindung und versuch es noch einmal.' : 'Diesen Artikel gibt es nicht (mehr). Im Hilfe-Center findest du alle Themen.' }}</p>
+          <div class="help-ahero__actions">
+            <EdButton v-if="loadError" label="Erneut versuchen" tone="lime" size="lg" @click="load" />
+            <EdButton v-else label="Zum Hilfe-Center" to="/" tone="lime" size="lg" />
           </div>
-        </div>
-
-        <!-- Related Articles -->
-        <div v-if="relatedArticles.length > 0" class="mb-12">
-          <Text variant="title-subsection" class="mb-6">
-            Ähnliche Artikel
-          </Text>
-          
-          <div class="space-y-2">
-            <Button
-              v-for="relatedArticle in relatedArticles"
-              :key="relatedArticle.id"
-              variant="link"
-              fontSize="body-default"
-              class="w-full justify-start text-left text-secondary-purple"
-              @click="goToArticle(relatedArticle)"
-            >
-              {{ relatedArticle.attributes.title }}
-            </Button>
-          </div>
-        </div>
-
+        </template>
       </div>
-    </article>
+    </EdSection>
+
+    <!-- article -->
+    <EdSection tone="cream">
+      <div class="help-sheet">
+        <article v-if="article" class="help-article">
+          <div class="help-article__body">
+            <HelpBlocks :blocks="article.attributes.content || []" />
+
+            <!-- helpful? -->
+            <div class="help-vote">
+              <template v-if="!feedbackGiven">
+                <div class="help-vote__title">War dieser Artikel hilfreich?</div>
+                <div class="help-vote__actions">
+                  <button type="button" class="help-vote__btn" :disabled="feedbackBusy" @click="handleFeedback(true)"><ThumbsUp :size="18" :stroke-width="2.2" aria-hidden="true" />Ja</button>
+                  <button type="button" class="help-vote__btn" :disabled="feedbackBusy" @click="handleFeedback(false)"><ThumbsDown :size="18" :stroke-width="2.2" aria-hidden="true" />Nein</button>
+                </div>
+              </template>
+              <div v-else class="help-vote__title" role="status">Vielen Dank für dein Feedback!</div>
+            </div>
+          </div>
+        </article>
+        <div v-else-if="loading" class="help-article is-skel" aria-busy="true"><div class="help-skel is-line" /><div class="help-skel is-line" /><div class="help-skel is-line is-short" /></div>
+        <div v-else class="help-article is-skel">
+          <p class="help-article__gone">{{ loadError ? 'Der Artikel konnte nicht geladen werden.' : 'Hier gibt es nichts zu lesen.' }}</p>
+        </div>
+
+        <aside class="help-side">
+          <div v-if="related.length" class="help-related">
+            <h2 class="help-related__title">Ähnliche Artikel</h2>
+            <RouterLink v-for="r in related" :key="r.id" :to="r.to" class="help-related__link ed-focusable">
+              <span>{{ r.title }}</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
+            </RouterLink>
+          </div>
+          <div class="help-contact">
+            <div class="ed-display-4">Noch mehr Hilfe?</div>
+            <p class="help-contact__text">Nichts Passendes gefunden? Schreib uns – wir helfen dir persönlich weiter.</p>
+            <EdButton label="Kontaktiere uns" :href="`mailto:${SUPPORT}`" tone="lime" size="lg" />
+          </div>
+        </aside>
+      </div>
+    </EdSection>
   </div>
 </template>
+
+<style scoped>
+.help-ahero { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; max-width: 900px; padding-top: 20px; padding-bottom: calc(var(--ed-sheet-overlap) + 40px); }
+.help-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 15px; line-height: 22px; font-weight: 700; color: var(--ed-on-violet-muted); }
+.help-crumbs__link { color: inherit; text-decoration: none; border-radius: 6px; overflow-wrap: anywhere; }
+.help-crumbs__link:hover { color: var(--ed-on-violet); }
+.help-crumbs__sep { opacity: 0.6; }
+.help-ahero__title { font-size: clamp(34px, 1.9vw + 26px, 68px); line-height: 0.94; overflow-wrap: break-word; max-width: 100%; }
+.help-ahero__lead { color: var(--ed-on-violet-soft); max-width: 720px; }
+.help-ahero__actions { display: flex; gap: 12px; }
+.help-skel { border-radius: 10px; background: var(--ed-violet-glass); width: 100%; }
+.help-skel.is-title { height: 64px; width: min(560px, 80%); }
+.help-skel.is-lead { height: 24px; width: min(400px, 60%); }
+.help-skel.is-line { height: 18px; background: var(--ed-field); border-radius: 7px; }
+.help-skel.is-short { width: 55%; }
+
+.help-sheet { display: flex; flex-direction: column; gap: 24px; }
+.help-article { box-sizing: border-box; width: 100%; max-width: 820px; min-width: 0; background: var(--ed-paper); color: var(--ed-ink); border-radius: var(--ed-card-radius); overflow: hidden; box-shadow: var(--ed-shadow-card); }
+.help-article.is-skel { padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+.help-article__gone { margin: 0; font-size: 17px; line-height: 26px; color: var(--ed-ink-2); }
+.help-article__body { display: flex; flex-direction: column; gap: 32px; padding: 28px 24px 32px; max-width: 720px; }
+
+.help-vote { display: flex; flex-direction: column; gap: 16px; padding-top: 28px; border-top: 1px solid var(--ed-line-cream); }
+.help-vote__title { font-family: var(--ed-font-display); font-weight: 700; font-size: 22px; line-height: 26px; letter-spacing: -0.02em; }
+.help-vote__actions { display: flex; gap: 10px; }
+.help-vote__btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px;
+  border: 2px solid var(--ed-ink); border-radius: var(--ed-pill); background: transparent; color: var(--ed-ink);
+  font-family: var(--ed-font-sans); font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+.help-vote__btn:hover:not(:disabled) { background: var(--ed-ink); color: var(--ed-lime); }
+.help-vote__btn:disabled { opacity: 0.6; cursor: default; }
+.help-vote__btn:focus-visible { outline: 3px solid var(--ed-violet); outline-offset: 3px; }
+
+.help-side { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 820px; }
+.help-related { box-sizing: border-box; padding: 24px 28px; border-radius: var(--ed-card-radius); background: var(--ed-paper); border: 1px solid var(--ed-line-cream); display: flex; flex-direction: column; }
+.help-related__title { margin: 0 0 8px; font-family: var(--ed-font-sans); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ed-ink-3); }
+.help-related__link { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; font-size: 16px; line-height: 22px; font-weight: 700; color: var(--ed-ink); text-decoration: none; border-radius: 6px; }
+.help-related__link + .help-related__link { border-top: 1px solid var(--ed-line-cream); }
+.help-related__link span { min-width: 0; overflow-wrap: break-word; }
+.help-related__link svg { flex: 0 0 auto; color: var(--ed-ink-3); }
+.help-related__link:hover { color: var(--nd-violet-mark, #5b21b6); }
+.help-related__link:hover svg { color: inherit; }
+.help-related__link.ed-focusable:focus-visible { outline-color: var(--ed-violet); }
+.help-contact { box-sizing: border-box; padding: 28px; border-radius: var(--ed-card-radius); background: var(--ed-night); color: var(--ed-bone); display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.help-contact__text { margin: 0; font-size: 16px; line-height: 24px; color: var(--ed-bone-2); }
+
+@media (min-width: 600px) {
+  .help-article__body { padding: 40px 48px 48px; }
+  .help-side { flex-direction: row; align-items: stretch; }
+  .help-related, .help-contact { flex: 1 1 0; min-width: 0; }
+}
+@media (min-width: 1024px) {
+  .help-ahero { gap: 28px; padding-top: 48px; padding-bottom: calc(var(--ed-sheet-overlap) + 64px); }
+  .help-sheet { flex-direction: row; align-items: flex-start; gap: 32px; }
+  .help-article { flex: 1 1 0; }
+  .help-side { width: 360px; flex: 0 0 auto; flex-direction: column; position: sticky; top: 24px; }
+  .help-related, .help-contact { flex: 0 0 auto; }
+}
+</style>

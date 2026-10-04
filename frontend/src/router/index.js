@@ -26,11 +26,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
+    // Wait for the old page to fade out (the `ed-page` transition) before the scroll jumps.
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(savedPosition || { top: 0 }), 170)
+    })
   },
 })
 

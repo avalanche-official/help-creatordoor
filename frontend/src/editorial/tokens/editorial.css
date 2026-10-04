@@ -1,0 +1,205 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CreatorDoor editorial (marketing site) tokens — `--ed-*`.
+   ═══════════════════════════════════════════════════════════════════════════
+   The marketing pages are NOT themed: a visitor sees the same violet, cream
+   and night whether their OS is light or dark, so these values are literal
+   and never re-declared under `:root.dark`. Where a value already exists in
+   the product system it is referenced (`--nd-violet`, the three type
+   families) so the two never drift; the rest (cream, lime, night, the bento
+   accents) belongs to the marketing site only and stays out of the app —
+   see reference/brand-book.md and the "Marketing pages · new direction" row
+   of the design canvas.
+
+   RHYTHM. Every marketing page is a stack of full-bleed sheets: violet hero,
+   cream, night, (lime), cream FAQ, violet closing, night footer. Each sheet
+   after the first pulls up over the one above by `--ed-sheet-overlap` and
+   rounds its top corners by `--ed-sheet-radius`; the page shell (EdSection)
+   does that, a view never sets a margin between sections.
+
+   SCALE. Three breakpoints: phone (< 600), tablet (600–1023), desktop
+   (≥ 1024). The canvas draws 1440 and 390; everything between interpolates
+   through the clamps below, so a view never queries the viewport itself.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Colour ── */
+  --ed-violet: var(--nd-violet, #8b3fff);
+  --ed-on-violet: #ffffff;
+  --ed-on-violet-soft: rgba(255, 255, 255, 0.9);
+  --ed-on-violet-muted: rgba(255, 255, 255, 0.8);
+  --ed-violet-glass: rgba(255, 255, 255, 0.16);
+  --ed-violet-focus: #c9aeff;
+
+  --ed-cream: #f5f3ef;
+  --ed-paper: #ffffff;
+  --ed-sunken: #e8e8ec;
+  --ed-field: #efeff2;
+  --ed-ink: #141416;
+  --ed-ink-2: #4f4f56;
+  --ed-ink-3: #65656c;
+  --ed-line-cream: #d2d2d8;
+
+  --ed-night: #0e0e10;
+  --ed-night-raised: #171719;
+  --ed-night-chip: #1f1f22;
+  --ed-night-field: #2a2a30;
+  --ed-line-night: #27272b;
+  --ed-bone: #f5f3ef;
+  --ed-bone-2: #b4b1a9;
+  --ed-bone-3: #8c8a83;
+
+  --ed-lime: #c8f04a;
+  --ed-on-lime: #16250a;
+
+  --ed-blaze: var(--nd-blaze, #ff5c8a);
+  --ed-on-blaze: #2a0812;
+  --ed-mint: #4ee0a8;
+  --ed-on-mint: #04231a;
+  --ed-sky: #2f6bff;
+  --ed-on-sky: #ffffff;
+  --ed-sand: #e4d9bd;
+  --ed-on-sand: #2b2416;
+  --ed-lilac: #dccbff;
+  --ed-on-lilac: #1e0a45;
+
+  --ed-shadow-float: 0 24px 60px rgba(20, 8, 60, 0.35);
+  --ed-shadow-card: 0 1px 2px rgba(20, 20, 18, 0.07);
+
+  /* ── Type families: the product system's, so the brand voice is one ── */
+  --ed-font-display: var(--nd-font-display, 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif);
+  --ed-font-sans: var(--nd-font-sans, 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --ed-font-mono: var(--nd-font-mono, 'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+
+  /* ── Layout (phone values; tablet and desktop below) ── */
+  --ed-gutter: 20px;
+  --ed-max-width: 1440px;
+  --ed-sheet-radius: 32px;
+  --ed-sheet-overlap: 32px;
+  --ed-section-pad: 72px;
+  --ed-section-pad-tight: 64px;
+  --ed-section-gap: 28px;
+  --ed-card-radius: 28px;
+  --ed-tile-radius: 24px;
+  --ed-toast-radius: 18px;
+  --ed-pill: 999px;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --ed-gutter: 40px;
+    --ed-sheet-radius: 40px;
+    --ed-sheet-overlap: 40px;
+    --ed-section-pad: 100px;
+    --ed-section-pad-tight: 88px;
+    --ed-section-gap: 40px;
+    --ed-card-radius: 32px;
+    --ed-tile-radius: 28px;
+    --ed-toast-radius: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --ed-gutter: 80px;
+    --ed-sheet-radius: 56px;
+    --ed-sheet-overlap: 56px;
+    --ed-section-pad: 140px;
+    --ed-section-pad-tight: 112px;
+    --ed-section-gap: 56px;
+    --ed-card-radius: 40px;
+    --ed-tile-radius: 32px;
+    --ed-toast-radius: 22px;
+  }
+}
+
+/* ── Type scale — the canvas's 1440 and 390 sizes, interpolated ──────────
+   display-1 is the hero h1 (104/48), display-2 a section h2 (68/36),
+   display-3 a card or column title (52/32), display-4 a tile title (36/26),
+   display-5 a step or row title (30/24). `lead` is the hero paragraph
+   (22/18), `body` a section aside (19/17). `figure` is DM Mono for big
+   numbers (88/56); `figure-sm` for the 01/02/03 step numerals (104/72). */
+.ed-display-1 { margin: 0; font-family: var(--ed-font-display); font-weight: 800; font-size: clamp(48px, 3.2vw + 36px, 104px); line-height: 0.86; letter-spacing: -0.045em; }
+.ed-display-2 { margin: 0; font-family: var(--ed-font-display); font-weight: 800; font-size: clamp(36px, 2vw + 28px, 68px); line-height: 0.92; letter-spacing: -0.04em; }
+.ed-display-3 { margin: 0; font-family: var(--ed-font-display); font-weight: 800; font-size: clamp(32px, 1.3vw + 26px, 52px); line-height: 0.94; letter-spacing: -0.035em; }
+.ed-display-4 { margin: 0; font-family: var(--ed-font-display); font-weight: 800; font-size: clamp(26px, 0.7vw + 22px, 36px); line-height: 0.96; letter-spacing: -0.035em; }
+.ed-display-5 { margin: 0; font-family: var(--ed-font-display); font-weight: 800; font-size: clamp(24px, 0.4vw + 22px, 30px); line-height: 1; letter-spacing: -0.03em; }
+.ed-lead { margin: 0; font-family: var(--ed-font-sans); font-size: clamp(18px, 0.3vw + 16px, 22px); line-height: 1.5; }
+.ed-body { margin: 0; font-family: var(--ed-font-sans); font-size: clamp(17px, 0.15vw + 16px, 19px); line-height: 1.53; }
+.ed-eyebrow { margin: 0; font-family: var(--ed-font-sans); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.ed-figure { margin: 0; font-family: var(--ed-font-mono); font-weight: 500; font-size: clamp(56px, 2vw + 48px, 88px); line-height: 0.93; letter-spacing: -0.06em; }
+.ed-figure-sm { margin: 0; font-family: var(--ed-font-mono); font-weight: 500; font-size: clamp(72px, 2.4vw + 60px, 104px); line-height: 0.85; letter-spacing: -0.06em; }
+
+/* ── Focus: one ring for every control on every sheet ── */
+.ed-focusable:focus-visible { outline: 3px solid var(--ed-violet-focus); outline-offset: 3px; }
+
+/* ── The app's NdTextField on a marketing sheet ─────────────────────────
+   NdTextField reads the app's themed --nd-* tokens, and the app's dark
+   mode sets them on :root.dark. A sheet here is literal, so the form that
+   holds the field pins the values it reads to the sheet's own colours:
+   .ed-nd-light on cream / paper / lime, .ed-nd-dark on night. */
+.ed-nd-light {
+  --nd-surface-field: var(--ed-field);
+  --nd-ink-primary: var(--ed-ink);
+  --nd-ink-secondary: var(--ed-ink-2);
+  --nd-ink-muted: var(--ed-ink-3);
+  --nd-focus-ring: #5b21b6;
+  --nd-signal-danger: #b83417;
+}
+.ed-nd-dark {
+  --nd-surface-field: var(--ed-night-field);
+  --nd-ink-primary: var(--ed-bone);
+  --nd-ink-secondary: var(--ed-bone-2);
+  --nd-ink-muted: var(--ed-bone-3);
+  --nd-focus-ring: var(--ed-violet-focus);
+  --nd-signal-danger: #ff6b3d;
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────
+   Three movements, all small, all optional:
+   • reveal — a sheet's content (or, staggered, a row's children) rises
+     24px and fades in as it enters the viewport (templates/useReveal.js
+     sets `data-ed-reveal`; nothing is hidden without script).
+   • page — the route change fades the old page out (160ms) and the new one
+     up (360ms); App.vue wraps the router view in <Transition name="ed-page">.
+   • float — the hero's sale toasts drift 6px up and down over 6s.
+   Reduced motion keeps every state change and drops the travel. ── */
+:root {
+  --ed-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ed-reveal-duration: 640ms;
+  --ed-reveal-delay: 0ms;
+}
+[data-ed-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity var(--ed-reveal-duration) var(--ed-ease-out) var(--ed-reveal-delay), transform var(--ed-reveal-duration) var(--ed-ease-out) var(--ed-reveal-delay);
+  will-change: opacity, transform;
+}
+[data-ed-reveal].is-in { opacity: 1; transform: none; will-change: auto; }
+
+.ed-page-enter-active { transition: opacity 360ms var(--ed-ease-out), transform 360ms var(--ed-ease-out); }
+.ed-page-leave-active { transition: opacity 160ms ease; }
+.ed-page-enter-from { opacity: 0; transform: translate3d(0, 12px, 0); }
+.ed-page-leave-to { opacity: 0; }
+
+@keyframes ed-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+.ed-float { animation: ed-float 6s ease-in-out infinite; }
+.ed-float.is-2 { animation-delay: -2s; }
+.ed-float.is-3 { animation-delay: -4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-ed-reveal] { transform: none; transition-duration: 1ms; }
+  .ed-page-enter-active, .ed-page-leave-active { transition-duration: 1ms; }
+  .ed-page-enter-from { transform: none; }
+  .ed-float { animation: none; }
+}
+
+/* ── Help center ────────────────────────────────────────────────────────
+   This file is the main site's (digitaldownload/src/new-design/editorial/
+   tokens/editorial.css) copied whole, so the two never drift; the `--nd-*`
+   references fall back to the literal values because the help center has
+   no product system. Only the block below is the help center's own.
+
+   A help view is one column of sheets inside the page shell (App.vue); its
+   last sheet stretches so a short page still reaches the footer. */
+.help-view { display: flex; flex-direction: column; flex: 1 1 auto; }
+.help-view > :last-child { flex-grow: 1; }

@@ -1,243 +1,188 @@
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HomeView — the help center's start page in the main site's editorial
+     design: the violet hero with the question and the article search, the
+     cream sheet with one card per topic, and the violet "Noch mehr Hilfe?"
+     closing. Nav and footer come from App.vue.
+     ═══════════════════════════════════════════════════════════════════ -->
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { categoriesService } from '@/services/categories'
 import { helpArticlesService } from '@/services/helpArticles'
-import { useRouter } from 'vue-router'
-import SearchSelector from '../components/molecules/SearchSelector/SearchSelector.vue'
-import Card from '../components/atoms/Card/Card.vue'
-import Icon from '../components/atoms/Icon/Icon.vue'
-import CopyBlock from '../components/molecules/CopyBlock/CopyBlock.vue'
-import Text from '../components/atoms/Text/Text.vue'
-import List from '../components/organisms/List/List.vue'
-
+import { articleCount, articlePath, byOrder, categoryPath } from '@/editorial/helpContent'
+import EdSection from '@/editorial/templates/EdSection.vue'
+import EdChip from '@/editorial/atoms/EdChip.vue'
+import EdButton from '@/editorial/atoms/EdButton.vue'
+import EdArches from '@/editorial/atoms/EdArches.vue'
+import HelpSearch from '@/editorial/organisms/HelpSearch.vue'
+import HelpClosing from '@/editorial/organisms/HelpClosing.vue'
+import Icon from '@/components/atoms/Icon/Icon.vue'
 
 const router = useRouter()
 const categories = ref([])
 const allArticles = ref([])
 const loading = ref(true)
+const loadError = ref(false)
 
-onMounted(async () => {
+const load = async () => {
+  loading.value = true
+  loadError.value = false
   try {
     const [categoriesRes, articlesRes] = await Promise.all([
       categoriesService.getAll(),
-      helpArticlesService.getAll()
+      helpArticlesService.getAll(),
     ])
-    categories.value = categoriesRes.data
+    categories.value = byOrder(categoriesRes.data)
     allArticles.value = articlesRes.data
-    
-    console.log('Categories loaded:', categories.value)
   } catch (error) {
     console.error('Error loading data:', error)
+    loadError.value = true
   } finally {
     loading.value = false
   }
+}
+onMounted(() => {
+  document.title = 'Creatordoor - Help'
+  load()
 })
 
-const handleArticleSelect = (article) => {
-  const slug = article.attributes.slug || article.id
-  router.push(`/article/${slug}`)
-}
-
-const goToCategory = (category) => {
-  const slug = category.attributes.slug || category.id
-  router.push(`/${slug}`)
-}
-
-// For List component (mobile)
-const handleCategorySelect = (categoryId) => {
-  const category = categories.value.find(c => c.id === categoryId)
-  if (category) {
-    goToCategory(category)
-  }
-}
+const handleArticleSelect = (article) => router.push(articlePath(article))
 
 const getIconName = (iconFromStrapi) => {
-  if (!iconFromStrapi || iconFromStrapi.trim() === '') {
-    return 'folder'
-  }
+  if (!iconFromStrapi || iconFromStrapi.trim() === '') return 'folder'
   return iconFromStrapi.trim()
 }
 
-// Transform categories for List component
-const categoriesForList = computed(() => {
-  return categories.value.slice(0, 6).map(category => ({
-    value: category.id,
-    label: category.attributes.name,
+// One brand accent per card, in the order the main site's bento uses them.
+const TONES = ['lime', 'lilac', 'blaze', 'mint', 'sand', 'violet']
+const cards = computed(() =>
+  categories.value.map((category, i) => ({
+    id: category.id,
+    to: categoryPath(category),
+    name: category.attributes.name,
     description: category.attributes.description,
     icon: getIconName(category.attributes.icon),
-    iconBgColor: 'bg-stone-100', // You can customize this
-    iconColor: 'text-stone-500',
-  }))
-})
+    tone: TONES[i % TONES.length],
+    count: allArticles.value.filter((a) => a.attributes.category?.documentId === category.attributes.documentId).length,
+  })),
+)
 </script>
 
 <template>
-  <div>
-    <!-- ── Hero: dark with centered light beam + search (matches the main site) ── -->
-    <div class="relative w-full bg-[#141414] overflow-hidden">
-      <div class="hero-beam" aria-hidden="true" />
-      <div class="hero-beam-glow" aria-hidden="true" />
-
-      <div
-        class="relative max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-28 flex flex-col items-center text-center"
-      >
-        <Text variant="title-section" as="h1" custom-color="#ffffff" class="mb-8">
-          Wie können wir behilflich sein?
-        </Text>
-
-        <!-- Search Selector -->
-        <div class="w-full max-w-2xl mx-auto text-left">
-          <SearchSelector
-            :articles="allArticles"
-            @select="handleArticleSelect"
-          />
+  <div class="help-view">
+    <!-- hero -->
+    <EdSection id="top" tone="violet" :overlap="false" pad="none" as="header">
+      <div class="help-hero">
+        <div class="help-hero__copy">
+          <EdChip label="Hilfe-Center" tone="glass" />
+          <h1 class="ed-display-2 help-hero__title">Wie können wir behilflich sein?</h1>
+          <p class="ed-lead help-hero__lead">Antworten, Anleitungen und Tipps rund um Creatordoor – such nach deiner Frage oder wähle ein Thema.</p>
+          <HelpSearch :articles="allArticles" :loading="loading" @select="handleArticleSelect" />
+        </div>
+        <div class="help-hero__scene" aria-hidden="true">
+          <EdArches :width="220" outer="night" inner="lime" side="blaze" />
         </div>
       </div>
-    </div>
+    </EdSection>
 
-    <div class="max-w-3xl mx-auto px-4 py-12">
-
-    <!-- Loading State -->
-    <div v-if="loading" class="text-center py-12">
-      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-      <p class="text-neutral-600 mt-4">Hilfeartikel laden...</p>
-    </div>
-
-    <!-- Categories Section -->
-    <div v-else class="max-w-6xl mx-auto">
-      <Text variant="title-subsection" as="h2" class="mb-6 text-left">
-        Themen entdecken
-      </Text>
-      
-      <!-- Empty State -->
-      <div v-if="categories.length === 0" class="text-center py-12 flex flex-col">
-        <Icon name="folder-open" :size="64" color="text-neutral-300" class="mx-auto mb-4" />
-        <Text variant="title-subsection" color="content-secondary" class="mb-2">
-          Keine Kategorien gefunden
-        </Text>
-
-      </div>
-
-      <!-- Categories Display -->
-      <template v-else>
-        <!-- Mobile: List View -->
-        <div class="md:hidden">
-          <List
-            :items="categoriesForList"
-            spacing="3"
-            @select="handleCategorySelect"
-          />
+    <!-- topics -->
+    <EdSection id="themen" tone="cream">
+      <div class="help-topics">
+        <div class="help-topics__head">
+          <h2 class="ed-display-2">Themen entdecken</h2>
+          <p v-if="cards.length" class="ed-body help-topics__aside">{{ cards.length === 1 ? '1 Thema' : `${cards.length} Themen` }}, {{ articleCount(allArticles.length) }} – alles, was du für den Start und den Alltag mit Creatordoor brauchst.</p>
         </div>
 
-        <!-- Desktop: Grid View -->
-        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <Card
-            v-for="category in categories.slice(0, 6)"
-            :key="category.id"
-            variant="card"
-            clickable
-            rounded="rounded-2xl"
-            class="p-4 flex flex-col items-center text-center space-y-4 transition-shadow duration-300"
-            @click="goToCategory(category)"
-          >
-            <!-- Icon at top -->
-            <div class="w-14 h-14 rounded-full bg-white flex items-center justify-center">
-              <Icon 
-                :name="getIconName(category.attributes.icon)" 
-                :size="24" 
-                color="white"
-              />
-            </div>
-
-            <!-- CopyBlock at bottom -->
-            <CopyBlock
-              :title="category.attributes.name"
-              :description="category.attributes.description"
-              title-variant="title-body"
-              description-variant="body-default"
-              align="center"
-              spacing="2"
-              description-clamp="2"
-            />
-          </Card>
+        <!-- loading -->
+        <div v-if="loading" class="help-topics__grid" aria-busy="true" aria-label="Hilfeartikel laden …">
+          <div v-for="n in 6" :key="n" class="help-topic is-skel"><div class="help-skel is-disc" /><div class="help-skel is-title" /><div class="help-skel" /><div class="help-skel is-short" /></div>
         </div>
-      </template>
 
-      <!-- Still Need Help Section: light, with a dark pill button -->
-      <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center">
-        <Text variant="title-subsection" as="h2">
-          Noch mehr Hilfe?
-        </Text>
-        <a
-          href="mailto:support@creatordoor.com"
-          class="inline-flex items-center px-5 py-2.5 rounded-full bg-[#141414] text-white text-sm font-semibold hover:opacity-90 active:opacity-80 transition-opacity"
-        >
-          Kontaktiere uns
-        </a>
-      </div>
+        <!-- load failed -->
+        <div v-else-if="loadError" class="help-state">
+          <h3 class="ed-display-5">Die Hilfeartikel konnten nicht geladen werden.</h3>
+          <p class="help-state__text">Prüfe deine Verbindung und versuch es noch einmal.</p>
+          <EdButton label="Erneut versuchen" tone="night" size="lg" @click="load" />
+        </div>
 
-      <!-- Show message if more than 6 categories -->
-      <div v-if="categories.length > 6" class="text-center mt-8">
-        <Text variant="body-small" color="content-secondary">
-          Showing {{ Math.min(6, categories.length) }} of {{ categories.length }} categories
-        </Text>
+        <!-- empty -->
+        <div v-else-if="cards.length === 0" class="help-state">
+          <h3 class="ed-display-5">Keine Kategorien gefunden</h3>
+        </div>
+
+        <div v-else class="help-topics__grid">
+          <RouterLink v-for="card in cards" :key="card.id" :to="card.to" class="help-topic ed-focusable">
+            <span :class="['help-topic__disc', `is-${card.tone}`]" aria-hidden="true"><Icon :name="card.icon" :size="26" /></span>
+            <span class="ed-display-5 help-topic__title">{{ card.name }}</span>
+            <span v-if="card.description" class="help-topic__text">{{ card.description }}</span>
+            <span class="help-topic__foot">
+              <span class="help-topic__count">{{ articleCount(card.count) }}</span>
+              <svg class="help-topic__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+            </span>
+          </RouterLink>
+        </div>
       </div>
-    </div>
-    </div>
+    </EdSection>
+
+    <HelpClosing />
   </div>
 </template>
 
 <style scoped>
-/* ── Hero light beam shining down from the top, centered (same look as the
-   creatordoor.com dark heroes) ── */
-.hero-beam {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560px;
-  max-width: 90vw;
-  height: 100%;
-  pointer-events: none;
-  background: conic-gradient(
-    from 180deg at 50% -10%,
-    transparent 40%,
-    rgba(255, 255, 255, 0.14) 47%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0.14) 53%,
-    transparent 60%
-  );
-  filter: blur(24px);
-  animation: beam-fade-in 1.8s ease-out both;
-}
+.help-hero { display: flex; flex-direction: column; padding-top: 20px; padding-bottom: calc(var(--ed-sheet-overlap) + 48px); }
+.help-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; min-width: 0; }
+.help-hero__title { font-size: clamp(42px, 2.6vw + 32px, 84px); line-height: 0.9; letter-spacing: -0.045em; max-width: 900px; }
+.help-hero__lead { max-width: 560px; color: var(--ed-on-violet-soft); }
+.help-hero__scene { display: none; }
 
-.hero-beam-glow {
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560px;
-  max-width: 90vw;
-  height: 340px;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.16), transparent 70%);
-  filter: blur(40px);
-  animation: beam-fade-in 1.8s ease-out both;
-}
+.help-topics { display: flex; flex-direction: column; gap: 32px; }
+.help-topics__head { display: flex; flex-direction: column; gap: 16px; }
+.help-topics__aside { color: var(--ed-ink-2); max-width: 460px; }
+.help-topics__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 
-@keyframes beam-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.help-topic {
+  box-sizing: border-box; min-width: 0; display: flex; flex-direction: column; gap: 12px;
+  padding: 28px; border-radius: var(--ed-tile-radius); background: var(--ed-paper); color: var(--ed-ink);
+  text-decoration: none; box-shadow: var(--ed-shadow-card);
+  transition: transform 200ms var(--ed-ease-out), box-shadow 200ms ease;
 }
+.help-topic:not(.is-skel):hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(20, 20, 18, 0.1); }
+.help-topic__disc { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: var(--ed-pill); margin-bottom: 12px; }
+.help-topic__disc.is-lime { background: var(--ed-lime); color: var(--ed-on-lime); }
+.help-topic__disc.is-lilac { background: var(--ed-lilac); color: var(--ed-on-lilac); }
+.help-topic__disc.is-blaze { background: var(--ed-blaze); color: var(--ed-on-blaze); }
+.help-topic__disc.is-mint { background: var(--ed-mint); color: var(--ed-on-mint); }
+.help-topic__disc.is-sand { background: var(--ed-sand); color: var(--ed-on-sand); }
+.help-topic__disc.is-violet { background: var(--ed-violet); color: var(--ed-on-violet); }
+.help-topic__title { overflow-wrap: break-word; }
+.help-topic__text { font-size: 16px; line-height: 24px; color: var(--ed-ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.help-topic__foot { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.help-topic__count { font-family: var(--ed-font-mono); font-size: 13px; line-height: 18px; color: var(--ed-ink-3); }
+.help-topic__arrow { flex: 0 0 auto; transition: transform 200ms var(--ed-ease-out); }
+.help-topic:hover .help-topic__arrow { transform: translate(2px, -2px); }
 
+.help-skel { height: 14px; width: 100%; border-radius: 7px; background: var(--ed-field); }
+.help-skel.is-disc { width: 56px; height: 56px; border-radius: var(--ed-pill); margin-bottom: 12px; }
+.help-skel.is-title { height: 26px; width: 70%; }
+.help-skel.is-short { width: 55%; }
+
+.help-state { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px; border-radius: var(--ed-tile-radius); background: var(--ed-paper); }
+.help-state__text { margin: 0; font-size: 16px; line-height: 24px; color: var(--ed-ink-2); }
+
+@media (min-width: 600px) {
+  .help-topics__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+}
+@media (min-width: 1024px) {
+  .help-hero { flex-direction: row; align-items: flex-end; gap: 40px; padding-top: 48px; padding-bottom: 0; }
+  .help-hero__copy { flex: 1 1 0; gap: 32px; padding-bottom: calc(var(--ed-sheet-overlap) + 84px); }
+  .help-hero__scene { display: flex; flex: 0 0 auto; align-items: flex-end; justify-content: flex-end; padding-right: 20px; }
+  .help-topics { gap: 56px; }
+  .help-topics__head { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 48px; }
+  .help-topics__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .help-topic { padding: 36px; gap: 14px; min-height: 300px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .hero-beam,
-  .hero-beam-glow {
-    animation: none;
-  }
+  .help-topic, .help-topic__arrow { transition: none; }
+  .help-topic:not(.is-skel):hover { transform: none; }
 }
 </style>
