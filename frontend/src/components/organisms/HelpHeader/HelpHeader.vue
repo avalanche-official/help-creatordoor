@@ -16,13 +16,13 @@ import Logo from '@/components/atoms/Logo/Logo.vue'
         <div class="flex items-center gap-1.5">
           <a
             href="https://creatordoor.com/login"
-            class="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            class="hidden sm:inline-flex items-center px-4 py-2 rounded-full body-default font-normal text-white hover:bg-white/10 transition-colors"
           >
             Anmelden
           </a>
           <a
             href="https://creatordoor.com/register"
-            class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white text-[#141414] hover:opacity-90 active:opacity-80 transition-opacity"
+            class="inline-flex items-center px-4 py-2 rounded-full body-default font-normal bg-white text-[#141414] hover:opacity-90 active:opacity-80 transition-opacity"
           >
             Registrieren
           </a>

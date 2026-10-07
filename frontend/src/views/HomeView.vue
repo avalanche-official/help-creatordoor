@@ -10,6 +10,11 @@ import CopyBlock from '../components/molecules/CopyBlock/CopyBlock.vue'
 import Text from '../components/atoms/Text/Text.vue'
 import List from '../components/organisms/List/List.vue'
 
+// Hero background: palette-knife oil texture (Unsplash, Steve A Johnson).
+// The photo is near-white; the .hero-tint layer is what makes it beige.
+import heroCanvasWebp from '@/assets/hero/oil-canvas.webp'
+import heroCanvasJpg from '@/assets/hero/oil-canvas.jpg'
+
 
 const router = useRouter()
 const categories = ref([])
@@ -73,15 +78,25 @@ const categoriesForList = computed(() => {
 
 <template>
   <div>
-    <!-- ── Hero: dark with centered light beam + search (matches the main site) ── -->
-    <div class="relative w-full bg-[#141414] overflow-hidden">
-      <div class="hero-beam" aria-hidden="true" />
-      <div class="hero-beam-glow" aria-hidden="true" />
+    <!-- ── Hero: beige oil-painting canvas + search ── -->
+    <div class="relative w-full overflow-hidden bg-[#e9dcc6]">
+      <picture>
+        <source :srcset="heroCanvasWebp" type="image/webp" />
+        <img
+          :src="heroCanvasJpg"
+          alt=""
+          aria-hidden="true"
+          class="absolute inset-0 h-full w-full object-cover hero-canvas"
+        />
+      </picture>
+      <!-- Warm wash over the photo: turns the white canvas beige and keeps the
+           headline readable wherever the brush strokes fall. -->
+      <div class="hero-tint" aria-hidden="true" />
 
       <div
         class="relative max-w-3xl mx-auto px-4 sm:px-6 py-20 md:py-28 flex flex-col items-center text-center"
       >
-        <Text variant="title-section" as="h1" custom-color="#ffffff" class="mb-8">
+        <Text variant="title-section" as="h1" custom-color="#2b2419" class="mb-8">
           Wie können wir behilflich sein?
         </Text>
 
@@ -188,56 +203,28 @@ const categoriesForList = computed(() => {
 </template>
 
 <style scoped>
-/* ── Hero light beam shining down from the top, centered (same look as the
-   creatordoor.com dark heroes) ── */
-.hero-beam {
+/* ── Hero: the source photo is a near-white oil canvas, so the warmth comes
+   from CSS rather than from the image itself ── */
+.hero-canvas {
+  /* sepia turns the white paint beige; the rest keeps the strokes crisp */
+  filter: sepia(0.5) saturate(1.35) brightness(0.99) contrast(1.04);
+}
+
+.hero-tint {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560px;
-  max-width: 90vw;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
-  background: conic-gradient(
-    from 180deg at 50% -10%,
-    transparent 40%,
-    rgba(255, 255, 255, 0.14) 47%,
-    rgba(255, 255, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0.14) 53%,
-    transparent 60%
-  );
-  filter: blur(24px);
-  animation: beam-fade-in 1.8s ease-out both;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 250, 240, 0.62), transparent 68%),
+    linear-gradient(to bottom, rgba(233, 220, 198, 0.45), rgba(214, 196, 168, 0.6));
 }
 
-.hero-beam-glow {
+/* Soften the seam into the page below the hero */
+.hero-tint::after {
+  content: '';
   position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 560px;
-  max-width: 90vw;
-  height: 340px;
-  pointer-events: none;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.16), transparent 70%);
-  filter: blur(40px);
-  animation: beam-fade-in 1.8s ease-out both;
-}
-
-@keyframes beam-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-beam,
-  .hero-beam-glow {
-    animation: none;
-  }
+  inset: auto 0 0 0;
+  height: 96px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.55));
 }
 </style>

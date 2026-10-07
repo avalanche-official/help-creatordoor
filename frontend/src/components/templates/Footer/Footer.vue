@@ -32,6 +32,25 @@ const linkColumns = [
     ],
   },
   {
+    title: 'Tools',
+    links: [
+      { label: 'Link Shortener', href: 'https://creatordoor.com/tools/link-shortener' },
+      { label: 'Kompressor', href: 'https://creatordoor.com/tools/compressor' },
+      { label: 'Passwort teilen', href: 'https://creatordoor.com/tools/password-share' },
+    ],
+  },
+  {
+    title: 'Plattform',
+    links: [
+      { label: 'Preise', href: 'https://creatordoor.com/preise' },
+      { label: 'Marktplatz', href: 'https://creatordoor.com/marketplace' },
+      { label: 'Wechsel zu Creatordoor', href: 'https://creatordoor.com/migration-service' },
+      { label: 'Zahlungsmethoden', href: 'https://creatordoor.com/payment-methods' },
+      { label: 'Webinare', href: 'https://creatordoor.com/webinars' },
+      { label: 'Alle Features', href: 'https://creatordoor.com/features' },
+    ],
+  },
+  {
     title: 'Support',
     links: [
       { label: 'Hilfe-Center', to: '/' },
@@ -206,7 +225,7 @@ const googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.creator
         </div>
 
         <!-- Link columns -->
-        <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           <div v-for="col in linkColumns" :key="col.title" class="space-y-4">
             <Text variant="body-default-bold" class="text-white">{{ col.title }}</Text>
             <nav class="space-y-1 mt-2">
