@@ -1,65 +1,29 @@
-import strapiApi from './strapi'
+import categories from '@/content/categories.json'
+
+// See services/helpArticles.js — static JSON, same shape as the old API calls.
+const wrap = (item) => ({
+  id: item.documentId,
+  documentId: item.documentId,
+  attributes: item,
+})
 
 export const categoriesService = {
-  // Get all categories with their articles
+  // Get all categories
   async getAll() {
-    try {
-      const response = await strapiApi.get('/categories?populate=*')
-      return {
-        data: response.data.data.map(item => ({
-          id: item.documentId,
-          attributes: item
-        }))
-      }
-    } catch (error) {
-      console.error('Error fetching categories:', error)
-      throw error
-    }
+    return { data: categories.map(wrap) }
   },
 
-  // Get single category by ID with articles
+  // Get single category by ID
   async getById(id) {
-    try {
-      const response = await strapiApi.get(`/categories/${id}?populate=*`)
-      return {
-        data: {
-          id: response.data.data.documentId,
-          attributes: response.data.data
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching category:', error)
-      throw error
-    }
+    const item = categories.find((category) => category.documentId === id)
+    if (!item) throw new Error(`Category not found: ${id}`)
+    return { data: wrap(item) }
   },
 
-
-async getBySlug(slug) {
-  try {
-    console.log('🔍 Looking for category with slug:', slug)
-    
-    const response = await strapiApi.get(`/categories?filters[slug][$eq]=${slug}&populate=*`)
-    
-    console.log('📦 API Response:', response.data)
-    console.log('📊 Found categories:', response.data.data)
-    
-    if (!response.data.data || response.data.data.length === 0) {
-      throw new Error('Category not found')
-    }
-    
-    const item = response.data.data[0]
-    console.log('✅ Found category:', item.slug)
-    
-    return {
-      data: {
-        id: item.documentId,
-        documentId: item.documentId,
-        attributes: item
-      }
-    }
-  } catch (error) {
-    console.error('❌ Error fetching category by slug:', error)
-    throw error
-  }
-}
+  // Get single category by slug
+  async getBySlug(slug) {
+    const item = categories.find((category) => category.slug === slug)
+    if (!item) throw new Error(`Category not found: ${slug}`)
+    return { data: wrap(item) }
+  },
 }

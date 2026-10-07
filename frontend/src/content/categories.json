@@ -1,0 +1,29 @@
+[
+  {
+    "id": 15,
+    "documentId": "wi0nxnxa7hjfoueq1br4b3gb",
+    "name": "Erste Schritte",
+    "description": "Registrierung, Login und dein Konto",
+    "icon": "rocket",
+    "slug": "erste-schritte",
+    "order": 1
+  },
+  {
+    "id": 14,
+    "documentId": "urpg0exkot6mi8xg9zq9l8tg",
+    "name": "Zahlungen",
+    "description": "Zahlungsmethoden, Raten und Rückerstattungen",
+    "icon": "credit-card",
+    "slug": "zahlungen",
+    "order": 2
+  },
+  {
+    "id": 13,
+    "documentId": "jcl2bmalwb5eg0747ix6fzh2",
+    "name": "Verkaufen",
+    "description": "Verkaufsmodelle, Gebühren und Auszahlungen",
+    "icon": "store",
+    "slug": "verkaufen",
+    "order": 3
+  }
+]

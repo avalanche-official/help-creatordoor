@@ -30,8 +30,8 @@
 @theme {
   /* Font Families */
   --font-family-primary:
-    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    sans-serif;
+    'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
   --font-family-display: 'Parafina Black', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Font Weights */

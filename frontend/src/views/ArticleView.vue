@@ -8,7 +8,7 @@
      the hero.
      ═══════════════════════════════════════════════════════════════════ -->
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { ThumbsDown, ThumbsUp } from 'lucide-vue-next'
 import { helpArticlesService } from '@/services/helpArticles'
@@ -32,13 +32,16 @@ const load = async () => {
   loading.value = true
   notFound.value = false
   loadError.value = false
+  article.value = null
+  relatedArticles.value = []
+  feedbackGiven.value = false
   try {
     const response = await helpArticlesService.getBySlug(route.params.articleSlug)
     article.value = response.data
     document.title = `${article.value.attributes.title} - Creatordoor Help`
   } catch (error) {
     console.error('Error loading article:', error)
-    if (error?.message === 'Article not found') notFound.value = true
+    if (/^Article not found/.test(error?.message || '')) notFound.value = true
     else loadError.value = true
     loading.value = false
     return
@@ -61,23 +64,24 @@ const load = async () => {
   }
 }
 onMounted(load)
+// Moving between articles reuses this component, so onMounted alone would leave the previous one on screen.
+watch(
+  () => route.params.articleSlug,
+  (slug, previous) => {
+    if (slug && slug !== previous) load()
+  },
+)
 
 const category = computed(() => article.value?.attributes.category || null)
 const related = computed(() => relatedArticles.value.map((a) => ({ id: a.id, title: a.attributes.title, to: articlePath(a, category.value?.slug) })))
 
-const handleFeedback = async (isHelpful) => {
+const handleFeedback = (isHelpful) => {
   if (feedbackBusy.value) return
   feedbackBusy.value = true
-  try {
-    const field = isHelpful ? 'helpful_yes' : 'helpful_no'
-    const currentCount = article.value.attributes[field] || 0
-    await helpArticlesService.update(article.value.id, { [field]: currentCount + 1 })
-    feedbackGiven.value = true
-  } catch (error) {
-    console.error('Error submitting feedback:', error)
-  } finally {
-    feedbackBusy.value = false
-  }
+  // Content ships as static JSON, so there is no backend to count the vote; acknowledge it locally.
+  console.info(`Article feedback: ${article.value?.attributes.slug} -> ${isHelpful ? 'helpful' : 'not helpful'}`)
+  feedbackGiven.value = true
+  feedbackBusy.value = false
 }
 </script>
 

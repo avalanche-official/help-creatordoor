@@ -9,21 +9,22 @@
      ═══════════════════════════════════════════════════════════════════ -->
 <script setup>
 import { h } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const props = defineProps({
   blocks: { type: Array, default: () => [] },
 })
 
-// Strapi base URL (without /api) for media stored on the Strapi host.
-const STRAPI_BASE_URL = (import.meta.env.VITE_STRAPI_URL || '').replace('/api', '')
-const mediaUrl = (file) => {
-  if (!file?.url) return ''
-  return file.url.startsWith('http') ? file.url : `${STRAPI_BASE_URL}${file.url}`
-}
+// Media is copied into public/uploads by the content export, so Strapi's
+// relative `/uploads/...` URLs resolve as they are.
+const mediaUrl = (file) => file?.url || ''
+
+const isInternal = (url) => typeof url === 'string' && url.startsWith('/') && !url.startsWith('//')
 
 const inline = (children = []) =>
   children.map((child, i) => {
     if (child.type === 'link') {
+      if (isInternal(child.url)) return h(RouterLink, { key: i, to: child.url }, () => inline(child.children))
       const external = /^https?:/.test(child.url || '')
       return h('a', { key: i, href: child.url, target: external ? '_blank' : undefined, rel: external ? 'noopener noreferrer' : undefined }, inline(child.children))
     }
@@ -43,6 +44,29 @@ const list = (block, key) =>
     item.type === 'list' ? list(item, i) : h('li', { key: i }, inline(item.children)),
   ))
 
+// A code block whose text is a Markdown pipe table:
+//   | Option | Schweiz |
+//   |---|---|
+//   | Später bezahlen | 1 – 1.000 CHF |
+const splitRow = (line) =>
+  line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim())
+
+const parseTable = (b) => {
+  const lines = plain(b.children).split('\n').map((line) => line.trim()).filter(Boolean)
+  if (lines.length < 2 || !lines.every((line) => line.startsWith('|'))) return null
+  if (!/^\|?(\s*:?-+:?\s*\|)+\s*:?-*:?\s*\|?$/.test(lines[1])) return null
+  return { head: splitRow(lines[0]), rows: lines.slice(2).map(splitRow) }
+}
+
+const table = ({ head, rows }, key) =>
+  h('div', { key, class: 'hb-table' }, h('table', [
+    h('thead', h('tr', head.map((cell, i) => h('th', { key: i }, cell)))),
+    h('tbody', rows.map((row, r) => h('tr', { key: r }, row.map((cell, c) =>
+      // amounts and codes stay on one line; long lists (e.g. countries) wrap
+      h('td', { key: c, class: { 'is-key': c === 0, 'is-nowrap': c > 0 && cell.length <= 24 } }, cell),
+    )))),
+  ]))
+
 const block = (b, key) => {
   switch (b.type) {
     case 'paragraph':
@@ -57,8 +81,10 @@ const block = (b, key) => {
       return list(b, key)
     case 'quote':
       return h('blockquote', { key, class: 'hb-quote' }, (b.children || []).map((c, i) => (c.type === 'paragraph' ? h('p', { key: i }, inline(c.children)) : inline([c])[0])))
-    case 'code':
-      return h('pre', { key, class: 'hb-code' }, h('code', plain(b.children)))
+    case 'code': {
+      const parsed = parseTable(b)
+      return parsed ? table(parsed, key) : h('pre', { key, class: 'hb-code' }, h('code', plain(b.children)))
+    }
     case 'image':
       return h('figure', { key, class: 'hb-figure' }, [
         h('img', { src: mediaUrl(b.image), alt: b.image?.alternativeText || b.image?.name || '', loading: 'lazy' }),
@@ -117,6 +143,15 @@ const Blocks = () => props.blocks.map(block)
 .hb :deep(.hb-quote p + p) { margin-top: 10px; }
 
 .hb :deep(.hb-code) { margin: 8px 0; padding: 20px 24px; border-radius: 20px; background: var(--ed-night); color: var(--ed-bone); overflow-x: auto; font-family: var(--ed-font-mono); font-size: 14px; line-height: 1.6; }
+
+.hb :deep(.hb-table) { margin: 8px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.hb :deep(.hb-table table) { width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; line-height: 1.5; }
+.hb :deep(.hb-table th) { padding: 12px 16px; background: var(--ed-cream); color: var(--ed-ink-3); font-family: var(--ed-font-sans); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: bottom; }
+.hb :deep(.hb-table th:first-child) { border-radius: 12px 0 0 12px; }
+.hb :deep(.hb-table th:last-child) { border-radius: 0 12px 12px 0; }
+.hb :deep(.hb-table td) { padding: 12px 16px; border-bottom: 1px solid var(--ed-line-cream); color: var(--ed-ink-2); vertical-align: top; }
+.hb :deep(.hb-table td.is-key) { color: var(--ed-ink); font-weight: 600; }
+.hb :deep(.hb-table td.is-nowrap) { white-space: nowrap; }
 
 .hb :deep(.hb-figure) { margin: 8px 0; }
 .hb :deep(.hb-figure img), .hb :deep(.hb-figure video) { display: block; width: 100%; height: auto; border-radius: 20px; background: var(--ed-sunken); border: 1px solid var(--ed-line-cream); }
