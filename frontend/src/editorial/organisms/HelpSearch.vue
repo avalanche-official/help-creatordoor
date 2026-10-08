@@ -1,6 +1,8 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     HelpSearch — the hero's article search: a white pill field on the
-     violet and, while there is a query, a white card of matches under it
+     HelpSearch — the hero's article search: a compact field styled like
+     the app design's TextInput (ui/TextInput: white, 1px border, 8px
+     radius, 48px tall, accent border + soft ring on focus) on the violet
+     and, while there is a query, a white card of matches under it
      (title and excerpt match, as before). One layout for phone and
      desktop. A combobox: ↑ ↓ move, Enter opens the marked (or first)
      match, Escape or a click outside closes. The parent navigates on
@@ -67,7 +69,7 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointer))
 <template>
   <div ref="root" class="help-search">
     <div class="help-search__field">
-      <Search class="help-search__icon" :size="22" :stroke-width="2.2" aria-hidden="true" />
+      <Search class="help-search__icon" :size="20" :stroke-width="2" aria-hidden="true" />
       <input
         ref="input"
         v-model="query"
@@ -88,7 +90,7 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointer))
         @keydown.esc="open = false"
       >
       <button v-if="query" type="button" class="help-search__clear" aria-label="Suche leeren" @click="clear">
-        <X :size="18" :stroke-width="2.4" aria-hidden="true" />
+        <X :size="16" :stroke-width="2.4" aria-hidden="true" />
       </button>
     </div>
 
@@ -119,24 +121,27 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointer))
 </template>
 
 <style scoped>
-.help-search { position: relative; width: 100%; max-width: 640px; }
+.help-search { position: relative; width: 100%; max-width: 560px; }
 .help-search__field { position: relative; display: flex; align-items: center; }
-.help-search__icon { position: absolute; left: 20px; color: var(--ed-ink-3); pointer-events: none; }
+.help-search__icon { position: absolute; left: 14px; color: var(--color-content-tertiary); pointer-events: none; }
+/* mirrors ui/TextInput: bg-white, border, rounded-lg, px-4 py-3, text-base */
 .help-search__input {
-  box-sizing: border-box; width: 100%; height: 56px; padding: 0 52px 0 54px;
-  border: 0; border-radius: var(--ed-pill); background: var(--ed-paper); color: var(--ed-ink);
-  font-family: var(--ed-font-sans); font-size: 16px; font-weight: 500;
-  box-shadow: var(--ed-shadow-float); appearance: none;
+  box-sizing: border-box; width: 100%; height: 48px; padding: 0 44px 0 44px;
+  border: 1px solid var(--color-interactive-border); border-radius: 8px;
+  background: var(--color-white); color: var(--color-content-primary);
+  font-family: var(--ed-font-sans); font-size: 16px; line-height: 24px; font-weight: 400;
+  appearance: none; transition: border-color 200ms ease, box-shadow 200ms ease;
 }
-.help-search__input::placeholder { color: var(--ed-ink-3); opacity: 1; }
+.help-search__input::placeholder { color: var(--color-content-tertiary); opacity: 1; }
 .help-search__input::-webkit-search-cancel-button { display: none; }
-.help-search__input:focus-visible { outline: 3px solid var(--ed-violet-focus); outline-offset: 3px; }
+.help-search__input:hover { border-color: color-mix(in srgb, var(--color-border-focus) 50%, var(--color-interactive-border)); }
+.help-search__input:focus { outline: none; border-color: var(--color-border-focus); box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-border-focus) 20%, transparent); }
 .help-search__clear {
-  position: absolute; right: 10px; width: 36px; height: 36px; padding: 0; border: 0; border-radius: var(--ed-pill); cursor: pointer;
+  position: absolute; right: 10px; width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--ed-pill); cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center; background: var(--ed-field); color: var(--ed-ink);
 }
 .help-search__clear:hover { background: var(--ed-sunken); }
-.help-search__clear:focus-visible { outline: 3px solid var(--ed-violet); outline-offset: 2px; }
+.help-search__clear:focus-visible { outline: 2px solid var(--color-border-focus); outline-offset: 2px; }
 
 .help-search__panel {
   position: absolute; top: calc(100% + 10px); left: 0; right: 0; z-index: 30;
@@ -155,11 +160,6 @@ onBeforeUnmount(() => document.removeEventListener('pointerdown', onDocPointer))
 .help-search-enter-active, .help-search-leave-active { transition: opacity 160ms ease, transform 200ms var(--ed-ease-out); }
 .help-search-enter-from, .help-search-leave-to { opacity: 0; transform: translateY(-6px); }
 
-@media (min-width: 1024px) {
-  .help-search__input { height: 64px; padding-left: 60px; font-size: 18px; }
-  .help-search__icon { left: 24px; }
-  .help-search__clear { right: 14px; }
-}
 @media (prefers-reduced-motion: reduce) {
   .help-search-enter-active, .help-search-leave-active { transition: none; }
 }
